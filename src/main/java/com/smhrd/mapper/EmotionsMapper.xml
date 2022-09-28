@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.mapper.BoardMapper">
+
+
+	<insert id="join" parameterType="com.smhrd.domain.InfoDTO">
+		insert into info
+		values(#{id},
+		#{pw}, #{nick}, #{gender}, #{age})
+	</insert>
+
+	<select id="login" resultType="com.smhrd.domain.InfoDTO"
+		parameterType="com.smhrd.domain.InfoDTO">
+		select * from info
+		where id = #{id} and pw = #{pw}
+	</select>
+
+	<update id="update" parameterType="com.smhrd.domain.InfoDTO">
+		update info set pw = #{pw},
+		nick = #{nick}, gender = #{gender}, age = #{age}
+		where id=#{id}
+	</update>
+
+
+	<select id="select" resultType="com.smhrd.domain.InfoDTO">
+		select * from info where id=#{id}
+	</select>
+
+	
+	<delete id="delete" parameterType="com.smhrd.domain.InfoDTO">
+	delete from info where id = #{id} and pw = #{pw}
+	   
+</delete>
+	
+	
+	
+	
+	
+</mapper>
