@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // 모든 필드를 초기화 하는 생성자
 @Data
 public class ChartDTO {
-
+// 오류바꾸기
 	private BigDecimal seq;
 	private BigDecimal song_seq;
 	private String emotion;
