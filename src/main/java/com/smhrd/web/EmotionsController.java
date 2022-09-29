@@ -33,11 +33,9 @@ public class EmotionsController {
 	}
 
 //	fomr 요청시 로그인 하는곳
-	@PostMapping("/login.do")
-	public String login(InfoDTO dto) {
-		System.out.println(dto);
-		mapper.login(dto);
-		return "Main";
-	}
+	/*
+	 * @PostMapping("/login.do") public String login(InfoDTO dto) {
+	 * System.out.println(dto); mapper.login(dto); return "Main"; }
+	 */
 
 }

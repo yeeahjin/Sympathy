@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>회원가입 페이지</h1>
-<form action="join.do" method="post">
+<form action="join.do" method="post"> 
 	ID : <input type="text" name="id"><br>
 	PW : <input type="password" name="pw"><br>
 	NICK :  <input type="text" name="nick"> <br>
