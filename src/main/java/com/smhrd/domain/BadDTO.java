@@ -1,5 +1,7 @@
 package com.smhrd.domain;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class BadDTO {
 
 	private String id;
-	private int song_seq;
+	private BigDecimal song_seq;
 	
 
 }

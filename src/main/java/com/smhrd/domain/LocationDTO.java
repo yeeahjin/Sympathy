@@ -1,5 +1,7 @@
 package com.smhrd.domain;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,10 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class LocationDTO {
 
-	private int location_seq;
+	private BigDecimal location_seq;
 	private String location_title;
 	private String x;
 	private String y;
+	private String address;
+	
 	
 
 }

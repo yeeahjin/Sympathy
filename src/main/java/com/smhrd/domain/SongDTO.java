@@ -1,5 +1,7 @@
 package com.smhrd.domain;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,12 +11,13 @@ import lombok.NoArgsConstructor;
 @Data
 public class SongDTO {
 
-	private int song_seq;
+	private BigDecimal song_seq;
 	private String song_title;
 	private String singer;
 	private String img;
 	private String lyrics;
 	private String link;
+	private int song_num;
 	
 
 }

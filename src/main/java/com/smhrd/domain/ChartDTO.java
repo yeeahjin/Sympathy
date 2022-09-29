@@ -1,5 +1,7 @@
 package com.smhrd.domain;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ChartDTO {
 
-	private int seq;
-	private int song_seq;
+	private BigDecimal seq;
+	private BigDecimal song_seq;
 	private String emotion;
 	
 

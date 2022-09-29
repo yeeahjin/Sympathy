@@ -1,8 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://mybatis.org/schema/mybatis-spring 
+  http://mybatis.org/schema/mybatis-spring.xsd">
+	<!-- 위에 있는 내용(xsi:schemaLocation) : 
+	해당하는  xml에 어떤 태그들을 사용할 수 있는 정의해놓은, 스키마 파일들을 로드하는 코드 -->
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- JDBC(=Connection) 정의하는 공간 -->
+	<!-- DBCP / HikariCP 설정 잡아주기, DB와 연결에 필요한 정보를 저장할 객체 생성 -->
+	<!-- bean : 객체를 생성하는 태그 -->
+	<!--  id attribute : 변수명 지정 -->
+	<!-- class attribute : 어떤 클래스를 생성할 건지 경로까지 잡아주기  -->
+	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"> <!-- bean의 class는 .class는 삭제하고 복붙 -->
+	    <!--  setter메소드 사용  -->
+		<!-- Driver Class -->
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver"></property>
 		
+		<!-- DB 접속 url -->
+		<property name="jdbcUrl"
+			value="jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe"></property>
+		
+		<!-- User ID -->
+		<property name="username" value="smhrdf001"></property>
+		
+		<!-- User Password -->
+		<property name="password" value="smhrdf001"></property>
+		
+	</bean>
+	
+	<!-- DBCP 만들어주는 클래스 생성 -->
+	<!-- hikariconfig를 이용해서 DBCP를 만들어줄 객체 생성 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+	    
+	    <!-- 
+	    DI : Dependency Injection (의존성 주입)
+	        클래스 간의 결합도가 낮아진다 : 하나의 클래스를 변경했다고 해서 다른 클래스가 영향을 받지 않는다.
+	    1) setter메소드를 사용
+	    2) constructor를 사용
+	    	 -->
+		
+		<!-- constructor-arg: 생성자 사용하는 태그
+			 ref : reference약자 / 위에 있는 클래스 변수명을 작성, 생성자의 매개변수, 참조 -->				
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+	
+	<!-- DBCP를 활용해서 JDBC 기능을 완성할 SqlSessionFactory 생성 -->
+	<!-- SqlSessionFactory(mybatis-spring api에서 제공)
+	     : connection가져다가 CRUD작업을 수행할 수 있게끔 하는 클래스 -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- mapper파일 연결에 대한 설정값을 추가해야함 -->
+	<!-- mapper파일이 있는 패키지를 통째로 스캔할 수 있게끔 코드로 설정 -->
+	<mybatis:scan base-package="com.smhrd.mapper"></mybatis:scan>
+
 </beans>

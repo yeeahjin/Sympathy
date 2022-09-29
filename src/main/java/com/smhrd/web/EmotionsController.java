@@ -24,10 +24,11 @@ public class EmotionsController {
 	@Autowired
 	private EmotionsMapper mapper;
 
-	@RequestMapping("/")
+	@RequestMapping("/login")
 	public String login() {
 		return "Login";
 
 	}
+
 
 }

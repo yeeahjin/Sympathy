@@ -75,14 +75,14 @@ public class EmotionsRestController {
 		// 2. SQL쿼리 정의. mapper interface에 메서드 만들기
 
 		// 3. mapper 메서드 사용
-		InfoDTO info = mapper.login(info);
+		InfoDTO info1 = mapper.login(info);
 		
-		System.out.println(info);
+		System.out.println(info1);
 		
 		// 4. 성공 실패 구분
-		if (info != null) {
+		if (info1 != null) {
 			// 성공 : session에 유저정보 저장, main으로
-			session.setAttribute("info", info);
+			session.setAttribute("info", info1);
 			return "Main";
 
 		} else {
@@ -134,15 +134,13 @@ public class EmotionsRestController {
 		return "Login";
 	}
 	
-	@RequestMapping("/delete.do")
-	public String delete(HttpSession session) {
-		
-		InfoDTO info = (info)session.getAttribute("info");
-			
-		mapper.delete(info);
-		session.removeAttribute("info");
-		
-		return "Login";
-	}
-
+	/*
+	 * @RequestMapping("/delete.do") public String delete(HttpSession session) {
+	 * 
+	 * InfoDTO info = (info)session.getAttribute("info");
+	 * 
+	 * mapper.delete(info); session.removeAttribute("info");
+	 * 
+	 * return "Login"; }
+	 */
 }
