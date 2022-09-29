@@ -34,15 +34,19 @@ public class EmotionsRestController {
 	
 	@RequestMapping("/join.do")
 	public String join(InfoDTO info) {
+		
+		System.out.println(info.getId());
+		System.out.println(info.getNick());
 
-		int cnt = mapper.join(info);
-		// 4. 다음 view 리턴
-		if (cnt > 0) {
-			return "Login";
-
-		} else {
-			return "Join";
-		}
+//		int cnt = mapper.join(info);
+//		// 4. 다음 view 리턴
+//		if (cnt > 0) {
+//			return "Login";
+//
+//		} else {
+//			return "Join";
+//		}
+		return "Join";
 
 	}
 
@@ -75,7 +79,7 @@ public class EmotionsRestController {
 
 		InfoDTO result = mapper.select(id);
 
-//		model.addAttribute("result", result);
+		model.addAttribute("result", result);
 
 		return "Update";
 	}
