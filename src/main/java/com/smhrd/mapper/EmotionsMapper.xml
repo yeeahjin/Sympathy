@@ -29,8 +29,7 @@
 	
 	<delete id="delete" parameterType="com.smhrd.domain.InfoDTO">
 	delete from info where id = #{id} and pw = #{pw}
-	   
-</delete>
+	</delete>
 	
 	
 	

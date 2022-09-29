@@ -11,8 +11,6 @@
 	<table border=1 width=600>
 		<h1>회원정보상세 페이지</h1>
 		<tr>
-		<!-- dkssud -->
-		
 			<td  align=center>닉네임</td>
 			<td> <input  type=text  name=nick  value= ${user_info.nick }></td>
 		</tr>

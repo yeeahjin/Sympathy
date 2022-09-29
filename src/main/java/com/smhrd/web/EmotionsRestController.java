@@ -38,15 +38,14 @@ public class EmotionsRestController {
 		System.out.println(info.getId());
 		System.out.println(info.getNick());
 
-//		int cnt = mapper.join(info);
-//		// 4. 다음 view 리턴
-//		if (cnt > 0) {
-//			return "Login";
-//
-//		} else {
-//			return "Join";
-//		}
-		return "Join";
+		int cnt = mapper.join(info);
+		// 4. 다음 view 리턴
+		if (cnt > 0) {
+			return "Login";
+
+		} else {
+			return "Join";
+		}
 
 	}
 
@@ -76,6 +75,8 @@ public class EmotionsRestController {
 
 	@GetMapping("/updatepage.do")
 	public String updatepage(String id, Model model) {
+		
+		System.out.println("도착");
 
 		InfoDTO result = mapper.select(id);
 
@@ -86,6 +87,7 @@ public class EmotionsRestController {
 
 	@RequestMapping("/update.do")
 	public String update(InfoDTO info) {
+		System.out.println("안도착");
 
 		System.out.println(info);
 
