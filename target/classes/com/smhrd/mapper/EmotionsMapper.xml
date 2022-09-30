@@ -31,7 +31,9 @@
 	delete from info where id = #{id} and pw = #{pw}
 	</delete>
 	
-	
+	<select id="songList" resultType="com.smhrd.domain.SongDTO">
+		select * from song
+	</select>
 	
 	
 	

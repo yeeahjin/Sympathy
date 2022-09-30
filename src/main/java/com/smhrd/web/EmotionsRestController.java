@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smhrd.domain.InfoDTO;
+import com.smhrd.domain.SongDTO;
 import com.smhrd.mapper.EmotionsMapper;
 
 // @RestController를 붙이면 @ResponseBody 안붙여도 됨
@@ -111,6 +112,37 @@ public class EmotionsRestController {
 		
 		return "Login";
 	}
+	
+	
+	
+	// AJAX
+	@RequestMapping("/square")
+	public @ResponseBody String test(int num) {
+		System.out.println("확인");
+		int result = num * num;
+		return "15";
+	}
+	
+	@RequestMapping("/songinsert")
+	public @ResponseBody String songinsert() {
+		System.out.println("확인");
+		
+		mapper.songinsert();
+		
+		return "15";
+	}
+	
+	@RequestMapping("/songList.do")
+	public @ResponseBody List<SongDTO> songList(){
+		
+			List<SongDTO> list = mapper.songList();
+			
+			System.out.println(list);
+			return list;
+	}
+	
+	
+	
 	
 	
 }
