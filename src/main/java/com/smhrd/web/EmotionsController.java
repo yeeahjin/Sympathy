@@ -27,9 +27,9 @@ public class EmotionsController {
 	private EmotionsMapper mapper;
 
 //	Login.jsp 화면 보여주기
-	@GetMapping("/login.do")
+	@GetMapping("/main.do")
 	public String login() {
-		return "Login";
+		return "Main";
 	}
 
 //	fomr 요청시 로그인 하는곳

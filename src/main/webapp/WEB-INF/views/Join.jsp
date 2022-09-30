@@ -13,8 +13,8 @@
 	PW : <input type="password" name="pw"><br>
 	NICK :  <input type="text" name="nick"> <br>
 	<!-- GENDER : <input type="text" name="gender"> <br> -->
-	<input type="radio" name="gender" value="man">남
-	<input type="radio" name="gender" value="woman">여
+	<input type="radio" name="gender" value="남">남
+	<input type="radio" name="gender" value="여">여
 	<br>
 	AGE : <input type="text" name="age"> <br>
 	<button>회원가입</button>

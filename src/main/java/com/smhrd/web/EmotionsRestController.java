@@ -32,6 +32,10 @@ public class EmotionsRestController {
 		return "Join";
 	}
 	
+	@RequestMapping("/Rerutn.do")
+	public String Rerutn() {
+		return "Login";
+	}
 	@RequestMapping("/join.do")
 	public String join(InfoDTO info) {
 		
@@ -49,18 +53,17 @@ public class EmotionsRestController {
 
 	}
 
-	@PostMapping("/login.do")
+	@RequestMapping("/login.do")
 	public String login(InfoDTO info, HttpSession session) {
 
 		InfoDTO user_info = mapper.login(info);
 
-		System.out.println(user_info);
 
-		if (info != null) {
+		if (user_info != null) {
 			session.setAttribute("user_info", user_info);
 			return "Main";
 
-		} else {
+		}else{
 			return "Login";
 		}
 	}
@@ -76,11 +79,13 @@ public class EmotionsRestController {
 	@GetMapping("/updatepage.do")
 	public String updatepage(String id, Model model) {
 		
-		System.out.println("도착");
+		System.out.println("김치짱");
 
 		InfoDTO result = mapper.select(id);
 
 		model.addAttribute("result", result);
+		
+		
 
 		return "Update";
 	}
@@ -96,4 +101,16 @@ public class EmotionsRestController {
 		return "Login";
 	}
 
+	@RequestMapping("/delete.do")
+	public String delete(HttpSession session) {
+		
+		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
+			
+		mapper.delete(user_info);
+		session.removeAttribute("info");
+		
+		return "Login";
+	}
+	
+	
 }

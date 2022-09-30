@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<td  align=center>비밀번호</td>
-			<td><input  type=text  name=pw size=20 value= ${user_info.pw }></td>
+			<td><input  type="password"  name=pw size=20 value= ${user_info.pw }></td>
 		</tr>
 		<tr>
 			<td  align=center>성별 </td>
@@ -31,7 +31,7 @@
 			<td colspan=2  align=center>
 				<input  type=submit  value="수정"> &emsp;
 				<input type="hidden" name="id" value=${user_info.id }>
-				<a href="first.do">돌아가기</a>
+				<a href="Rerutn.do">돌아가기</a>
 			</td>
 		</tr>
 	</table>
