@@ -59,11 +59,11 @@
 				$('tr').last().append("<td>"+res[i].img+"</td>")
 				$('tr').last().append("<td>"+res[i].singer+"</td>")
 				$('tr').last().append("<td>"+res[i].song_title+"</td>")
-				$('tr').last().append("<td>가사아이콘</td>")
-				$('tr').last().append("<td>좋아요아이콘</td>")
-				$('tr').last().append("<td>싫어요아이콘</td>")
-				$('tr').last().append("<td>1분미리듣기아이콘</td>")
-				$('tr').last().append("<td>연습하기아이콘</td>")
+				$('tr').last().append("<td><button>가사아이콘</button></td>")
+				$('tr').last().append("<td><button>좋아요아이콘</button></td>")
+				$('tr').last().append("<td><button>싫어요아이콘</button></td>")
+				$('tr').last().append("<td><button>1분미리듣기아이콘</button></td>")
+				$('tr').last().append("<td><button>연습하기아이콘</button></td>")
 				}
 			},
 			error : function(e) {
