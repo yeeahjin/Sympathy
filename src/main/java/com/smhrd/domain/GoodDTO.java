@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class GoodDTO {
 
 	private String id;
-	private BigDecimal song_seq;
-	
+	private int song_seq;
 
 }

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class SongDTO {
 
-	private BigDecimal song_seq;
+	private int song_seq;
 	private String song_title;
 	private String singer;
 	private String img;

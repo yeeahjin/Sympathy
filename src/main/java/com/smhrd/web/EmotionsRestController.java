@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.SongDTO;
 import com.smhrd.mapper.EmotionsMapper;
@@ -116,23 +117,22 @@ public class EmotionsRestController {
 	
 	
 	// AJAX
-	@RequestMapping("/square")
-	public @ResponseBody String test(int num) {
-		System.out.println("확인");
-		int result = num * num;
-		return "15";
-	}
 	
+	// 좋아요 기능
 	@RequestMapping("/songinsert")
-	public @ResponseBody String songinsert() {
-		System.out.println("확인");
+	public @ResponseBody String songinsert(String id, int songnumber) {
 		
-		mapper.songinsert();
+		System.out.println(id);
+		System.out.println(songnumber);
 		
-		return "15";
+		GoodDTO dto = new GoodDTO(id, songnumber);
+		
+		int songin = mapper.songinsert(dto);
+		
+		return "Main";
 	}
 	
-	@RequestMapping("/songList.do")
+	@RequestMapping("/songList")
 	public @ResponseBody List<SongDTO> songList(){
 		
 			List<SongDTO> list = mapper.songList();
@@ -141,6 +141,13 @@ public class EmotionsRestController {
 			return list;
 	}
 	
+	@RequestMapping(value="/lyrics",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String lyrics(int num) {
+		System.out.println(num);
+		String text = mapper.lyrics(num);
+		System.out.println(text);
+		return text;
+	}
 	
 	
 	

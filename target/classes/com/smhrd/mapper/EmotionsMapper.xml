@@ -35,6 +35,12 @@
 		select * from song
 	</select>
 	
+	<insert id="songinsert" parameterType="com.smhrd.domain.GoodDTO">
+		insert into good values(#{id}, #{songnumber})
+	</insert>
 	
+	<select id="lyrics" parameterType="int" resultType="String">
+		select lyrics from song where song_seq = #{num}
+	</select>
 	
 </mapper>
