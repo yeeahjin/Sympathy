@@ -40,7 +40,7 @@
 	</insert>
 	
 	<delete id="songdelete" parameterType="com.smhrd.domain.GoodDTO">
-		delete from good(#{id}, #{song_seq})
+		delete from good where #{id}, #{song_seq}
 	</delete>
 	
 	
