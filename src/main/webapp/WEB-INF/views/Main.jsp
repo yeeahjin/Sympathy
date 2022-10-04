@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -88,30 +97,35 @@
 	</script>	
 	
 	<script type="text/javascript">
-/* 
-	function like(int songnumber){
-		$.ajax({
+
+	 function like(songnumber){
+
+
+			$.ajax({
 			url : 'songinsert',
-			type : 'get',
-			data : {"id" :1,
-				"songnumber" : songnumber},
-			success : function(res){
-				console.log(res)
+			type : 'post',   // get post
+			data : {id : "국예진", songnumber : songnumber},
+			dataType :'text',
+			success : function(){
+				alert("성공")
 			},
 			error : function(e) {
-				alert('error!');
+				alert('배고팡!');
 			}
 		});
+		}
+		 
+		 
 		
-		
-	} */
+
+		 
+		 
+		 
 	function lyrics(idx){
 		$.ajax({
 			url : 'lyrics',
 			type : 'get',
-			data : {
-				num : idx 
-			},
+			data : {num : idx},
 			dataType : 'text',
 			success : function(res){
 				var j = 0;

@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.SongDTO;
 import com.smhrd.mapper.EmotionsMapper;
+
+import jdk.nashorn.internal.parser.JSONParser;
 
 // @RestController를 붙이면 @ResponseBody 안붙여도 됨
 @Controller
@@ -118,18 +121,19 @@ public class EmotionsRestController {
 	
 	// AJAX
 	
-	// 좋아요 기능
+	// 좋아요 노래 추가
 	@RequestMapping("/songinsert")
-	public @ResponseBody String songinsert(String id, int songnumber) {
+	public @ResponseBody void songinsert(String id, String songnumber, HttpSession session) {
 		
 		System.out.println(id);
 		System.out.println(songnumber);
+		int song_seq = Integer.parseInt(songnumber); 
 		
-		GoodDTO dto = new GoodDTO(id, songnumber);
+		GoodDTO dto = new GoodDTO(id, song_seq);
+		System.out.println(dto);
 		
-		int songin = mapper.songinsert(dto);
+		mapper.songinsert(dto);
 		
-		return "Main";
 	}
 	
 	@RequestMapping("/songList")

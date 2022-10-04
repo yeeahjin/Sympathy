@@ -36,7 +36,7 @@
 	</select>
 	
 	<insert id="songinsert" parameterType="com.smhrd.domain.GoodDTO">
-		insert into good values(#{id}, #{songnumber})
+		insert into good values(#{id}, #{song_seq})
 	</insert>
 	
 	<select id="lyrics" parameterType="int" resultType="String">
