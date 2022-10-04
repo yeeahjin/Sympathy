@@ -108,6 +108,9 @@
 			dataType :'text',
 			success : function(){
 				alert("성공")
+				
+				
+				$
 			},
 			error : function(e) {
 				alert('배고팡!');

@@ -25,6 +25,10 @@ public interface EmotionsMapper {
 	public List<SongDTO> songList();
 	
 	public void songinsert(GoodDTO dto);
+	
+	public void songdelete(GoodDTO dto);
 
 	public String lyrics(int num);
+	
+	
 }
