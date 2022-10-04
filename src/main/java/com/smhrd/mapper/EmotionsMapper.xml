@@ -26,27 +26,32 @@
 		select * from info where id=#{id}
 	</select>
 
-	
 	<delete id="delete" parameterType="com.smhrd.domain.InfoDTO">
-	delete from info where id = #{id} and pw = #{pw}
+		delete from info where id = #{id} and pw = #{pw}
 	</delete>
-	
+
 	<select id="songList" resultType="com.smhrd.domain.SongDTO">
 		select * from song
 	</select>
-	
+
 	<insert id="songinsert" parameterType="com.smhrd.domain.GoodDTO">
-		insert into good values(#{id}, #{song_seq})
+		insert into good
+		values(#{id}, #{song_seq})
 	</insert>
-	
+
 	<delete id="songdelete" parameterType="com.smhrd.domain.GoodDTO">
-		delete from good where #{id}, #{song_seq}
+		delete from good where
+		#{id}, #{song_seq}
 	</delete>
-	
-	
-	
+
+	<insert id="hateinsert" parameterType="com.smhrd.domain.BadDTO">
+		insert into bad
+		values(#{id}, #{song_seq})
+	</insert>
+
 	<select id="lyrics" parameterType="int" resultType="String">
-		select lyrics from song where song_seq = #{num}
+		select lyrics
+		from song where song_seq = #{num}
 	</select>
-	
+
 </mapper>

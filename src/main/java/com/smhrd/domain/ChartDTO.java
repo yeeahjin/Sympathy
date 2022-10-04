@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ChartDTO {
 // 오류바꾸기
-	private BigDecimal seq;
-	private BigDecimal song_seq;
+	private int seq;
+	private int song_seq;
 	private String emotion;
 	
 

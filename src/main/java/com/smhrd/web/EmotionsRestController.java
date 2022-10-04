@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.smhrd.domain.BadDTO;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.SongDTO;
@@ -123,19 +124,35 @@ public class EmotionsRestController {
 	
 	// 좋아요 노래 추가
 	@RequestMapping("/songinsert")
-	public @ResponseBody void songinsert(String id, String songnumber, HttpSession session) {
+	public @ResponseBody void songinsert(String songnumber, HttpSession session) {
 		
-		System.out.println(id);
-		System.out.println(songnumber);
 		int song_seq = Integer.parseInt(songnumber); 
 		
+		InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+		
+		String id = user_info.getId();
+		
 		GoodDTO dto = new GoodDTO(id, song_seq);
-		System.out.println(dto);
 		
 		mapper.songinsert(dto);
 		
 	}
 	
+	// 싫어요 노래 추가
+		@RequestMapping("/hateinsert")
+		public @ResponseBody void hateinsert(String songnumber, HttpSession session) {
+
+			int song_seq = Integer.parseInt(songnumber);
+
+			InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+			
+			String id = user_info.getId();
+			
+			BadDTO dto = new BadDTO(id, song_seq);
+
+			mapper.hateinsert(dto);
+
+		}
 	@RequestMapping("/songList")
 	public @ResponseBody List<SongDTO> songList(){
 		

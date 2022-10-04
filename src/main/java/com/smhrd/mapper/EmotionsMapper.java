@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.smhrd.domain.BadDTO;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.SongDTO;
@@ -30,5 +31,5 @@ public interface EmotionsMapper {
 
 	public String lyrics(int num);
 	
-	
+	public void hateinsert(BadDTO dto);
 }
