@@ -28,7 +28,7 @@ import jdk.nashorn.internal.parser.JSONParser;
 public class EmotionsRestController {
 
 	// Ajax요청을 처리할 컨트롤러 ==> RestController
-
+	
 	@Autowired
 	private EmotionsMapper mapper;
 

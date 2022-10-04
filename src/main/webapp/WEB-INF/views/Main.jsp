@@ -3,13 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -23,6 +16,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<% session.getAttribute("id"); %>
+
+
+
+
 	<h1>${user_info.nick }님환영합니다</h1>
 	<input type="search" placeholder="검색하세요.">
 	<br>
@@ -104,7 +102,7 @@
 			$.ajax({
 			url : 'songinsert',
 			type : 'post',   // get post
-			data : {id : "국예진", songnumber : songnumber},
+			data : {id : id , songnumber : songnumber},
 			dataType :'text',
 			success : function(){
 				alert("성공")
