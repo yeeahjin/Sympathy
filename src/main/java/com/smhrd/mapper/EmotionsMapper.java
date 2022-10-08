@@ -32,4 +32,16 @@ public interface EmotionsMapper {
 	public String lyrics(int num);
 	
 	public void hateinsert(BadDTO dto);
+	
+	public void hatedelete(BadDTO dto);
+	
+	public String songpreview(int num);
+	
+	public String songpractice(int num);
+	
+	public int idCheck(String id);
+
+	
+	public int checknick(String nick);
+	
 }
