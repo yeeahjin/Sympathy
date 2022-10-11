@@ -1,151 +1,278 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<style>
-.id_ok{
-color:#008000;
-display: none;
-}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공감-회원가입</title>
 
-.id_already{
-color:#6A82FB; 
-display: none;
-}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/font.css">
+  
+    <style>
+        .input-form {
+            max-width: 680px;
 
-.nick_ok{
-color:#008000;
-display: none;
-}
+            margin-top: 80px;
+            padding: 32px;
 
-.nick_already{
-color:#6A82FB; 
-display: none;
-}
+            background: #fff;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+        }
 
+        .find-btn {
+            vertical-align: auto;
+        }
 
-</style>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        .find-btn1 {
+            display: inline-block;
+        }
 
+        .find-btn2 {
+            display: inline-block;
+            padding-left: 45%;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+
+        .size{
+            font-size: smaller;
+        }
+
+        #kakao{
+            
+    display: inline-block;
+    margin-right: 10px;
+
+        }
+
+      
+    </style>
 </head>
-<body>
-<h1>회원가입 페이지</h1>
-<form action="join.do" method="post" onsubmit="return formSub();">
-	ID : <input type="text" placeholder="아이디를 입력해주세요" id="id" name="id"  oninput = "checkId()"><span class="id_ok">사용 가능한 아이디입니다.</span><span class="id_already">누군가 이 아이디를 사용하고 있어요.</span><br>
-	PW : <input type="password" placeholder="비밀번호를 입력해주세요"id="pww" name="pw"><br>
-	NICK :  <input type="text" placeholder="닉네임을 입력해주세요"id="nick" name="nick" oninput = "checknick()"> <span class="nick_ok">사용 가능한 닉네임 입니다.</span><span class="nick_already">누군가 이 닉네임을 사용하고 있어요.</span> <br>
-	<!-- GENDER : <input type="text" name="gender"> <br> -->
-	<input type="radio" name="gender" value="남">남
-	<input type="radio" name="gender" value="여">여
-	<br>
-	AGE : <input type="text" placeholder="나이를 입력해주세요"id="agee" name="age"> <br>
-	<!-- <button>회원가입</button> -->
-	<input type="submit"  id="button1" value="회원가입">
-	
 
-	
-	
-	
-	
-	<script type="text/javascript">
-	// 중복된 닉네임 선택했을 때 경고 뜨게
-	// 회원가입이 완료 됐을 때 알림 현재는 빈칸만 채우면 알림이 뜸
-	
-	
-	// 중복된 아이디 
-	function checkId(){
-        var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
-        $.ajax({
-            url:'./idCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{id:id},
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                    $('.id_ok').css("display","inline-block"); 
-                    $('.id_already').css("display", "none");
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    $('.id_already').css("display","inline-block");
-                    $('.id_ok').css("display", "none");
-                    $('#id').val();
-                }
-            },
-            error:function(){
-                alert("에러입니다");
+<body id="back">
+
+
+
+    <div class="container eJEMVp">
+        <header class="header">
+            <div class="header-logo">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="header-title">
+                공감
+            </div>
+            <div class="header-buttons">
+                
+                <button class="avatar">
+    <img src="resources/img/baseline_menu_black_24dp.png" />
+                </button>
+            </div>
+        </header>
+
+<main>
+        <div class="input-form-backgroud row">
+            
+            <div class="input-form col-md-12 mx-auto shadow-none ">
+                
+                <div class="container">
+                <div class="row align-items-center"> 
+
+                </div>
+            </div>
+                <h3 class="mb-3 text-center bold" >회원가입</h3>
+            
+                <form class="validation-form" novalidate action="join.do" method="post">
+
+                    
+                    <div class="mb-3">
+                        <label for="id" >ID</label>
+                        <input type="text" class="form-control" id="id" placeholder="아이디를 입력해 주세요" value="" required name="id">
+                        <div class="invalid-feedback">
+
+
+                        </div>
+                        <div class="mb-3">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" >PW</label>
+                            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요"
+                                value="" required name="pw">
+                            <div class="invalid-feedback" >
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="nickname">별명</label>
+                        <input type="text" class="form-control" id="nickname" name="nick" value="" required>
+                        <div class="invalid-feedback" >
+                            별명을 입력해주세요.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gender">성별</label>
+                        <form action="#">
+                            <div class="find-btn">
+                                <div class="form-check find-btn1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="남"
+                                        value="option1" checked>
+                                    <label class="form-check-label" for="radio1" >남성</label>
+                                </div>
+
+
+                                <div class="form-check find-btn2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="여"
+                                        value="option2">
+                                    <label class="form-check-label" for="radio2" >여성</label>
+                                </div>
+                            </div>
+
+                       
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="age">연령대</label>
+                      
+                            <select class="form-select" aria-label="Default select example" >
+                                <option selected >10대</option>
+                                <option value="1" >20대</option>
+                                <option value="2" >30대</option>
+                                <option value="3" >40대</option>
+                                <option value="4" >50대</option>
+                                <option value="5" >60대</option>
+                            </select>
+                        
+                    </div>
+
+
+
+                    <div class="d-grid">
+                        <a type="button" href="#" id="join" class="btn  btn-block" 
+                            style="background-color: rgb(248, 223, 248);">회원가입</a>
+                    </div>
+
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" href="#" class="btn btn-primary btn-block border border-white"
+                            style="background-color: rgb(255, 232, 18); color: black;">
+                            <img
+                                src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-grid">
+                            <a href="log.do" class="btn btn-block" ><p class="size">로그인 하러가기</p></a>
+                        </div>
+                    </div>
+
+                  
+                </form>
+
+
+            </div>
+
+        </div>
+    </main>
+
+    <div id="wrapper2">
+        <div>
+
+        </div>
+
+    </div>
+
+    <footer class="menu footer1">
+
+        <div class="menu-inner">
+            <a href="index.html" class="menu-item active">
+                <i class="ai-home"></i>
+            </a>
+            <a href="location.html" class="menu-item">
+                <img src="resources/img/free-icon-location-535239.png" />
+            </a>
+            <a href="trend.html" class="menu-item">
+               <img src="resources/img/free-icon-trending-8344976.png" />
+            </a>
+            
+        </div>
+
+    </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const forms = document.getElementsByClassName('validation-form');
+
+            Array.prototype.filter.call(forms, (form) => {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    </script>
+    <script src='https://unpkg.com/akar-icons-fonts'></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        $(document).ready(function(){
+            var body = document.getElementById('back');
+            var body_width = getComputedStyle(body).width;
+
+            body_width = parseInt(body_width.substring(0, body_width.length-2))
+            console.log(body_width);
+            if(body_width > 570){
+                console.log('크기변경')
+                $('.eJEMVp').width(576);
             }
         });
-        };
-	
-   
-     // 중복된 닉네임
-	function checknick(){
-        var nick = $('#nick').val(); //id값이 "id"인 입력란의 값을 저장
-        $.ajax({
-            url:'./nickCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{nick:nick},
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                    $('.nick_ok').css("display","inline-block"); 
-                    $('.nick_already').css("display", "none");
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    $('.nick_already').css("display","inline-block");
-                    $('.nick_ok').css("display", "none");
-                    $('#nick').val();
-                }
-            },
-            error:function(){
-                alert("에러입니다");
-            }
-        });
-        }; 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	function formSub(){
-		if($("input[name=id]").val()!='' && $("input[name=pw]").val() != ''&& $("input[name=nick]").val() != ''
-			&& $("input[name=gender]").val()  != ''){	 
-			alert('회원가입이 완료되었습니다.') 	
-			return true;
-	}
-		else{
-			
-			alert('빈칸을 채워주세요')
-		
-			
-			
-			return false;
-			}
-		}
-		 
-		 
-	
-	
-	
-	
-	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-</form>
+     
+    $('#join').click(function(){
+        // 성공하면 
+        Swal.fire({
+  
+  icon: 'success',
+  title: '회원가입 성공!',
+  showConfirmButton: false,
+  timer: 1500
+});
 
+// 실패하면
+
+    });
+        
+
+    </script>
 </body>
+
 </html>

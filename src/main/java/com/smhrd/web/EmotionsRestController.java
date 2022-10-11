@@ -194,8 +194,7 @@ public class EmotionsRestController {
 
 		}
 	@RequestMapping("/songList")
-	public @ResponseBody List<SongDTO> songList(String input){
-		System.out.println(input);
+	public @ResponseBody List<SongDTO> songList(){
 		List<SongDTO> list = mapper.songList();
 		System.out.println(list.get(0));
 		return list;
