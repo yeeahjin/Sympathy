@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class LocationDTO {
 
-	private BigDecimal location_seq;
+	private int location_seq;
 	private String location_title;
 	private String x;
 	private String y;

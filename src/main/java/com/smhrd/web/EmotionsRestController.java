@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.smhrd.domain.BadDTO;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
+import com.smhrd.domain.LocationDTO;
 import com.smhrd.domain.SongDTO;
 import com.smhrd.mapper.EmotionsMapper;
 
@@ -39,7 +40,18 @@ public class EmotionsRestController {
 		return "chart";
 	}
 	
+	@RequestMapping("/golocation.do")
+	public String golocation() {
+		return "location";
+	}
 	
+	@RequestMapping("/locationList.do")
+	public @ResponseBody List<LocationDTO> locationList() {
+		
+		List<LocationDTO> loc = mapper.locationList(); // 전체를 들고오는 함수
+
+		return loc;
+	}
 	
 	@RequestMapping("/goJoin.do")
 	public String goJoin() {

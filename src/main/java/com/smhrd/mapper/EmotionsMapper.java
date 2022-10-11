@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.smhrd.domain.BadDTO;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
+import com.smhrd.domain.LocationDTO;
 import com.smhrd.domain.SongDTO;
 
 // 이 파일이 Mapper라고 알려주기 위함
@@ -40,7 +41,8 @@ public interface EmotionsMapper {
 	public String songpractice(int num);
 	
 	public int idCheck(String id);
-
+	
+	public List<LocationDTO> locationList();
 	
 	public int checknick(String nick);
 	

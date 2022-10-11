@@ -182,7 +182,7 @@
 			<div class="menu-inner">
 				<a href="Main.jsp" class="menu-item active" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="홈"> <i class="ai-home"></i>
-				</a> <a href="location.jsp" class="menu-item" data-bs-toggle="tooltip"
+				</a> <a href="golocation.do" class="menu-item" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="내 주변 노래방 !"> <img
 					src="resources/img/free-icon-location-535239.png" />
 				</a> <a href="chart.do" class="menu-item" data-bs-toggle="tooltip"
