@@ -185,7 +185,7 @@
 				</a> <a href="location.jsp" class="menu-item" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="내 주변 노래방 !"> <img
 					src="resources/img/free-icon-location-535239.png" />
-				</a> <a href="chart.jsp" class="menu-item" data-bs-toggle="tooltip"
+				</a> <a href="chart.do" class="menu-item" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="9월의 인기차트!"> <img
 					src="resources/img/free-icon-trending-8344976.png" />
 				</a>
@@ -337,9 +337,7 @@
         	 })
          };
       
-
-	    
-	    
+	
 	    
         function hide() {
             $('#hide').on('click', function () {

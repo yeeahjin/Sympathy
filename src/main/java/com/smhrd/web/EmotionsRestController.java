@@ -34,6 +34,13 @@ public class EmotionsRestController {
 	@Autowired
 	private EmotionsMapper mapper;
 
+	@RequestMapping("/chart.do")
+	public String inggichart() {
+		return "chart";
+	}
+	
+	
+	
 	@RequestMapping("/goJoin.do")
 	public String goJoin() {
 		return "Join";
