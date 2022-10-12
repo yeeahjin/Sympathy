@@ -69,7 +69,7 @@ position: relative;
 
 #wrapper7 {
     height: auto;
-    min-height: 12.5%;
+    min-height: 18%;
     padding-bottom: 80px;
     position: relative;
 }
@@ -231,8 +231,11 @@ z-index: 10
 .video_modal_popup .video-wrapper iframe {
 position: absolute;
 align-items: center;
-top: 300px;
-left: 600px;
+left: 50%;
+top: 50%;
+margin-left: -150px;
+margin-top: -150px;
+
 }
 
 .video_modal_popup.reveal .video_modal_popup-closer {

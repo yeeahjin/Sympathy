@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.smhrd.domain.BadDTO;
+import com.smhrd.domain.ChartDTO;
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.LocationDTO;
@@ -39,6 +40,14 @@ public class EmotionsRestController {
 	public String inggichart() {
 		return "chart";
 	}
+	
+	@RequestMapping("/ingichart")
+	public @ResponseBody List<ChartDTO> chartList(){
+		List<ChartDTO> list = mapper.chartList();
+		System.out.println("실패");
+		return list;
+	}
+	
 	
 	@RequestMapping("/golocation.do")
 	public String golocation() {
@@ -227,6 +236,14 @@ public class EmotionsRestController {
 		return text;
 	}
 	
+	 // 가사
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/songpreview",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String preview(int num) {
@@ -262,8 +279,7 @@ public class EmotionsRestController {
 				return cnt;
 				
 			}
-	
-	
+	       
 	}
 	
 	

@@ -204,9 +204,9 @@
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
 	<!-- <script src="./script.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/bootstrap.bundle.js"></script>
+	<script src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/js/bootstrap.bundle.js"></script>
 	<script src="//code.jquery.com/jquery-1.12.4.min.js"
 		crossorigin="anonymous"></script>
 	<script>
@@ -259,8 +259,8 @@
 								<li class="list_item">
 									<ul style="padding-left: 0px;">
 										<li class="list_track_row">
-											<div class="thumb text-center">
-												<span>`+res[i].song_seq+`</span>
+											<div class="thumb text-center" id="song_number">
+												<span>`+res[i].song_num+`</span>
 											</div>
 											
 											<div class="thumb">
@@ -286,7 +286,7 @@
                                         <div class="row gx-1">
                                             
                                                 <div class="col">
-                                                    <button class="btn good "  onclick="good()"
+                                                    <button class="btn good"  onclick="good()"
                                                         data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                         title="좋아요!"> <img
                                                             src="resources/img/baseline_sentiment_satisfied_alt_black_24dp.png" id="img1"></button>
@@ -297,17 +297,18 @@
                                                         title="싫어요!"><img
                                                             src="resources/img/baseline_sentiment_very_dissatisfied_black_24dp.png"></button>
                                                 </div>
-                                            <div class="col">
-                                                <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
+                                            <div class="col" id="lyrs">
+                                                <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics('`+res[i].song_num+`')"
                                                     data-bs-placement="bottom" title="가사보기!"> <img
                                                         src="resources/img/baseline_lyrics_black_24dp.png"></button>
                                                        
                                             </div>
                                             <div class="col popupModalVideo ratio ratio-16x9">
-                                                <a class="btn video-btn" id="play"  data-toggle="modal" data-bs-toggle="tooltip"  data-video="Xqk8wgvOgW4"
-                                                    data-bs-placement="bottom" title="미리듣기!" ><img
-                                                        src="resources/img/baseline_play_circle_black_24dp.png"></a>
-                                            </div>
+                                            <a class="btn video-btn play" data-toggle="modal" onclick="video()"
+                                                data-bs-toggle="tooltip" data-video="Xqk8wgvOgW4"
+                                                data-bs-placement="bottom" title="미리듣기!"><img
+                                                    src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                        </div>
                                             <div class="video_modal_popup" >
                                                 <div class="video_modal_popup-closer"></div>
                                               </div>
@@ -352,10 +353,9 @@
 		// 좋아요 버튼누르면 좋아요 테이블에 아이디랑 노래 정보 넘기기
 
 		function good() {
-			console.log()
+			
 			$('.good').on('click', function() {
 				Swal.fire({
-
 					icon : 'success',
 					title : '저장되었습니다!',
 					text : '마이페이지에서 확인가능해용',
@@ -412,9 +412,7 @@
 		var color_1 = getComputedStyle(color).color
 		console.log(color_1)
 
-		$('#play').click(function() {
-
-		});
+		
 		
 		function test(){
 			console.log('성공');
@@ -422,6 +420,89 @@
          	
          	$('#list').fadeIn();  
 		};
+		
+		function video(){
+			$('.play').on('click', function(){
+				 $(".popupModalVideo a").click(function () {
+					 alert('실패!')
+			         $(".video_modal_popup").addClass("reveal"),
+			             $(".video_modal_popup .video-wrapper").remove(),
+			             $(".video_modal_popup").append("<div class='video-wrapper'><iframe src='https://youtube.com/embed/" + $('a.play').data("video") + "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
+			     }),
+			         $(".video_modal_popup-closer").click(function () {
+			             $(".video_modal_popup .video-wrapper").remove(),
+			                 $(".video_modal_popup").removeClass("reveal")
+			         });
+			})
+		}
+	
+		 function lyrics(songnumber){
+				
+				for (var i =1; i<4; i++){
+					if ($('div#song_number').text() == songnumber){
+						break;
+					}
+				} 
+			
+				console.log("번호")
+				console.log(i)
+				$.ajax({
+							url : 'lyrics',
+							type : 'get',
+							data : {
+								num : songnumber
+							},
+							dataType : 'text',
+							success : function(res){ 
+								console.log(res) // 가사
+								console.log(songnumber+ "songnumber") // 
+								alert('이쿠');
+								
+								var j = 0;
+								
+								
+								if (j == 0 && $('button').getElementById('lyrics')) {
+												
+											$('div#lyrs').append("<tr></tr>")
+											$('tr').last().append(
+											"<td>" + res + "</td>")
+									
+									
+									
+									
+									
+											$('tbody > tr:nth-child('+ i + ') > td:nth-child(5) > button').text('가사 닫기')
+											j = 1;
+
+								}
+
+								else if (j == 0
+									&& $('tbody > tr:nth-child(' + i + ') > td:nth-child(5)').text() == '가사 닫기') {
+									$('tbody > tr:nth-child('+ i+ ') > td:nth-child(5) > button').text('가사 보기')
+									$('tbody > tr:nth-child(' + (i+1) + ')').remove(); // 여기서 활성화된 가사를 제거해야함 
+								}
+								
+								
+								
+								
+								
+							},
+								error : function(e){
+									alert('error');
+									}
+								
+							
+								});
+				
+				
+				
+				
+				
+				
+				
+				
+									
+			} 
 		
 	</script>
 	<script>
@@ -431,28 +512,7 @@
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		});
 	</script>
-	<script>
-		$(".popupModalVideo a")
-						.click(
-								function() {
-											$(".video_modal_popup").addClass(
-													"reveal"),
-											$(
-													".video_modal_popup .video-wrapper")
-													.remove(),
-											$(".video_modal_popup")
-													.append(
-															"<div class='video-wrapper'><iframe src='https://youtube.com/embed/"
-																	+ $(this)
-																			.data(
-																					"video")
-																	+ "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
-								}), $(".video_modal_popup-closer").click(
-						function() {
-							$(".video_modal_popup .video-wrapper").remove(), $(
-									".video_modal_popup").removeClass("reveal")
-						});
-	</script>
+	
 
 </body>
 

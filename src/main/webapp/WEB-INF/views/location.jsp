@@ -139,6 +139,11 @@ html, body {
 	width: 100%;
 	height: 56%;
 }
+
+#button-addon2{
+    color: #2ab3c0;
+    border-color: #2ab3c0;
+}
 </style>
 </head>
 <body id="back">
@@ -192,11 +197,11 @@ html, body {
 			<div class="row">
 				<div class="input-group mb-3">
 
-					<input type="text" id="positionSearch" class="form-control"
+					<input type="text" id="positionSearch" class="form-control rounded"
 						placeholder="현재 내 위치" aria-label="사용자위치"
 						aria-describedby="button-addon2" name="location"
 						onkeydown="moveFocus('button-addon2')">
-					<button onfocus="enterkey()" class="btn btn-outline-primary"
+					<button onfocus="enterkey()" class="btn btn-outline-primary rounded"
 						id="button-addon2">검색</button>
 					<!-- <button onfocus="enterkey()" id="submit" id="button-addon2" class="btn btn-outline-primary" >전송</button> -->
 
@@ -257,11 +262,18 @@ html, body {
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<div class="row g-2">
+				<div class="col-6">
+					<div class="p-3"></div>
+				</div>
+			</div>
+		</div>
 
 		<!-- 지도를 표시할 div 입니다 -->
 		
 		
-		<div id="map" class="map border" style="width: 100%; height: 350px;">
+		<div id="map" class="map border" style="width: 100%; height: 450px;">
 
 
 			<!--주소-좌표 변환을 할수 있을 services 라이브러리 불러오기-->

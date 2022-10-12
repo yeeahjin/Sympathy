@@ -11,9 +11,16 @@ import lombok.NoArgsConstructor;
 @Data
 public class ChartDTO {
 // 오류바꾸기
-	private int seq;
-	private int song_seq;
-	private String emotion;
+
+	
+	private int rank;
+	private int song_se;
+	private String song_title;
+	private String singer;
+	private String img;
+	private String preview;
+	private String lyrics;
+	private String link;
 	
 
 }

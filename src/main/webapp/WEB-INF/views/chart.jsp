@@ -12,8 +12,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/font.css">
-
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
     <style>
         .box {
             position: sticky;
@@ -94,7 +94,7 @@
 
 }
 
-#scrolly{
+/* #scrolly{
             width: auto;
              height: 500px; 
             overflow: scroll;
@@ -103,7 +103,14 @@
             margin: 0 auto;
             white-space: normal;
 }
-
+ */
+/*  .paging-div {
+  padding: 15px 0 5px 10px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+} */
 
     </style>
 </head>
@@ -133,7 +140,7 @@
             <div class="header-buttons">
 
                 <button class="avatar">
-                    <img src="img/baseline_menu_black_24dp.png" />
+                    <img src="resources/img/baseline_menu_black_24dp.png" />
                 </button>
             </div>
         </header>
@@ -158,485 +165,14 @@
                 </div>
     
             </div>
-            <div class="input-form col-lg-12 mx-auto overflow-scroll " id="scrolly">
-            <div class="list_wrap_track_rank">
-                <ul class="scroll_list" style="
-                padding-left: 0px;
-            ">
-                    <li class="list_item">
-                        <ul>
-                        <li class="list_track_row">
-                            <!-- 노래방번호 -->
-                            <div class="thumb text-center">
-                                <span >111</span>
-                            </div>
-                            <!-- 이미지 -->
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <!-- 제목 -->
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <!-- 가수 -->
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                            <audio id="audio" src="https://www.youtube.com/watch?v=Xqk8wgvOgW4"></audio>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb text-center">
-                                <span >111</span>
-                            </div>
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb text-center">
-                                <span >111</span>
-                            </div>
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!" onclick="play()"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                            
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb text-center">
-                                <span >111</span>
-                            </div>
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>                           
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb text-center">
-                                <span >111</span>
-                            </div>
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="list_track_row">
-                            <div class="thumb">
-                                <div class="inner">
-                                    <img src="img/10043982_500.jpg" >
-                                </div>
-                            </div>
-
-                            
-                            <div class="song_area col-6">
-                                <div class="song">
-                                    <a href="#" class="title fs-5" style="margin-top: 0;">
-                                        부담이 돼
-                                    
-                                    </a>
-                                </div>
-                                <div class="artist">
-                                    <span >
-                                        정키
-                                    </span>
-                                </div>
-                            </div>
-                            
-                 
-
-                        <div class="song_area col-6">
-                            <div class="row ">
-                                <div class="col">
-                                    <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="가사보기!"> <img
-                                            src="img/baseline_lyrics_black_24dp.png"></button>
-                                           
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="play" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="미리듣기!"><img
-                                            src="img/baseline_play_circle_black_24dp.png"></button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn" id="link" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="연습하기!"> <img
-                                            src="img/baseline_mic_black_24dp.png"></button>
-                                </div>
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
-
-                    
-                    </li>
-                </ul>
+            <div class="input-form col-lg-12 mx-auto">
+            <div class="list_wrap_track_rank"  id="tbody">
+      
 
             </div>
         </div>
+        
+        <div id="pagination"></div>
 
 
             <div class="container">
@@ -664,23 +200,7 @@
 
 
 
-            <!-- <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav> -->
+           
         </div>
 
 
@@ -699,10 +219,10 @@
                     <i class="ai-home"></i>
                 </a>
                 <a href="location.html" class="menu-item">
-                    <img src="img/free-icon-location-535239.png" />
+                    <img src="resources/img/free-icon-location-535239.png" />
                 </a>
                 <a href="trend.html" class="menu-item">
-                    <img src="img/free-icon-trending-8344976.png" />
+                    <img src="resources/img/free-icon-trending-8344976.png" />
                 </a>
 
             </div>
@@ -711,9 +231,13 @@
 
     </div>
 </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+ 	<script src="resources/js/jquery.twbsPagination2.js"></script> -
     <script src='https://unpkg.com/akar-icons-fonts'></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
     <script>
         $(document).ready(function () {
             var body = document.getElementById('back');
@@ -746,10 +270,119 @@
             });
         }
 
+        $(document).ready(function(){
+        	chartList();
+        });
+        
+        
+        
+        function chartList(){
+       	 	
+                	
+       	 $.ajax({
+       		 url : 'ingichart',
+       		 type:'get',
+       		 dataType:'json',
+       		 success:function(res){
+       			
+       			console.log("성공")
+       		 	
+  			 $('#tbody').html(''); 
+
+       			 for(var i = 0; i < res.length; i++){
+       				
+       				 tr = `
+       						<ul class="scroll_list"  style="padding-left: 0px;" >
+								<li class="list_item">
+									<ul style="padding-left: 0px;" >
+										<li class="list_track_row " >
+											<div class="thumb text-center">
+												<span>`+res[i].song_se+`</span>
+											</div>
+											
+											<div class="thumb">
+                                           <div class="inner">
+                                                <img src='`+res[i].img+`'>
+                                           </div>
+                                       </div>
+											
+									        <div class="song_area col-6">
+                                           <div class="song">
+                                               <a href="#" class="title fs-5" style="margin-top: 0;">
+                                                   `+res[i].song_title+`
+                                               
+                                               </a>
+                                           </div>
+                                           <div class="artist">
+                                               <span >
+                                                  `+res[i].singer+`
+                                               </span>
+                                           </div>
+                                       </div>
+                                       <div class="song_area col-9">
+                                       <div class="row gx-1">
+                                           
+                                              
+                                               
+                                           <div class="col">
+                                               <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
+                                                   data-bs-placement="bottom" title="가사보기!"> <img
+                                                       src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                                      
+                                           </div>
+                                           <div class="col popupModalVideo ratio ratio-16x9">
+                                               <a class="btn video-btn" id="play"  data-toggle="modal" data-bs-toggle="tooltip"  data-video="Xqk8wgvOgW4"
+                                                   data-bs-placement="bottom" title="미리듣기!" ><img
+                                                       src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                           </div>
+                                           <div class="video_modal_popup" >
+                                               <div class="video_modal_popup-closer"></div>
+                                             </div>
+                                         
+                                           
+                                           <div class="col">
+                                               <button class="btn" id="link" data-bs-toggle="tooltip"
+                                                   data-bs-placement="bottom" title="연습하기!"> <img
+                                                       src="resources/img/baseline_mic_black_24dp.png"></button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                       
+										</li>
+									</ul>
+								</li>
+							</ul>
+							
+       				 `
+       			 
+       			 $('#tbody').append(tr);
+       			
+       		
+       			 }
+       		 }
+       	 
+       	 })
+        };
      
+        
+      /*   window.pagObj = $('#pagination').twbsPagination({
+            totalPages: [[${dataListPage.totalPages}]], // 전체 페이지
+            startPage: parseInt([[${dataListPage.number}]] + 1), // 시작(현재) 페이지
+            visiblePages: 10, // 최대로 보여줄 페이지
+            prev: "‹", // Previous Button Label
+            next: "›", // Next Button Label
+            first: '«', // First Button Label
+            last: '»', // Last Button Label
+            onPageClick: function (event, page) { // Page Click event
+                console.info("current page : " + page);
+            }
+        }).on('page', function (event, page) {
+            searchDataList(page);
+        }); */
+
 
     </script>
-   
+  
 </body>
 
 </html>

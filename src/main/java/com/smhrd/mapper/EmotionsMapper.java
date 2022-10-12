@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.smhrd.domain.BadDTO;
+import com.smhrd.domain.ChartDTO;
+
 import com.smhrd.domain.GoodDTO;
 import com.smhrd.domain.InfoDTO;
 import com.smhrd.domain.LocationDTO;
@@ -46,4 +48,8 @@ public interface EmotionsMapper {
 	
 	public int checknick(String nick);
 	
+	public List<ChartDTO> chartList();
+	
+	
+
 }
