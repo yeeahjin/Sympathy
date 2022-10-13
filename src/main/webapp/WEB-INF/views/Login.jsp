@@ -100,10 +100,10 @@
     </div>
 </div>
      
-        <form class="validation-form" novalidate>
+        <form class="validation-form" novalidate action="login.do" method="post" onsubmit="returnn()" >
             <div class="mb-3">
                 <label for="id" id="fontsss">ID</label>
-                <input type="text" class="form-control" id="id" placeholder="아이디를 입력해 주세요" value="" required>
+                <input type="text" class="form-control" id="id" placeholder="아이디를 입력해 주세요"  name="id">
                 <div class="invalid-feedback">
                   
                
@@ -113,7 +113,7 @@
               </div>
               <div class="mb-3">
                 <label for="password" >PW</label>
-                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요" value="" required>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요" name="pw">
                 <div class="invalid-feedback">
                 
                 </div>
@@ -129,7 +129,7 @@
 
          
           <div class="d-grid">
-            <button type="button"  class="btn  btn-block" id="login_s" style="background-color: rgb(248, 223, 248);">로그인</button>
+            <button type="submit"  class="btn  btn-block" id="login_s" style="background-color: #2ab3c0;" >로그인</button>
           </div>
 
           <div class="line">
@@ -144,7 +144,15 @@
                     src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
         </div>
 
-    
+
+<div class="line">
+                        <hr>
+                    </div>
+                    
+                    
+    <p>
+			만약 아이디가 없다면 <a href="goJoin.do">회원가입</a>
+		</p>
         
         </form>
 
@@ -166,10 +174,10 @@
             <a href="index.html" class="menu-item active">
                 <i class="ai-home"></i>
             </a>
-            <a href="location.html" class="menu-item">
+            <a href="golocation.do" class="menu-item">
                 <img src="resources/img/free-icon-location-535239.png" />
             </a>
-            <a href="trend.html" class="menu-item">
+            <a href="chart.do" class="menu-item">
                <img src="resources/img/free-icon-trending-8344976.png" />
             </a>
             
@@ -178,10 +186,10 @@
     </footer>
 </div>
   <script>
-    window.addEventListener('load', () => {
+    window.addEventListener('load', function() {
       const forms = document.getElementsByClassName('validation-form');
 
-      Array.prototype.filter.call(forms, (form) => {
+      Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function (event) {
           if (form.checkValidity() === false) {
             event.preventDefault();
@@ -193,9 +201,11 @@
       });
     }, false);
   </script>
+  <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src='https://unpkg.com/akar-icons-fonts'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function(){
         var body = document.getElementById('back');
@@ -210,7 +220,7 @@
     });
 
 
-//   로그인 성공
+/* //   로그인 성공
 $('#login_s').click(function(){
     //  만약에 성공하면
     Swal.fire({
@@ -224,8 +234,85 @@ $('#login_s').click(function(){
 // 만약에 실패하면
 
 
- });
+ }); */
     
+function returnn(){
+	if($("input[name=id]").val()!='' && $("input[name=pw]").val() != '')
+	{ Swal.fire({
+		  
+		  icon: 'success',
+		  title: '로그인 성공!',
+		  showConfirmButton: false,
+		  timer: 1500
+		}); 	
+		return true;
+}
+	else{
+		if($("input[name=id]").val()=='' && $("input[name=pw]").val() == ''){
+			 alert('아이디와 비밀번호를 입력해주세요')
+			 Swal.fire({
+				  
+				  icon: 'error',
+				  title: '로그인 실패!',
+				  titleText:'아이디와 비밀번호를 입력해주세요',
+				  showConfirmButton: false,
+				  timer: 5000
+				}); 
+	
+		}
+		else if($("input[name=id]").val()==''){
+			alert('아이디를 입력해주세요')
+			 Swal.fire({
+				  
+				  icon: 'error',
+				  title: '로그인 실패!',
+				  titleText:'아이디와 비밀번호를 입력해주세요',
+				  showConfirmButton: false,
+				  timer: 1500
+				}); 
+	
+		}
+		else if($("input[name=pw]").val()==''){
+			alert('비밀번호를 입력해주세요') 
+			 Swal.fire({
+				  
+				  icon: 'error',
+				  title: '로그인 실패!',
+				  titleText:'아이디와 비밀번호를 입력해주세요',
+				  showConfirmButton: false,
+				  timer: 1500
+				}); 
+		
+		
+		}
+		
+		return false;
+		}
+	} 
+
+    
+    
+ /* function checksubmit(){
+    var id = $('#id').val();//id값이 "id"인 입력란의 값을 저장
+    $.ajax({
+        url:'./idCheck', //Controller에서 요청 받을 주소
+        type:'post', //POST 방식으로 전달
+        data:{id:id},
+        success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+            if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+            	alert("로그인에 실패하였습니다.");
+            }else{
+            	
+            }
+            
+        },
+        error:function(){
+        	
+        }
+    });
+    };   
+  */
+
 
 </script>
 </body>

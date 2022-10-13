@@ -18,7 +18,7 @@
 
 	<update id="update" parameterType="com.smhrd.domain.InfoDTO">
 		update info set pw = #{pw},
-		nick = #{nick}, gender = #{gender}, age = #{age}
+		nick = #{nick}
 		where id=#{id}
 	</update>
 
@@ -28,8 +28,8 @@
 	</select>
 
 	<delete id="delete" parameterType="com.smhrd.domain.InfoDTO">
-		delete from info where id =
-		#{id} and pw = #{pw}
+		delete from info where 
+		id = #{id} and pw = #{pw}
 	</delete>
 
 	<select id="songList" resultType="com.smhrd.domain.SongDTO">
@@ -95,6 +95,19 @@
 	    select * from chart
 	</select>
 
+	<select id="goodListt" parameterType="com.smhrd.domain.GoodDTO" resultType="com.smhrd.domain.GoodDTO">
+	    select * from good
+	    where id = #{id}
+	</select>
+	
+	<select id="badListt" parameterType="com.smhrd.domain.BadDTO" resultType="com.smhrd.domain.BadDTO">
+	    select * from bad
+	    where id = #{id}
+	</select>
+	
+	
+	
+	
 	<!-- 차프 페이징 -->
 	<select id="getListPaging" resultType="com.smhrd.domain.ChartDTO">
 	     <![CDATA[

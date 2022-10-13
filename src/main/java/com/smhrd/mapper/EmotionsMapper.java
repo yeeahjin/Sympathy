@@ -50,6 +50,9 @@ public interface EmotionsMapper {
 	
 	public List<ChartDTO> chartList();
 	
+	public List<GoodDTO> goodListt(String id);
+	public List<BadDTO> badListt(String id);
+	
 	
 
 }

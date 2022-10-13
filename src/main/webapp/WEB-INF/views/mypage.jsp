@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.domain.InfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -72,6 +73,37 @@
         .fold {
             display: inline-flex;
         }
+        
+         .dropdown_2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown_con {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            font-size: smaller;
+        }
+
+        .dropdown_con a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            
+        }
+
+        .dropdown_con a:hover {
+            background-color: white;
+        }
+
+        .dropdown_2:hover .dropdown_con {
+            display: block;
+        }
     </style>
 </head>
 
@@ -93,10 +125,31 @@
                 공감
             </div>
             <div class="header-buttons">
+	<div class="dropdown_2">
+				<button class="avatar dropbtn" >
+					<img src="resources/img/baseline_menu_black_24dp.png"/>
+				</button>
+				<div class="dropdown_con">
+					<!-- 로그인했을때 -->
+					<%
+						if (session.getAttribute("user_info") != null) {
+						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+					%>
+					<a><%=user_info.getNick()%>님</a>
+					
+					<a href="mypage.do">마이페이지</a>
+					<a href="logout.do">로그아웃</a>
+					<%
+						} else {
+					%>
+					<a href="goJoin.do">회원가입</a><br> 
+					<a href="log.do">로그인</a>
+					<%
+						}
+					%>
+</div>
+				</div>
 
-                <button class="avatar">
-                    <img src="img/baseline_menu_black_24dp.png" />
-                </button>
             </div>
         </header>
 
@@ -128,7 +181,7 @@
                     <div class="container con">
                         <div class="row row-cols-2 g-2 gy-5 fold">
                             <div class="col text-center">
-                                <button class="btn btn-lg bold" onclick="location.href='change.html'">회원정보수정</button>
+                                <a class="btn btn-lg bold" href="updatepage.do?id="+${result.id }>회원정보수정</a>
                                 <div>
                                     <span>PW와 닉네임을 변경</span>
                                 </div>
@@ -137,23 +190,22 @@
 
 
                             <div class="col text-center">
-
-                                <button class="btn btn-lg bold" onclick="location.href='out.html'">회원탈퇴</button>
+								
+                                <a  class="btn btn-lg bold" onclick="location.href='outpage.do'">회원탈퇴</a>
                                 <div>
                                     <span>탈퇴</span>
                                 </div>
                             </div>
 
                             <div class="col text-center">
-
-                                <button class="btn btn-lg bold" onclick="location.href='good.html'">좋아요</button>
+								<a  class="btn btn-lg bold" onclick="location.href='goodpage.do'">좋아요</a>
                                 <div>
                                     <span>찜한노래</span>
                                 </div>
                             </div>
                             <div class="col text-center">
-
-                                <button class="btn btn-lg bold" onclick="location.href='bad.html'">싫어요</button>
+							
+                               <button  class="btn btn-lg bold" onclick="location.href='badpage.do'">싫어요</button>
                                 <div>
                                     <span>추천안받고싶은노래</span>
                                 </div>
@@ -169,23 +221,23 @@
             </div>
         </main>
 
-        <div id="wrapper3">
+   <!--      <div id="wrapper3">
             <div>
                 
             </div>
-        </div>
+        </div> -->
 
         <footer class="menu footer1">
 
             <div class="menu-inner">
-                <a href="index.html" class="menu-item active">
+                <a href="#" class="menu-item active">
                     <i class="ai-home"></i>
                 </a>
-                <a href="location.html" class="menu-item">
-                    <img src="img/free-icon-location-535239.png" />
+                <a href="golocation.do" class="menu-item">
+                    <img src="resources/img/free-icon-location-535239.png" />
                 </a>
-                <a href="trend.html" class="menu-item">
-                   <img src="img/free-icon-trending-8344976.png" />
+                <a href="chart.do" class="menu-item">
+                   <img src="resources/img/free-icon-trending-8344976.png" />
                 </a>
                 
             </div>
@@ -217,12 +269,14 @@
     </script>
     <script src='https://unpkg.com/akar-icons-fonts'></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
     <script>
         $(document).ready(function () {
             var body = document.getElementById('back');
             var body_width = getComputedStyle(body).width;
-
+		
             body_width = parseInt(body_width.substring(0, body_width.length - 2))
             console.log(body_width);
             if (body_width > 570) {

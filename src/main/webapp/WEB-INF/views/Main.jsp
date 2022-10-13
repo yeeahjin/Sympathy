@@ -34,30 +34,36 @@
 
 <style type="text/css">
 
-.dropdown_2 {
-  position: relative;
-  display: inline-block;
-}
-.dropdown_con {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
- 
-  z-index: 1;
-}
-.dropdown_con a {
-  color: black;
-  padding: 12px 14px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown_con a:hover {
-  background-color: white;
-}
-.dropdown_2:hover .dropdown_con {
-  display: block;
-}
+        .dropdown_2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown_con {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            font-size: smaller;
+        }
+
+        .dropdown_con a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            
+        }
+
+        .dropdown_con a:hover {
+            background-color: white;
+        }
+
+        .dropdown_2:hover .dropdown_con {
+            display: block;
+        }
 </style>
 
 </head>
@@ -86,13 +92,15 @@
 						if (session.getAttribute("user_info") != null) {
 						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
 					%>
-					<h1><%=user_info.getNick()%>님환영합니다
-					</h1>
+					<a><%=user_info.getNick()%>님</a>
+					
+					<a href="mypage.do">마이페이지</a>
 					<a href="logout.do">로그아웃</a>
 					<%
 						} else {
 					%>
-					<a href="goJoin.do">회원가입</a><br> <a href="log.do">로그인</a>
+					<a href="goJoin.do">회원가입</a><br> 
+					<a href="log.do">로그인</a>
 					<%
 						}
 					%>
@@ -224,9 +232,15 @@
 					}
 				});
 		
-	    $(document).ready(function () {
-            $('#list').css({ display: 'none' });
-        });
+		 $(document).ready(function () {
+	            $('#list').css({ display: 'none' });
+	            Swal.fire({
+	                // 설명서 넣기
+	                //   imageUrl: 'https://placeholder.pics/slvg/300x1500',
+	                imageHeight: 1500,
+	                imageAlt: 'A tall image'
+	            });
+	        })
 
         function List() {
             $('#song').on('click', function () {
@@ -286,14 +300,14 @@
                                         <div class="row gx-1">
                                             
                                                 <div class="col">
-                                                    <button class="btn good"  onclick="good()"
-                                                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                    <button class="btn"  onclick="like('`+ res[i].song_num +`')"
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" id="good"
                                                         title="좋아요!"> <img
                                                             src="resources/img/baseline_sentiment_satisfied_alt_black_24dp.png" id="img1"></button>
                                                 </div>
                                                 <div class="col">
-                                                    <button class="btn bad"  onclick="bad()"
-                                                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                    <button class="btn bad"  onclick="hate('`+ res[i].song_num +`')"
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" id="bad"
                                                         title="싫어요!"><img
                                                             src="resources/img/baseline_sentiment_very_dissatisfied_black_24dp.png"></button>
                                                 </div>
@@ -352,7 +366,7 @@
 
 		// 좋아요 버튼누르면 좋아요 테이블에 아이디랑 노래 정보 넘기기
 
-		function good() {
+	/* 	function good() {
 			
 			$('.good').on('click', function() {
 				Swal.fire({
@@ -368,7 +382,63 @@
 
 			});
 
-		};
+		}; */
+		
+		// 좋아요
+		function like(songnumber) {
+				console.log(songnumber);
+			
+		for (var i =1; i<4; i++){
+			if ($('div#song_number').text() == songnumber){
+			
+				break;
+			}
+		} 
+		 		
+			if (document.getElementById('good'))  { 
+				/* $('tbody > tr:nth-child('+i+') > td:nth-child(6) > button').text('좋아요 취소')
+				$('tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop("disabled", true );*/
+
+				$.ajax({
+					url : 'songinsert',
+					type : 'get', // get post
+					data : {
+						songnumber : songnumber
+					},
+					dataType : 'text',
+					success : function(res) {
+						alert("성공111111");
+						alert(res);
+					},
+					error : function(e) {
+						alert('실패111111');
+						console.log(songnumber);
+					}
+				});
+			} else {
+				$(
+						'tbody > tr:nth-child('+i+') > td:nth-child(6) > button')
+						.text('좋아요 아이콘')
+				$(
+						'tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop(
+						"disabled", false);
+				$.ajax({
+					url : 'songdelete',
+					type : 'get', // get post
+					data : {
+						songnumber : songnumber
+					},
+					dataType : 'text',
+					success : function(res) {
+						alert("성공22222");
+					},
+					error : function(e) {
+						alert('실패22222');
+					}
+				});
+
+			} 
+		}
 
 		document.getElementById('good').onclick = function() {
 			good()
@@ -378,7 +448,101 @@
 			bad()
 		};
 		
-		function bad(){
+		
+		
+		
+		
+		
+		
+		
+		// 싫어요
+		function hate(songnumber) {
+				console.log(songnumber);
+			
+		for (var i =1; i<4; i++){
+			if ($('div#song_number').text() == songnumber){
+			
+				break;
+			}
+		} 
+		 		
+			if (document.getElementById('bad'))  {
+				/* $('tbody > tr:nth-child('+i+') > td:nth-child(6) > button').text('좋아요 취소')
+				$('tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop("disabled", true );*/
+
+				$.ajax({
+					url : 'hateinsert',
+					type : 'get', // get post
+					data : {
+						songnumber : songnumber
+					},
+					dataType : 'text',
+					success : function(res) {
+						alert("성공333333");
+						alert(res);
+					},
+					error : function(e) {
+						alert('실패333333');
+						console.log(songnumber);
+					}
+				});
+			} else {
+				$(
+						'tbody > tr:nth-child('+i+') > td:nth-child(6) > button')
+						.text('싫어요 아이콘')
+				$(
+						'tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop(
+						"disabled", false);
+				$.ajax({
+					url : 'hatedelete',
+					type : 'get', // get post
+					data : {
+						songnumber : songnumber
+					},
+					dataType : 'text',
+					success : function(res) {
+						alert("성공444444");
+					},
+					error : function(e) {
+						alert('실패444444');
+					}
+				});
+
+			} 
+		}
+
+		document.getElementById('good').onclick = function() {
+			good()
+		};
+
+		document.getElementById('bad').onclick = function(){
+			bad()
+		};
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/* (document.getElementById('bad')){
 			$('.bad').click(function() {
 				Swal.fire({
 
@@ -392,21 +556,13 @@
 					'filter' : 'opacity(0.5) drop-shadow(0 0 0 blue)'
 				})
 			});
-		};
+		}; */
 		
 		
 		
 	
 
-		$(document).ready(function() {
-			Swal.fire({
-				// 설명서 넣기
-				//   imageUrl: 'https://placeholder.pics/svg/300x1500',
-				imageHeight : 1500,
-				imageAlt : 'A tall image'
-			});
-
-		});
+		
 
 		var color = document.getElementById('img1')
 		var color_1 = getComputedStyle(color).color
@@ -436,6 +592,15 @@
 			})
 		}
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		// 가사
 		 function lyrics(songnumber){
 				
 				for (var i =1; i<4; i++){
@@ -461,12 +626,12 @@
 								var j = 0;
 								
 								
-								if (j == 0 && $('button').getElementById('lyrics')) {
+								if (j == 0 && document.getElementById('lyrics')) {
 												
-											$('div#lyrs').append("<tr></tr>")
-											$('tr').last().append(
-											"<td>" + res + "</td>")
 									
+						
+											$('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>")
+											
 									
 									
 									

@@ -10,12 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class SongDTO {
 
-	private int song_seq;
+	private int song_num;
 	private String song_title;
 	private String singer;
 	private String img;
 	private String link;
-	private int song_num;
 	private String preview;
 	private String lyrics;
 	

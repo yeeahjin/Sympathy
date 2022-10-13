@@ -100,12 +100,13 @@
             </div>
                 <h3 class="mb-3 text-center bold" >회원가입</h3>
             
-                <form class="validation-form" novalidate action="join.do" method="post">
+                <form class="validation-form" novalidate action="join.do" method="post" >
 
                     
                     <div class="mb-3">
                         <label for="id" >ID</label>
                         <input type="text" class="form-control" id="id" placeholder="아이디를 입력해 주세요" value="" required name="id">
+                    
                         <div class="invalid-feedback">
 
 
@@ -115,7 +116,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" >PW</label>
-                            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해 주세요"
+                            <input type="password" class="form-control" id="pww" placeholder="비밀번호를 입력해 주세요"
                                 value="" required name="pw">
                             <div class="invalid-feedback" >
 
@@ -126,7 +127,8 @@
 
                     <div class="mb-3">
                         <label for="nickname">별명</label>
-                        <input type="text" class="form-control" id="nickname" name="nick" value="" required>
+                        <input type="text" class="form-control" id="nickname" name="nick" value="" required
+                        		>
                         <div class="invalid-feedback" >
                             별명을 입력해주세요.
                         </div>
@@ -134,18 +136,18 @@
 
                     <div class="mb-3">
                         <label for="gender">성별</label>
-                        <form action="#">
+                        
                             <div class="find-btn">
                                 <div class="form-check find-btn1">
-                                    <input type="radio" class="form-check-input" id="radio1" name="남"
-                                        value="option1" checked>
+                                    <input type="radio" class="form-check-input" id="radio1" name="gender"
+                                        value="남" checked>
                                     <label class="form-check-label" for="radio1" >남성</label>
                                 </div>
 
 
                                 <div class="form-check find-btn2">
-                                    <input type="radio" class="form-check-input" id="radio2" name="여"
-                                        value="option2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="gender"
+                                        value="여">
                                     <label class="form-check-label" for="radio2" >여성</label>
                                 </div>
                             </div>
@@ -154,26 +156,21 @@
                     </div>
 
 
-
-                    <div class="mb-3">
-                        <label for="age">연령대</label>
-                      
-                            <select class="form-select" aria-label="Default select example" >
-                                <option selected >10대</option>
-                                <option value="1" >20대</option>
-                                <option value="2" >30대</option>
-                                <option value="3" >40대</option>
-                                <option value="4" >50대</option>
-                                <option value="5" >60대</option>
-                            </select>
-                        
+   	 <div class="mb-3">
+                        <label for="nickname">나이</label>
+                        <input type="text" class="form-control" id="agee" name="age" 
+                        		>
+                        <div class="invalid-feedback" >
+                            별명을 입력해주세요.
+                        </div>
                     </div>
 
+             
 
 
                     <div class="d-grid">
-                        <a type="button" href="#" id="join" class="btn  btn-block" 
-                            style="background-color: rgb(248, 223, 248);">회원가입</a>
+                        <input type="submit" href="#" id="join" class="btn  btn-block" 
+                            style="background-color: #2ab3c0;;" value="회원가입"></a>
                     </div>
 
                     <div class="line">
@@ -187,7 +184,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="d-grid">
-                            <a href="log.do" class="btn btn-block" ><p class="size">로그인 하러가기</p></a>
+                            <a href="log.do" class="btn btn-block" ><p class="size">로그인</p></a>
                         </div>
                     </div>
 
@@ -224,9 +221,10 @@
 
     </footer>
     </div>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             const forms = document.getElementsByClassName('validation-form');
 
             Array.prototype.filter.call(forms, (form) => {
@@ -257,21 +255,103 @@
             }
         });
      
-    $('#join').click(function(){
-        // 성공하면 
-        Swal.fire({
-  
-  icon: 'success',
-  title: '회원가입 성공!',
-  showConfirmButton: false,
-  timer: 1500
-});
-
-// 실패하면
-
-    });
+        $('#join').on('click', function(){
+            Swal.fire({
+          	  
+          	  icon: 'success',
+          	  title: '회원가입 성공!',
+          	  showConfirmButton: false,
+          	  timer: 1500
+          	});
+        })
         
-
+        
+        
+ /* // 중복된 닉네임 선택했을 때 경고 뜨게
+	// 회원가입이 완료 됐을 때 알림 현재는 빈칸만 채우면 알림이 뜸
+	
+	
+	// 중복된 아이디 
+	function checkId(){
+        var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+        $.ajax({
+            url:'./idCheck', //Controller에서 요청 받을 주소
+            type:'post', //POST 방식으로 전달
+            data:{id:id},
+            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                    $('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
+                    $('#join').on('click', function(){
+                        Swal.fire({
+                      	  
+                      	  icon: 'success',
+                      	  title: '회원가입 성공!',
+                      	  showConfirmButton: false,
+                      	  timer: 1500
+                      	});
+                    })
+                
+                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                    $('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
+                    $('#id').val();
+                    Swal.fire({
+                    	  
+                    	  icon: 'error',
+                    	  title: '회원가입 실패!',
+                    	  titleText : '이미 존재하는 아이디입니다.',
+                    	  showConfirmButton: false,
+                    	  timer: 1500
+                    	});
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });
+        };
+    
+        
+        // 중복된 닉네임
+    	function checknick(){
+            var nick = $('#nick').val(); //id값이 "id"인 입력란의 값을 저장
+            $.ajax({
+                url:'./nickCheck', //Controller에서 요청 받을 주소
+                type:'post', //POST 방식으로 전달
+                data:{nick:nick},
+                success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                    if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                        $('.nick_ok').css("display","inline-block"); 
+                        $('.nick_already').css("display", "none");
+                    } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                        $('.nick_already').css("display","inline-block");
+                        $('.nick_ok').css("display", "none");
+                        $('#nick').val();
+                    }
+                },
+                error:function(){
+                    alert("에러입니다");
+                }
+            });
+            }; 
+    
+        	function formSub(){
+        		if($("input[name=id]").val()!='' && $("input[name=pw]").val() != ''&& $("input[name=nick]").val() != ''
+        			&& $("input[name=gender]").val()  != ''){	 
+        			alert('회원가입이 완료되었습니다.') 	
+        			return true;
+        	}
+        		else{
+        			
+        			alert('빈칸을 채워주세요')
+        		
+        			
+        			
+        			return false;
+        			}
+        		}
+        		  */
     </script>
 </body>
 

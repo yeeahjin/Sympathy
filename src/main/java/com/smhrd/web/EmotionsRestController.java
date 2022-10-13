@@ -35,7 +35,38 @@ public class EmotionsRestController {
 	
 	@Autowired
 	private EmotionsMapper mapper;
+	
+	
+	
 
+	@RequestMapping("/go")
+	public String go() {
+		return "Main";
+	}	
+	
+	
+	@RequestMapping("/goodpage.do")
+	public String goodpage() {
+		return "good";
+	}	
+	
+	@RequestMapping("/badpage.do")
+	public String badpage() {
+		return "bad";
+	}	
+	
+	@RequestMapping("/outpage.do")
+	public String outpage() {
+		return "out";
+	}	
+		
+	
+	@RequestMapping("/mypage.do")
+	public String mypage() {
+		return "mypage";
+	}	
+		
+		
 	@RequestMapping("/chart.do")
 	public String inggichart() {
 		return "chart";
@@ -44,7 +75,25 @@ public class EmotionsRestController {
 	@RequestMapping("/ingichart")
 	public @ResponseBody List<ChartDTO> chartList(){
 		List<ChartDTO> list = mapper.chartList();
-		System.out.println("실패");
+		System.out.println("여기들어옴");
+		return list;
+	}
+	
+	@RequestMapping("/goodList")
+	public @ResponseBody List<GoodDTO> goodList(HttpSession session){
+		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
+		String id =user_info.getId();
+		List<GoodDTO> list = mapper.goodListt(id);
+		System.out.println("여기 컨트롤러까지는 들어옴");
+		return list;
+	}
+	
+	@RequestMapping("/badList")
+	public @ResponseBody List<BadDTO> badList(HttpSession session){
+		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
+		String id =user_info.getId();
+		List<BadDTO> list = mapper.badListt(id);
+		System.out.println("여기 컨트롤러까지는 들어옴");
 		return list;
 	}
 	
@@ -98,12 +147,14 @@ public class EmotionsRestController {
 	public String login(InfoDTO info, HttpSession session, Model model) {
 		
 		InfoDTO user_info = mapper.login(info);
+		
 		session.setAttribute("user_info", user_info);
+		
 		if (user_info != null) {
 			return "Main";
 		}else{
 			
-			
+			System.out.println("실패");
 			return "Login";
 			
 		}
@@ -120,35 +171,38 @@ public class EmotionsRestController {
 	@GetMapping("/updatepage.do")
 	public String updatepage(String id, Model model) {
 		
-
+		System.out.println("들어와짐");
 		InfoDTO result = mapper.select(id);
 
 		model.addAttribute("result", result);
 		
 		
 
-		return "Update";
+		return "change";
 	}
 
 	@RequestMapping("/update.do")
 	public String update(InfoDTO info) {
 
-		//System.out.println(info);
+		System.out.println("23ㅏ2ㅣㅏㅣ라ㅣ");
 
 		mapper.update(info);
 
 		return "Login";
 	}
 
-	@RequestMapping("/delete.do")
+	@RequestMapping(value="/delete",produces="text/plain;charset=UTF-8")
 	public String delete(HttpSession session) {
 		
 		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
-			
+		
+		System.out.println(user_info);
+		
 		mapper.delete(user_info);
+		
 		session.removeAttribute("info");
 		
-		return "Login";
+		return "Main";
 	}
 	
 	
@@ -265,7 +319,9 @@ public class EmotionsRestController {
 			@PostMapping("/idCheck")
 			@ResponseBody
 			public int idCheck(@RequestParam("id") String id) {	
+				
 				int cnt = mapper.idCheck(id);
+				System.out.println(cnt);
 				return cnt;
 				
 			}
