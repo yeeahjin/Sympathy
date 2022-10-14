@@ -12,6 +12,7 @@ where SONG_SEQ = 1
 
 select * from song where song_seq < 5
 
+select * from song where song_num=62910
 
 delete from good
 

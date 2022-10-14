@@ -28,6 +28,8 @@ public interface EmotionsMapper {
 	
 	public List<SongDTO> songList();
 	
+	public SongDTO kbsongList(int num);
+	
 	public void songinsert(GoodDTO dto);
 	
 	public void songdelete(GoodDTO dto);
@@ -51,6 +53,7 @@ public interface EmotionsMapper {
 	public List<ChartDTO> chartList();
 	
 	public List<GoodDTO> goodListt(String id);
+	
 	public List<BadDTO> badListt(String id);
 	
 	

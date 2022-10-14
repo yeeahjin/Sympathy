@@ -35,6 +35,10 @@
 	<select id="songList" resultType="com.smhrd.domain.SongDTO">
 		select * from song
 	</select>
+	
+	<select id="kbsongList" resultType="com.smhrd.domain.SongDTO" parameterType="int">
+		select * from song where song_num in (#{num})
+	</select>
 
 	<insert id="songinsert" parameterType="com.smhrd.domain.GoodDTO">
 		insert into good

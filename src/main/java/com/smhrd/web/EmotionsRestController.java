@@ -1,5 +1,6 @@
 package com.smhrd.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -35,9 +36,6 @@ public class EmotionsRestController {
 	
 	@Autowired
 	private EmotionsMapper mapper;
-	
-	
-	
 
 	@RequestMapping("/go")
 	public String go() {
@@ -96,7 +94,6 @@ public class EmotionsRestController {
 		System.out.println("여기 컨트롤러까지는 들어옴");
 		return list;
 	}
-	
 	
 	@RequestMapping("/golocation.do")
 	public String golocation() {
@@ -280,6 +277,32 @@ public class EmotionsRestController {
 		List<SongDTO> list = mapper.songList();
 		System.out.println(list.get(0));
 		return list;
+	}
+	
+	@RequestMapping("/kbsongList.do")
+	public @ResponseBody List<SongDTO> kbsongList(String result) {
+		
+		System.out.println("도착");
+		
+		System.out.println(result);
+		
+		String[] array = result.split(" ");
+		
+		List<SongDTO> res = new ArrayList<SongDTO>();
+
+		for (int i=0; i<20; i++) {			
+			int num = Integer.parseInt(array[i]);
+			
+			System.out.println(num);
+			
+			SongDTO list = mapper.kbsongList(num);
+			
+			System.out.println(list);
+			
+			res.add(list);
+		}
+		
+		return res;
 	}
 	
 	@RequestMapping(value="/lyrics",produces="text/plain;charset=UTF-8")
