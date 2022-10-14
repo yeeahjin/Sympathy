@@ -55,6 +55,36 @@
     .bold{
             font-weight: bold;
         }
+         .dropdown_2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown_con {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            font-size: smaller;
+        }
+
+        .dropdown_con a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            
+        }
+
+        .dropdown_con a:hover {
+            background-color: white;
+        }
+
+        .dropdown_2:hover .dropdown_con {
+            display: block;
+        }
   </style>
 </head>
 
@@ -78,13 +108,38 @@
       </div>
       <div class="header-buttons">
 
-          <button class="avatar">
-<img src="resources/img/baseline_menu_black_24dp.png" />
-          </button>
-      </div>
+				<div class="dropdown_2">
+				<button class="avatar dropbtn" >
+					<img src="resources/img/baseline_menu_black_24dp.png"/>
+				</button>
+				<div class="dropdown_con">
+					<!-- 로그인했을때 -->
+					<%
+						if (session.getAttribute("user_info") != null) {
+						;
+					%>
+					<a><%=user_info.getNick()%>님</a>
+					
+					<a href="mypage.do">마이페이지</a>
+					<a href="logout.do">로그아웃</a>
+					<%
+						} else {
+					%>
+					<a href="goJoin.do">회원가입</a><br> 
+					<a href="log.do">로그인</a>
+					<%
+						}
+					%>
+</div>
+				</div>
+
+
+
+				<span></span>
+			</div>
   </header>
       
-  <span><%=user_info.getPw() %></span>
+
 
 <main>
 
@@ -144,7 +199,7 @@
 <footer class="menu footer1">
 
   <div class="menu-inner">
-      <a href="#" class="menu-item active">
+      <a href="go" class="menu-item active">
           <i class="ai-home"></i>
       </a>
       <a href="golocation.do" class="menu-item">
@@ -190,7 +245,7 @@
   confirmButtonText: '네',
   cancelButtonText:'아니오'
 })
-			location.href="go"
+			location.href="logout.do"
 		  
 		  
   } 

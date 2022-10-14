@@ -59,6 +59,40 @@
           display: flex;
           align-items: center;
         }
+          .dropdown_2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown_con {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            font-size: smaller;
+        }
+
+        .dropdown_con a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            
+        }
+
+        .dropdown_con a:hover {
+            background-color: white;
+        }
+
+        .dropdown_2:hover .dropdown_con {
+            display: block;
+        }
+          .size{
+            font-size: smaller;
+        }
+        
   </style>
 </head>
 
@@ -79,12 +113,37 @@
       <div class="header-title">
         공감
       </div>
-      <div class="header-buttons">
-        
-        <button class="avatar">
-  <img src="resources/img/baseline_menu_black_24dp.png" />
-        </button>
-      </div> 
+     <div class="header-buttons">
+
+				<div class="dropdown_2">
+				<button class="avatar dropbtn" >
+					<img src="resources/img/baseline_menu_black_24dp.png"/>
+				</button>
+				<div class="dropdown_con">
+					<!-- 로그인했을때 -->
+					<%
+						if (session.getAttribute("user_info") != null) {
+						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+					%>
+					<a><%=user_info.getNick()%>님</a>
+					
+					<a href="mypage.do">마이페이지</a>
+					<a href="logout.do">로그아웃</a>
+					<%
+						} else {
+					%>
+					<a href="goJoin.do">회원가입</a><br> 
+					<a href="log.do">로그인</a>
+					<%
+						}
+					%>
+</div>
+				</div>
+
+
+
+				<span></span>
+			</div>
     </header>
     
 <main>
@@ -144,16 +203,13 @@
                     src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
         </div>
 
+<div class="d-grid">
+            <a href="goJoin.do"  class="btn  btn-block"> <p class="size"> 회원가입</p></a>
+          </div>
 
-<div class="line">
-                        <hr>
-                    </div>
                     
                     
-    <p>
-			만약 아이디가 없다면 <a href="goJoin.do">회원가입</a>
-		</p>
-        
+   
         </form>
 
         
@@ -171,7 +227,7 @@
 <footer class="menu footer1">
 
         <div class="menu-inner">
-            <a href="index.html" class="menu-item active">
+            <a href="go" class="menu-item active">
                 <i class="ai-home"></i>
             </a>
             <a href="golocation.do" class="menu-item">
@@ -235,7 +291,9 @@ $('#login_s').click(function(){
 
 
  }); */
-    
+
+
+ 
 function returnn(){
 	if($("input[name=id]").val()!='' && $("input[name=pw]").val() != '')
 	{ Swal.fire({
@@ -243,8 +301,14 @@ function returnn(){
 		  icon: 'success',
 		  title: '로그인 성공!',
 		  showConfirmButton: false,
-		  timer: 1500
-		}); 	
+		  
+		}); 
+	
+	setTimeout(function(){
+		var link = "Main.jsp";
+		location.href=link;
+	}, 5000)
+
 		return true;
 }
 	else{
@@ -290,7 +354,7 @@ function returnn(){
 		}
 	} 
 
-    
+
     
  /* function checksubmit(){
     var id = $('#id').val();//id값이 "id"인 입력란의 값을 저장

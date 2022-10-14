@@ -146,7 +146,7 @@ html, body {
     border-color: #2ab3c0;
 }
 
-        .dropdown_2 {
+             .dropdown_2 {
             position: relative;
             display: inline-block;
         }
@@ -509,7 +509,7 @@ html, body {
 		<footer class="menu footer1">
 
 			<div class="menu-inner">
-				<a href="#" class="menu-item active"> <i class="ai-home"></i>
+				<a href="go" class="menu-item active"> <i class="ai-home"></i>
 				</a> <a href="golocation.do" class="menu-item"> <img
 					src="resources/img/free-icon-location-535239.png" />
 				</a> <a href="chart.do" class="menu-item"> <img
@@ -531,7 +531,7 @@ html, body {
 
 
 
-	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
 	<script>
 		/* 	$(document).ready(

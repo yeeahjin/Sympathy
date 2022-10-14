@@ -221,16 +221,16 @@
             </div>
         </main>
 
-   <!--      <div id="wrapper3">
+    <div id="wrapper3">
             <div>
                 
             </div>
-        </div> -->
+        </div> 
 
         <footer class="menu footer1">
 
             <div class="menu-inner">
-                <a href="#" class="menu-item active">
+                <a href="go" class="menu-item active">
                     <i class="ai-home"></i>
                 </a>
                 <a href="golocation.do" class="menu-item">

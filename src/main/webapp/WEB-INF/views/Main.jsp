@@ -188,7 +188,7 @@
 		<footer class="menu footer1">
 
 			<div class="menu-inner">
-				<a href="Main.jsp" class="menu-item active" data-bs-toggle="tooltip"
+				<a href="go" class="menu-item active" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="홈"> <i class="ai-home"></i>
 				</a> <a href="golocation.do" class="menu-item" data-bs-toggle="tooltip"
 					data-bs-placement="top" title="내 주변 노래방 !"> <img
@@ -213,8 +213,8 @@
 	<!-- <script src="./script.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/bootstrap.bundle.min.js"></script>
-	<script src="resources/js/bootstrap.bundle.js"></script>
+	<!-- <script src="resources/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/js/bootstrap.bundle.js"></script> -->
 	<script src="//code.jquery.com/jquery-1.12.4.min.js"
 		crossorigin="anonymous"></script>
 	<script>
@@ -230,17 +230,18 @@
 						console.log('크기변경')
 						$('.eJEMVp').width(576);
 					}
-				});
+					$('#list').css({ display: 'none' });
+					  Swal.fire({
+			                // 설명서 넣기
+			                //   imageUrl: 'https://placeholder.pics/slvg/300x1500',
+			                imageHeight: 1500,
+			                imageAlt: 'A tall image'
+			            });
+				}
+				
+		);
 		
-		 $(document).ready(function () {
-	            $('#list').css({ display: 'none' });
-	            Swal.fire({
-	                // 설명서 넣기
-	                //   imageUrl: 'https://placeholder.pics/slvg/300x1500',
-	                imageHeight: 1500,
-	                imageAlt: 'A tall image'
-	            });
-	        })
+		
 
         function List() {
             $('#song').on('click', function () {
@@ -261,7 +262,7 @@
         		 dataType:'json',
         		 success:function(res){
         			
-        		 console.log(res[0].song_seq) 
+        		 console.log(res[0].song_num) 
         		 console.log(res[0].img)
         		 
    			 $('#tbody').html(''); 
@@ -273,8 +274,8 @@
 								<li class="list_item">
 									<ul style="padding-left: 0px;">
 										<li class="list_track_row">
-											<div class="thumb text-center" id="song_number">
-												<span>`+res[i].song_num+`</span>
+											<div class="thumb text-center" >
+												<span id="song_number">`+res[i].song_num+`</span>
 											</div>
 											
 											<div class="thumb">
@@ -300,16 +301,19 @@
                                         <div class="row gx-1">
                                             
                                                 <div class="col">
-                                                    <button class="btn"  onclick="like('`+ res[i].song_num +`')"
-                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" id="good"
-                                                        title="좋아요!"> <img
+                                                
+                                                    <button class="btn like" id = "idlike" onclick="like('`+ res[i].song_num +`')" 
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                                                        title="좋아요!"><span style="display:none;">좋아요</span><img
                                                             src="resources/img/baseline_sentiment_satisfied_alt_black_24dp.png" id="img1"></button>
+                                                            
                                                 </div>
                                                 <div class="col">
                                                     <button class="btn bad"  onclick="hate('`+ res[i].song_num +`')"
-                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" id="bad"
-                                                        title="싫어요!"><img
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                                                        title="싫어요!"><span style="display:none;">싫어요</span><img
                                                             src="resources/img/baseline_sentiment_very_dissatisfied_black_24dp.png"></button>
+                                                            
                                                 </div>
                                             <div class="col" id="lyrs">
                                                 <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics('`+res[i].song_num+`')"
@@ -318,8 +322,8 @@
                                                        
                                             </div>
                                             <div class="col popupModalVideo ratio ratio-16x9">
-                                            <a class="btn video-btn play" data-toggle="modal" onclick="video()"
-                                                data-bs-toggle="tooltip" data-video="Xqk8wgvOgW4"
+                                            <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
+                                                data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
                                                 data-bs-placement="bottom" title="미리듣기!"><img
                                                     src="resources/img/baseline_play_circle_black_24dp.png"></a>
                                         </div>
@@ -329,10 +333,12 @@
                                           
                                             
                                             <div class="col">
-                                                <button class="btn" id="link" data-bs-toggle="tooltip"
+                                                <a class="btn" id="link" data-bs-toggle="tooltip" data-toggle="modal" 
+                                                	 href="`+res[i].link+`"
                                                     data-bs-placement="bottom" title="연습하기!"> <img
-                                                        src="resources/img/baseline_mic_black_24dp.png"></button>
+                                                        src="resources/img/baseline_mic_black_24dp.png"></a>
                                             </div>
+                                           
                                         </div>
                                     </div>
                                         
@@ -347,6 +353,7 @@
         			
         		
         			 }
+        		
         		 }
         	 
         	 })
@@ -361,7 +368,20 @@
         }
 
 		
+		function video(aa){
+			
+			 $(".popupModalVideo a").click(function () {
+				 alert('실패!')
+		         $(".video_modal_popup").addClass("reveal"),
+		             $(".video_modal_popup .video-wrapper").remove(),
+		             $(".video_modal_popup").append("<div class='video-wrapper'><iframe src='https://youtube.com/embed/" + aa + "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
+		     }),
+		         $(".video_modal_popup-closer").click(function () {
+		             $(".video_modal_popup .video-wrapper").remove(),
+		                 $(".video_modal_popup").removeClass("reveal")
+		         });
 		
+	}
 		
 
 		// 좋아요 버튼누르면 좋아요 테이블에 아이디랑 노래 정보 넘기기
@@ -385,141 +405,176 @@
 		}; */
 		
 		// 좋아요
-		function like(songnumber) {
-				console.log(songnumber);
-			
-		for (var i =1; i<4; i++){
-			if ($('div#song_number').text() == songnumber){
-			
-				break;
-			}
-		} 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		  
 		 		
-			if (document.getElementById('good'))  { 
-				/* $('tbody > tr:nth-child('+i+') > td:nth-child(6) > button').text('좋아요 취소')
-				$('tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop("disabled", true );*/
+		 
+		 
+		 
+		// 좋아요2
+		 
+		 function like(songnumber) {
+				
+			 for (var i=1; i<4; i++){
+					
+			  		if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){ 
+						console.log(songnumber)
+						console.log(i)
+					 	break; 
+						/* document.getElementById('song_number').innerHTML */		
+					} 
+					
+				}
+				
+			 
+			 
+			 																	// 아이디 값이 like일 때 dislike로 변경
+				if ($('ul.scroll_list:nth-child('+i+')  button.like > span').text() == '좋아요')  {
+					
+				
+						 $('ul.scroll_list:nth-child('+i+')  button.like > span').text('dislike')
+																				// 싫어요를 비활성화 시킴
+						$('ul.scroll_list:nth-child('+i+')  button.bad').prop("disabled", true); 
+																				
+						
+																				// 좋아요 추가
+						$.ajax({
+							url : 'songinsert',
+							type : 'get', // get post
+							data : {
+								songnumber : songnumber
+							},
+							dataType : 'text',
+							success : function(res) {
+								
+								Swal.fire({
+									icon : 'success',
+									title : '저장되었습니다!',
+									text : '마이페이지에서 확인가능해용',
+									showConfirmButton : false,
+									timer : 1500
+								});
+							},
+							error : function(e) {
+								Swal.fire({
+									icon : 'error',
+									title : '저장 실패!',
+									text : '로그인이 필요합니다!',
+									showConfirmButton : false,
+									timer : 1500
+								});
+								console.log(songnumber);
+							}
+						});
+					} 
+																			  // 아이디 값이 like가 아닐 때 즉 dislike일 때 실행
+																			  // dislike를 like로 바꿔주고 삭제
+				else {
+					$('ul.scroll_list:nth-child('+i+')  button.like > span').text('좋아요')
+					$('ul.scroll_list:nth-child('+i+')  button.bad').prop("disabled", false); 						
+					$.ajax({
+							url : 'songdelete',
+							type : 'get', // get post
+							data : {
+								songnumber : songnumber
+							},
+							dataType : 'text',
+							success : function(res) {
+								alert("좋아요성공22222");
+							},
+							error : function(e) {
+								alert('실패22222');
+							}
+						});
 
-				$.ajax({
-					url : 'songinsert',
-					type : 'get', // get post
-					data : {
-						songnumber : songnumber
-					},
-					dataType : 'text',
-					success : function(res) {
-						alert("성공111111");
-						alert(res);
-					},
-					error : function(e) {
-						alert('실패111111');
-						console.log(songnumber);
 					}
-				});
-			} else {
-				$(
-						'tbody > tr:nth-child('+i+') > td:nth-child(6) > button')
-						.text('좋아요 아이콘')
-				$(
-						'tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop(
-						"disabled", false);
-				$.ajax({
-					url : 'songdelete',
-					type : 'get', // get post
-					data : {
-						songnumber : songnumber
-					},
-					dataType : 'text',
-					success : function(res) {
-						alert("성공22222");
-					},
-					error : function(e) {
-						alert('실패22222');
-					}
-				});
-
-			} 
-		}
-
-		document.getElementById('good').onclick = function() {
-			good()
-		};
-
-		document.getElementById('bad').onclick = function(){
-			bad()
-		};
-		
-		
-		
-		
-		
-		
-		
+				}
 		
 		// 싫어요
-		function hate(songnumber) {
-				console.log(songnumber);
-			
-		for (var i =1; i<4; i++){
-			if ($('div#song_number').text() == songnumber){
-			
-				break;
-			}
-		} 
-		 		
-			if (document.getElementById('bad'))  {
-				/* $('tbody > tr:nth-child('+i+') > td:nth-child(6) > button').text('좋아요 취소')
-				$('tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop("disabled", true );*/
+			 function hate(songnumber) {
+				
+			 for (var i=1; i<4; i++){
+					
+			  		if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){ 
+						console.log(songnumber)
+						console.log(i)
+					 	break; 
+						/* document.getElementById('song_number').innerHTML */		
+					} 
+					
+				}
+				
+			 
+			 
+			 																	// 아이디 값이 like일 때 dislike로 변경
+				if ($('ul.scroll_list:nth-child('+i+')  button.bad > span').text() == '싫어요')  {
+					
+					
+						 $('ul.scroll_list:nth-child('+i+')  button.bad > span').text('시러요취소')
+																				// 싫어요를 비활성화 시킴
+						$('ul.scroll_list:nth-child('+i+')  button.like').prop("disabled", true); 
+																				
+						
+																				// 좋아요 추가
+						$.ajax({
+							url : 'hateinsert',
+							type : 'get', // get post
+							data : {
+								songnumber : songnumber
+							},
+							dataType : 'text',
+							success : function(res) {
+								Swal.fire({
+									icon : 'success',
+									title : '저장되었습니다!',
+									text : '마이페이지에서 확인가능해용',
+									showConfirmButton : false,
+									timer : 1500
+								});
+							},
+							error : function(e) {
+								Swal.fire({
+									icon : 'error',
+									title : '저장 실패!',
+									text : '로그인이 필요합니다!',
+									showConfirmButton : false,
+									timer : 1500
+								});
+								console.log(songnumber);
+							}
+						});
+					} 
+																			  // 아이디 값이 like가 아닐 때 즉 dislike일 때 실행
+																			  // dislike를 like로 바꿔주고 삭제
+				else {
+					$('ul.scroll_list:nth-child('+i+')  button.bad>span').text('싫어요')
+					$('ul.scroll_list:nth-child('+i+')  button.like').prop("disabled", false); 						
+					$.ajax({
+							url : 'hatedelete',
+							type : 'get', // get post
+							data : {
+								songnumber : songnumber
+							},
+							dataType : 'text',
+							success : function(res) {
+								alert("성공22222");
+							},
+							error : function(e) {
+								alert('실패22222');
+							}
+						});
 
-				$.ajax({
-					url : 'hateinsert',
-					type : 'get', // get post
-					data : {
-						songnumber : songnumber
-					},
-					dataType : 'text',
-					success : function(res) {
-						alert("성공333333");
-						alert(res);
-					},
-					error : function(e) {
-						alert('실패333333');
-						console.log(songnumber);
 					}
-				});
-			} else {
-				$(
-						'tbody > tr:nth-child('+i+') > td:nth-child(6) > button')
-						.text('싫어요 아이콘')
-				$(
-						'tbody > tr:nth-child('+i+') > td:nth-child(7) > button').prop(
-						"disabled", false);
-				$.ajax({
-					url : 'hatedelete',
-					type : 'get', // get post
-					data : {
-						songnumber : songnumber
-					},
-					dataType : 'text',
-					success : function(res) {
-						alert("성공444444");
-					},
-					error : function(e) {
-						alert('실패444444');
-					}
-				});
+				}
 
-			} 
-		}
-
-		document.getElementById('good').onclick = function() {
-			good()
-		};
-
-		document.getElementById('bad').onclick = function(){
-			bad()
-		};
-			
-			
 			
 			
 			
@@ -563,12 +618,12 @@
 	
 
 		
-
+/* 
 		var color = document.getElementById('img1')
 		var color_1 = getComputedStyle(color).color
 		console.log(color_1)
 
-		
+		 */
 		
 		function test(){
 			console.log('성공');
@@ -577,23 +632,8 @@
          	$('#list').fadeIn();  
 		};
 		
-		function video(){
-			$('.play').on('click', function(){
-				 $(".popupModalVideo a").click(function () {
-					 alert('실패!')
-			         $(".video_modal_popup").addClass("reveal"),
-			             $(".video_modal_popup .video-wrapper").remove(),
-			             $(".video_modal_popup").append("<div class='video-wrapper'><iframe src='https://youtube.com/embed/" + $('a.play').data("video") + "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
-			     }),
-			         $(".video_modal_popup-closer").click(function () {
-			             $(".video_modal_popup .video-wrapper").remove(),
-			                 $(".video_modal_popup").removeClass("reveal")
-			         });
-			})
-		}
 	
-		
-		
+
 		
 		
 		
