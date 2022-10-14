@@ -199,7 +199,7 @@
         <hr>
 
         <div class="text-center">
-            <button class="btn" onclick="location.href='out.html'">탈퇴하기</button>
+            <button class="btn" onclick="location.href='outpage.do'">탈퇴하기</button>
         </div>
          <div class="text-center">
             <a href="Rerutn.do" class="btn">돌아가기</a>

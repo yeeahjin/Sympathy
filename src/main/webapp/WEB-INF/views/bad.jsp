@@ -18,38 +18,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font.css">
-
 <style>
-.input-form {
-	max-width: 680px;
-	margin-top: 80px;
-	padding: 32px;
-	background: #fff;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-}
-
-.find-btn {
-	vertical-align: auto;
-}
-
-.find-btn1 {
-	display: inline-block;
-}
-
-.find-btn2 {
-	display: inline-block;
-	padding-left: 45%;
-}
-
-.bold {
-	font-weight: bold;
-}
-
  .dropdown_2 {
             position: relative;
             display: inline-block;
@@ -79,6 +48,16 @@
 
         .dropdown_2:hover .dropdown_con {
             display: block;
+        }
+        
+        .ft{
+         position: absolute;
+
+    left: 0;
+
+    bottom: 5px;
+
+    width: 100%;
         }
 </style>
 </head>
@@ -146,17 +125,19 @@
 		<div class="container">
 			<h3 class=" text-center">🎤 싫어요 🎶</h3>
 		</div>
-
-<div class="input-form col-lg-12 mx-auto " id="list">
+<div class="input-form-background row">
+<div class="input-form col-lg-12 mx-auto shadow-none" id="list" style="
+    padding-top: 20px;">
 		<div class="list_wrap_track_rank" id="tbody">
 		</div>
+</div>
 </div>
 		<div id="wrapper8">
 			<div></div>
 
 		</div>
 
-		<footer class="menu footer1">
+		<footer class="menu ft">
 
 			<div class="menu-inner">
 				<a href="go" class="menu-item active"> <i

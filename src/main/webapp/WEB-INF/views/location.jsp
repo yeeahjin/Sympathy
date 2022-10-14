@@ -253,6 +253,7 @@ html, body {
 						placeholder="현재 내 위치" aria-label="사용자위치"
 						aria-describedby="button-addon2" name="location"
 						onkeydown="moveFocus('button-addon2')">
+						
 					<button onfocus="enterkey()" class="btn btn-outline-primary rounded"
 						id="button-addon2">검색</button>
 					<!-- <button onfocus="enterkey()" id="submit" id="button-addon2" class="btn btn-outline-primary" >전송</button> -->
@@ -400,60 +401,6 @@ html, body {
 					}
 				});
 				
-				
-				
-
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			}
 
     </script>
@@ -506,7 +453,7 @@ html, body {
 
 
 
-		<footer class="menu footer1">
+		<footer class="menu ft">
 
 			<div class="menu-inner">
 				<a href="go" class="menu-item active"> <i class="ai-home"></i>

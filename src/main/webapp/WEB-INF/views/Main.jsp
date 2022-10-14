@@ -24,46 +24,53 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font.css">
-<script type="text/javascript"
-	src="resources/js/jquery-3.3.1.min.js"></script>
-
+<link rel="stylesheet" href="resources/package/dist/sweetalert2.min.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/package/dist/sweetalert2.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
 
 <style type="text/css">
+.dropdown_2 {
+	position: relative;
+	display: inline-block;
+}
 
-        .dropdown_2 {
-            position: relative;
-            display: inline-block;
-        }
+.dropdown_con {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 80px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	font-size: smaller;
+}
 
-        .dropdown_con {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 80px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            font-size: smaller;
-        }
+.dropdown_con a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
 
-        .dropdown_con a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            
-        }
+.dropdown_con a:hover {
+	background-color: white;
+}
 
-        .dropdown_con a:hover {
-            background-color: white;
-        }
+.dropdown_2:hover .dropdown_con {
+	display: block;
+}
 
-        .dropdown_2:hover .dropdown_con {
-            display: block;
-        }
+.ft {
+	position: absolute;
+	left: 0;
+	bottom: 5px;
+	width: 100%;
+}
+
+
 </style>
 
 </head>
@@ -83,28 +90,25 @@
 			<div class="header-buttons">
 
 				<div class="dropdown_2">
-				<button class="avatar dropbtn" >
-					<img src="resources/img/baseline_menu_black_24dp.png"/>
-				</button>
-				<div class="dropdown_con">
-					<!-- 로그인했을때 -->
-					<%
+					<button class="avatar dropbtn">
+						<img src="resources/img/baseline_menu_black_24dp.png" />
+					</button>
+					<div class="dropdown_con">
+						<!-- 로그인했을때 -->
+						<%
 						if (session.getAttribute("user_info") != null) {
 						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
 					%>
-					<a><%=user_info.getNick()%>님</a>
-					
-					<a href="mypage.do">마이페이지</a>
-					<a href="logout.do">로그아웃</a>
-					<%
+						<a><%=user_info.getNick()%>님</a> <a href="mypage.do">마이페이지</a> <a
+							href="logout.do">로그아웃</a>
+						<%
 						} else {
 					%>
-					<a href="goJoin.do">회원가입</a><br> 
-					<a href="log.do">로그인</a>
-					<%
+						<a href="goJoin.do">회원가입</a><br> <a href="log.do">로그인</a>
+						<%
 						}
 					%>
-</div>
+					</div>
 				</div>
 
 
@@ -134,20 +138,20 @@
 		</div>
 		<section class="search">
 			<div class="search-inner">
-				<button class="search-button">
+
+				<input type="text" id="text" class="search-input" placeholder="오늘어때"
+					name="input" onkeydown="moveFocus('search2')" />
+
+				<button onfocus="enterkey()" class="search-button" id="search2">
 					<img src="resources/img/baseline_search_black_24dp.png">
 				</button>
-				<input type="text" class="search-input" placeholder="오늘어때"
-					name="input" onkeyup="if(window.event.keyCode==13){test()}" />
 			</div>
 		</section>
 
+
 		<div class="d-grid">
 			<div class="row">
-				<div class="text-center">
-					 <button type="button" class="btn btn-default w-25 p-3" id="song"
-						onclick="List()"></button> 
-				</div>
+				<div class="text-center"></div>
 			</div>
 		</div>
 
@@ -158,19 +162,15 @@
 					<div class="row">
 
 
-						<div class="input-form col-lg-12 mx-auto" id="list">
+						<div class="input-form col-lg-12 mx-auto" id="list"
+							style="padding-top: 20px;">
 
-							<div class="list_wrap_track_rank" id="tbody">
-							
-
-							</div>
-
-
+							<div class="list_wrap_track_rank" id="tbody"></div>
 
 							<div class="d-grid">
 								<div class="row">
 									<div class="text-center">
-										<button id="hide" type="button" style="padding:0;"
+										<button id="hide" type="button" style="padding: 0;"
 											class="btn btn-default w-25 p-3" onclick="hide()">접기</button>
 									</div>
 								</div>
@@ -185,7 +185,7 @@
 			</div>
 		</div>
 
-		<footer class="menu footer1">
+		<footer class="menu ft">
 
 			<div class="menu-inner">
 				<a href="go" class="menu-item active" data-bs-toggle="tooltip"
@@ -211,7 +211,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
 	<!-- <script src="./script.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+- 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<!-- <script src="resources/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/js/bootstrap.bundle.js"></script> -->
@@ -243,17 +243,28 @@
 		
 		
 
-        function List() {
+      /*   function List() {
             $('#song').on('click', function () {
-            
-                songList();  
-            	
             	$('#list').fadeIn();  
             });
 
-        };
+        }; */
         
-	
+        
+        
+        
+		function moveFocus(next) {
+			if(event.keyCode == 13){
+				let btn_submit = document.getElementById(next).focus();
+			}
+		}
+		
+		function enterkey() {
+			songList();
+			 $('#list').fadeIn();
+			document.getElementById('search2').blur();
+		}
+		
          function songList(){
         	 
         	 $.ajax({
@@ -358,13 +369,10 @@
         	 
         	 })
          };
-      
-	
-	    
         function hide() {
-            $('#hide').on('click', function () {
+            
                 $('#list').fadeOut();
-            });
+           
         }
 
 		
@@ -384,41 +392,6 @@
 	}
 		
 
-		// 좋아요 버튼누르면 좋아요 테이블에 아이디랑 노래 정보 넘기기
-
-	/* 	function good() {
-			
-			$('.good').on('click', function() {
-				Swal.fire({
-					icon : 'success',
-					title : '저장되었습니다!',
-					text : '마이페이지에서 확인가능해용',
-					showConfirmButton : false,
-					timer : 1500
-				});
-				$('#img1').css({
-					'filter' : 'opacity(0.5) drop-shadow(0 0 0 yellow)'
-				})
-
-			});
-
-		}; */
-		
-		// 좋아요
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		  
-		 		
-		 
-		 
-		 
 		// 좋아요2
 		 
 		 function like(songnumber) {
@@ -429,22 +402,14 @@
 						console.log(songnumber)
 						console.log(i)
 					 	break; 
-						/* document.getElementById('song_number').innerHTML */		
+						
 					} 
 					
 				}
-				
-			 
-			 
-			 																	// 아이디 값이 like일 때 dislike로 변경
 				if ($('ul.scroll_list:nth-child('+i+')  button.like > span').text() == '좋아요')  {
-					
-				
 						 $('ul.scroll_list:nth-child('+i+')  button.like > span').text('dislike')
 																				// 싫어요를 비활성화 시킴
 						$('ul.scroll_list:nth-child('+i+')  button.bad').prop("disabled", true); 
-																				
-						
 																				// 좋아요 추가
 						$.ajax({
 							url : 'songinsert',
@@ -491,7 +456,13 @@
 								alert("좋아요성공22222");
 							},
 							error : function(e) {
-								alert('실패22222');
+								Swal.fire({
+									icon : 'error',
+									title : '저장 실패!',
+									text : '로그인이 필요합니다!',
+									showConfirmButton : false,
+									timer : 1500
+								});
 							}
 						});
 
@@ -568,35 +539,20 @@
 								alert("성공22222");
 							},
 							error : function(e) {
-								alert('실패22222');
+								Swal.fire({
+									icon : 'error',
+									title : '저장 실패!',
+									text : '로그인이 필요합니다!',
+									showConfirmButton : false,
+									timer : 1500
+								});
 							}
 						});
 
 					}
 				}
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		
 			/* (document.getElementById('bad')){
 			$('.bad').click(function() {
 				Swal.fire({
@@ -615,15 +571,6 @@
 		
 		
 		
-	
-
-		
-/* 
-		var color = document.getElementById('img1')
-		var color_1 = getComputedStyle(color).color
-		console.log(color_1)
-
-		 */
 		
 		function test(){
 			console.log('성공');
@@ -639,15 +586,18 @@
 		
 		
 		
-		
-		// 가사
+		  //가사
 		 function lyrics(songnumber){
 				
-				for (var i =1; i<4; i++){
-					if ($('div#song_number').text() == songnumber){
-						break;
+			 for (var i=1; i<4; i++){
+					
+			  		if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){
+						console.log(songnumber)
+						console.log(i)
+					 	break;
 					}
-				} 
+					
+				}
 			
 				console.log("번호")
 				console.log(i)
@@ -658,33 +608,37 @@
 								num : songnumber
 							},
 							dataType : 'text',
-							success : function(res){ 
+							success : function(res){
 								console.log(res) // 가사
-								console.log(songnumber+ "songnumber") // 
+								console.log(songnumber+ "songnumber") //
 								alert('이쿠');
-								
+								var text = /@/g;
+								console.log(text);
+								var lyicss=res.replace(text,'\n')
+								console.log(lyicss)
 								var j = 0;
+								confirm(res);
+								Swal.fire(lyicss)				
 								
-								
-								if (j == 0 && document.getElementById('lyrics')) {
-												
+									if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
 									
 						
-											$('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>")
-											
+											/*  $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
+											  $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
+										 	$('#tbody').append("<div></>")
+										$('tr').last().append(
+										"<td>" + res + "</td>")  */
 									
 									
 									
 									
-											$('tbody > tr:nth-child('+ i + ') > td:nth-child(5) > button').text('가사 닫기')
+											$('ul.scroll_list:nth-child('+i+')  button.ly > span').text('가사닫기')
 											j = 1;
-
 								}
-
 								else if (j == 0
-									&& $('tbody > tr:nth-child(' + i + ') > td:nth-child(5)').text() == '가사 닫기') {
-									$('tbody > tr:nth-child('+ i+ ') > td:nth-child(5) > button').text('가사 보기')
-									$('tbody > tr:nth-child(' + (i+1) + ')').remove(); // 여기서 활성화된 가사를 제거해야함 
+									&& $('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사닫기') {
+									$('ul.scroll_list:nth-child('+i+')  button.ly > span').text('가사')
+									$('tbody > tr:nth-child(' + (i+1) + ')').remove(); // 여기서 활성화된 가사를 제거해야함
 								}
 								
 								
@@ -717,7 +671,7 @@
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		});
 	</script>
-	
+
 
 </body>
 

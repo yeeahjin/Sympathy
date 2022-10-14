@@ -80,6 +80,16 @@
         .dropdown_2:hover .dropdown_con {
             display: block;
         }
+        
+        .ft{
+         position: absolute;
+
+    left: 0;
+
+    bottom: 5px;
+
+    width: 100%;
+        }
 </style>
 </head>
 
@@ -147,16 +157,20 @@
 			<h3 class=" text-center">🎤 좋아요 🎶</h3>
 		</div>
 
-<div class="input-form col-lg-12 mx-auto " id="list">
+<div class="input-form-background row">
+<div class="input-form col-lg-12 mx-auto shadow-none" id="list" style="
+    padding-top: 20px;">
 		<div class="list_wrap_track_rank" id="tbody">
+		
 		</div>
+</div>
 </div>
 		<div id="wrapper8">
 			<div></div>
 
 		</div>
 
-		<footer class="menu footer1">
+		<footer class="menu ft">
 
 			<div class="menu-inner">
 				<a href="go" class="menu-item active"> <i

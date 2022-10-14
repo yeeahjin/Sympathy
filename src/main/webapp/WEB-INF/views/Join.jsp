@@ -259,7 +259,7 @@
 
     </div>
 
-    <footer class="menu footer1">
+    <footer class="menu ft">
 
         <div class="menu-inner">
             <a href="go" class="menu-item active">

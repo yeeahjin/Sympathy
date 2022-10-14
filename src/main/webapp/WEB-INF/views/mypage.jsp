@@ -16,48 +16,14 @@
     <link rel="stylesheet" href="resources/css/font.css">
 
     <style>
-        .input-form {
-            max-width: 680px;
-
-            margin-top: 80px;
-            padding: 32px;
-
-            background: #fff;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            border-radius: 10px;
-            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-        }
-
-        .find-btn {
-            vertical-align: auto;
-        }
-
-        .find-btn1 {
-            display: inline-block;
-        }
-
-        .find-btn2 {
-            display: inline-block;
-            padding-left: 45%;
-        }
-
-
-        .bold {
-            font-weight: bold;
-        }
-
+       
         .but {
             display: block;
             width: 100%;
             height: 100%;
         }
 
-        .over {
-            position: relative;
-        }
+      
 
         .img {
             position: relative;
@@ -74,7 +40,7 @@
             display: inline-flex;
         }
         
-         .dropdown_2 {
+        .dropdown_2 {
             position: relative;
             display: inline-block;
         }
@@ -181,7 +147,7 @@
                     <div class="container con">
                         <div class="row row-cols-2 g-2 gy-5 fold">
                             <div class="col text-center">
-                                <a class="btn btn-lg bold" href="updatepage.do?id="+${result.id }>회원정보수정</a>
+                                <a class="btn btn-lg fw-bold"" href="updatepage.do?id="+${result.id }>회원정보수정</a>
                                 <div>
                                     <span>PW와 닉네임을 변경</span>
                                 </div>
@@ -191,21 +157,21 @@
 
                             <div class="col text-center">
 								
-                                <a  class="btn btn-lg bold" onclick="location.href='outpage.do'">회원탈퇴</a>
+                                <a  class="btn btn-lg fw-bold"" onclick="location.href='outpage.do'">회원탈퇴</a>
                                 <div>
                                     <span>탈퇴</span>
                                 </div>
                             </div>
 
                             <div class="col text-center">
-								<a  class="btn btn-lg bold" onclick="location.href='goodpage.do'">좋아요</a>
+								<a  class="btn btn-lg fw-bold"" onclick="location.href='goodpage.do'">좋아요</a>
                                 <div>
                                     <span>찜한노래</span>
                                 </div>
                             </div>
                             <div class="col text-center">
 							
-                               <button  class="btn btn-lg bold" onclick="location.href='badpage.do'">싫어요</button>
+                               <button  class="btn btn-lg fw-bold"" onclick="location.href='badpage.do'">싫어요</button>
                                 <div>
                                     <span>추천안받고싶은노래</span>
                                 </div>
@@ -227,7 +193,7 @@
             </div>
         </div> 
 
-        <footer class="menu footer1">
+        <footer class="menu ft">
 
             <div class="menu-inner">
                 <a href="go" class="menu-item active">

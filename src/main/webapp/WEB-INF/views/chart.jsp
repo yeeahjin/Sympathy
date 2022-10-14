@@ -16,43 +16,13 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
     <style>
-        .box {
-            position: sticky;
-            max-width: 50%;
-            max-height: 50%;
-        }
-
-
-        .over {
-            position: relative;
-        }
-
-        .over2 {
-            position: absolute;
-
-        }
-
-        .mar {
-            margin-left: 70px;
-            margin-right: 70px;
-        }
-
-
 
         form {
             width: 500px;
         }
 
-        table {
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-
-        th,
-        td {
-            padding: 3px 10px;
-        }
-
+      
+       
         .off-screen {
             display: none;
         }
@@ -84,10 +54,7 @@
         }
 
 
-        ul,
-        li {
-            list-style-type: none;
-        }
+      
 
         .list_wrap_track_rank {
     position: relative;
@@ -95,24 +62,7 @@
 
 }
 
-/* #scrolly{
-            width: auto;
-             height: 500px; 
-            overflow: scroll;
-            
-            overflow-y: hidden;
-            margin: 0 auto;
-            white-space: normal;
-}
- */
-/*  .paging-div {
-  padding: 15px 0 5px 10px;
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-} */
-    .dropdown_2 {
+  .dropdown_2 {
             position: relative;
             display: inline-block;
         }
@@ -142,6 +92,7 @@
         .dropdown_2:hover .dropdown_con {
             display: block;
         }
+   
     </style>
 </head>
 
@@ -263,7 +214,7 @@
 
         </div>
 
-        <footer class="menu footer1">
+        <footer class="menu ft">
 
             <div class="menu-inner">
                 <a href="go" class="menu-item active">

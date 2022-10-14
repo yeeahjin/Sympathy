@@ -49,7 +49,12 @@
         display: inline-block;
         padding-left: 45%;
     }
+      #kakao{
+            
+    display: inline-block;
+    margin-right: 10px;
 
+        }
   
     .bold{
             font-weight: bold;
@@ -197,14 +202,12 @@
 
 
           <div class="d-grid">
-            <button type="button" href="#" class="btn btn-primary btn-block border border-white"
-                style="background-color: rgb(255, 232, 18); color: black;">
-                <img
-                    src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
+                    <button type="button" href="#" class="btn btn-primary btn-block border border-white" style="background-color: rgb(255, 232, 18); color: black;">
+                            <img src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
         </div>
 
 <div class="d-grid">
-            <a href="goJoin.do"  class="btn  btn-block"> <p class="size"> 회원가입</p></a>
+            <a href="goJoin.do"  class="btn btn-block"> <p class="size"> 회원가입</p></a>
           </div>
 
                     
@@ -224,7 +227,7 @@
   <div></div>
 </div>
 
-<footer class="menu footer1">
+<footer class="menu ft">
 
         <div class="menu-inner">
             <a href="go" class="menu-item active">
