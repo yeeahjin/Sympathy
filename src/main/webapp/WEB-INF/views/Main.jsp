@@ -266,7 +266,7 @@
 		}
 		
          function kb_songList(userinput){
-        	  alert(userinput); 
+        	  /* alert(userinput);  */
         	 
         	 $.ajax({
         		 url : 'http://ccba-35-199-13-189.ngrok.io',
@@ -279,7 +279,7 @@
 				},
         		 dataType:'text',
         		 success:function(res){
-       			 alert(res)
+       			 /* alert(res) */
 
 					$.ajax({
 						url : 'kbsongList.do',
