@@ -172,6 +172,21 @@
       
 
             </div>
+            
+            <button onclick="page(1)">1</button>
+            <button onclick="page(8)">2</button>
+            <button onclick="page(16)">3</button>
+            <button onclick="page(24)">4</button>
+            <button onclick="page(32)">5</button>
+            <button onclick="page(40)">6</button>
+            <button onclick="page(48)">7</button>
+            <button onclick="page(56)">8</button>
+            <button onclick="page(64)">9</button>
+            <button onclick="page(72)">10</button>
+            <button onclick="page(80)">11</button>
+            <button onclick="page(88)">12</button>
+            <button onclick="page(96)">13</button>
+            
         </div>
         
         <div id="pagination"></div>
@@ -279,8 +294,6 @@
         
         
         function chartList(){
-       	 	
-                	
        	 $.ajax({
        		 url : 'ingichart',
        		 type:'get',
@@ -291,7 +304,7 @@
        		 	
   			 $('#tbody').html(''); 
 
-       			 for(var i = 0; i < res.length; i++){
+       			 for(var i = 0; i < 7; i++){
        				
        				 tr = `
        						<ul class="scroll_list"  style="padding-left: 0px;" >
@@ -361,11 +374,101 @@
        			
        		
        			 }
+       			 
+       			 
        		 }
        	 
        	 })
         };
-     
+        
+        function page(num){
+        	console.log(num)
+       	 $.ajax({
+       		 url : 'ingichart',
+       		 type:'get',
+       		 dataType:'json',
+       		 success:function(res){
+       			
+       		 	
+  			 $('#tbody').html(''); 
+
+       			 for(var i = num; i < num+7; i++){
+       				
+       				 tr = `
+       						<ul class="scroll_list"  style="padding-left: 0px;" >
+								<li class="list_item">
+									<ul style="padding-left: 0px;" >
+										<li class="list_track_row " >
+											<div class="thumb text-center">
+												<span>`+res[i].song_se+`</span>
+											</div>
+											
+											<div class="thumb">
+                                           <div class="inner">
+                                                <img src='`+res[i].img+`'>
+                                           </div>
+                                       </div>
+											
+									        <div class="song_area col-6">
+                                           <div class="song">
+                                               <a href="#" class="title fs-5" style="margin-top: 0;">
+                                                   `+res[i].song_title+`
+                                               
+                                               </a>
+                                           </div>
+                                           <div class="artist">
+                                               <span >
+                                                  `+res[i].singer+`
+                                               </span>
+                                           </div>
+                                       </div>
+                                       <div class="song_area col-9">
+                                       <div class="row gx-1">
+                                           
+                                              
+                                               
+                                           <div class="col">
+                                               <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
+                                                   data-bs-placement="bottom" title="가사보기!"> <img
+                                                       src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                                      
+                                           </div>
+                                           <div class="col popupModalVideo ratio ratio-16x9">
+                                               <a class="btn video-btn" id="play"  data-toggle="modal" data-bs-toggle="tooltip"  data-video="Xqk8wgvOgW4"
+                                                   data-bs-placement="bottom" title="미리듣기!" ><img
+                                                       src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                           </div>
+                                           <div class="video_modal_popup" >
+                                               <div class="video_modal_popup-closer"></div>
+                                             </div>
+                                         
+                                           
+                                           <div class="col">
+                                               <button class="btn" id="link" data-bs-toggle="tooltip"
+                                                   data-bs-placement="bottom" title="연습하기!"> <img
+                                                       src="resources/img/baseline_mic_black_24dp.png"></button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                       
+										</li>
+									</ul>
+								</li>
+							</ul>
+							
+       				 `
+       			 
+       			 $('#tbody').append(tr);
+       			
+       		
+       			 }
+       			 
+       			 
+       		 }
+       	 
+       	 })
+        };
+        
         
       /*   window.pagObj = $('#pagination').twbsPagination({
             totalPages: [[${dataListPage.totalPages}]], // 전체 페이지
