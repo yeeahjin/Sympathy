@@ -50,49 +50,42 @@
 	font-weight: bold;
 }
 
- .dropdown_2 {
-            position: relative;
-            display: inline-block;
-        }
+.dropdown_2 {
+	position: relative;
+	display: inline-block;
+}
 
-        .dropdown_con {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 80px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            font-size: smaller;
-        }
+.dropdown_con {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 80px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	font-size: smaller;
+}
 
-        .dropdown_con a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            
-        }
+.dropdown_con a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
 
-        .dropdown_con a:hover {
-            background-color: white;
-        }
+.dropdown_con a:hover {
+	background-color: white;
+}
 
-        .dropdown_2:hover .dropdown_con {
-            display: block;
-        }
-        
-        .ft{
-         position: absolute;
+.dropdown_2:hover .dropdown_con {
+	display: block;
+}
 
-    left: 0;
-
-    bottom: 5px;
-
-    width: 100%;
-        }
-        
-        
-
+.ft {
+	position: absolute;
+	left: 0;
+	bottom: 5px;
+	width: 100%;
+}
 </style>
 </head>
 
@@ -111,28 +104,25 @@
 			<div class="header-buttons">
 
 				<div class="dropdown_2">
-				<button class="avatar dropbtn" >
-					<img src="resources/img/baseline_menu_black_24dp.png"/>
-				</button>
-				<div class="dropdown_con">
-					<!-- 로그인했을때 -->
-					<%
-						if (session.getAttribute("user_info") != null) {
-						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
-					%>
-					<a><%=user_info.getNick()%>님</a>
-					
-					<a href="mypage.do">마이페이지</a>
-					<a href="logout.do">로그아웃</a>
-					<%
-						} else {
-					%>
-					<a href="goJoin.do">회원가입</a><br> 
-					<a href="log.do">로그인</a>
-					<%
-						}
-					%>
-</div>
+					<button class="avatar dropbtn">
+						<img src="resources/img/baseline_menu_black_24dp.png" />
+					</button>
+					<div class="dropdown_con">
+						<!-- 로그인했을때 -->
+						<%
+							if (session.getAttribute("user_info") != null) {
+							InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+						%>
+						<a><%=user_info.getNick()%>님</a> <a href="mypage.do">마이페이지</a> <a
+							href="logout.do">로그아웃</a>
+						<%
+							} else {
+						%>
+						<a href="goJoin.do">회원가입</a><br> <a href="log.do">로그인</a>
+						<%
+							}
+						%>
+					</div>
 				</div>
 
 
@@ -160,14 +150,12 @@
 			<h3 class=" text-center">🎤 좋아요 🎶</h3>
 		</div>
 
-<div class="input-form-background row">
-<div class="input-form col-lg-12 mx-auto shadow-none" id="list" style="
-    padding-top: 20px;">
-		<div class="list_wrap_track_rank" id="tbody">
-		
+		<div class="input-form-background row">
+			<div class="input-form col-lg-12 mx-auto shadow-none" id="list"
+				style="padding-top: 20px;">
+				<div class="list_wrap_track_rank" id="tbody"></div>
+			</div>
 		</div>
-</div>
-</div>
 		<div id="wrapper8">
 			<div></div>
 
@@ -176,8 +164,7 @@
 		<footer class="menu ft">
 
 			<div class="menu-inner">
-				<a href="go" class="menu-item active"> <i
-					class="ai-home"></i>
+				<a href="go" class="menu-item active"> <i class="ai-home"></i>
 				</a> <a href="golocation.do" class="menu-item"> <img
 					src="resources/img/free-icon-location-535239.png" />
 				</a> <a href="chart.do" class="menu-item"> <img
@@ -204,7 +191,7 @@
       });
     }, false);
   </script>
-  <script
+	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
@@ -292,7 +279,7 @@
                                           </div>
                                           <div class="col">
                                           <button class="btn"data-bs-toggle="tooltip" 
-                                              data-bs-placement="bottom" title="취소"> <img
+                                              data-bs-placement="bottom" title="취소" onclick="likecancel('`+res[i].song_num+`')"> <img
                                                   src="resources/img/baseline_cancel_black_24dp.png"></button>
                                       </div>
                                       </div>
@@ -315,6 +302,31 @@
             
         }
     });
+    }
+    
+    function likecancel(songnumber){
+        $.ajax({
+            url : 'songdelete',
+            type : 'get', // get post
+            data : {
+                songnumber : songnumber
+            },
+            dataType : 'text',
+            success : function(res) {
+            	 // 새로고침 해주는 코드
+					window.location.reload();
+
+            },
+            error : function(e) {
+                Swal.fire({
+                    icon : 'error',
+                    title : '좋아요 취소 실패!',
+                    text : '오류입니다. 관리자에게 요청하세요.',
+                    showConfirmButton : false,
+                    timer : 1500
+                });
+            }
+    	})
     }
 
 

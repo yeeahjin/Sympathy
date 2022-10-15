@@ -257,7 +257,7 @@
                                         </div>
                                         <div class="col">
                                         <button class="btn"data-bs-toggle="tooltip" 
-                                            data-bs-placement="bottom" title="취소"> <img
+                                            data-bs-placement="bottom" title="취소" onclick="badcancel('`+res[i].song_num+`')"> <img
                                                 src="resources/img/baseline_cancel_black_24dp.png"></button>
                                     </div>
                                         
@@ -283,7 +283,30 @@
   });
   }
 
+    function badcancel(songnumber){
+        $.ajax({
+            url : 'hatedelete',
+            type : 'get', // get post
+            data : {
+                songnumber : songnumber
+            },
+            dataType : 'text',
+            success : function(res) {
+            	 // 새로고침 해주는 코드
+					window.location.reload();
 
+            },
+            error : function(e) {
+                Swal.fire({
+                    icon : 'error',
+                    title : '좋아요 취소 실패!',
+                    text : '오류입니다. 관리자에게 요청하세요.',
+                    showConfirmButton : false,
+                    timer : 1500
+                });
+            }
+    	})
+    }
 			
   </script>
 </body>
