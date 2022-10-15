@@ -201,9 +201,11 @@
           </div>
 
 
-          <div class="d-grid">
-                    <button type="button" href="#" class="btn btn-primary btn-block border border-white" style="background-color: rgb(255, 232, 18); color: black;">
-                            <img src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
+     <div class="d-grid">
+            <button type="button" href="#" class="btn btn-primary btn-block border border-white"
+                style="background-color: rgb(255, 232, 18); color: black;" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=8e7f238c509ff6d0f8008b629697d005&redirect_uri=http://localhost:8087/web/Login&response_type=code'">
+                <img
+                    src="resources/img/ico_kakao.png" id="kakao">카카오로 로그인</button>
         </div>
 
 <div class="d-grid">

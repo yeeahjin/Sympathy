@@ -16,3 +16,4 @@ select * from song where song_num=62910
 
 delete from good
 
+delete from info where nick ='.'

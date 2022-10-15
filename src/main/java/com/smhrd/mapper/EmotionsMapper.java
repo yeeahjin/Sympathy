@@ -56,6 +56,8 @@ public interface EmotionsMapper {
 	
 	public List<BadDTO> badListt(String id);
 	
+	public List<InfoDTO> kakaoinfo();
+	
 	
 
 }

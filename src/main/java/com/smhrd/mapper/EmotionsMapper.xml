@@ -109,6 +109,9 @@
 	    where id = #{id}
 	</select>
 	
+	<select id="kakaoinfo" resultType="com.smhrd.domain.InfoDTO">
+	    select * from info
+	</select>
 	
 	
 	
