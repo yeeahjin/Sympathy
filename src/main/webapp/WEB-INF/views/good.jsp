@@ -18,7 +18,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font.css">
-
+<script src="resources/js/all.js"></script>
 <style>
 .input-form {
 	max-width: 680px;
@@ -218,219 +218,129 @@
         $('.eJEMVp').width(576);
       }
       
-      song();
+      goodsong();
      
       
     });
 
-/*     $('#change').click(function () {
-      //  만약에 성공하면
-      Swal.fire({
+    function goodsong(){
+        $.ajax({
+        url : 'songList',
+        type : 'get',
+        data : {
+            
+        },
+        dataType : 'json',
+        success : function(res) {
+        console.log("들어옴");
 
-        icon: 'success',
-        title: '회원정보수정 성공!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+        let songlist = res
+        console.log(songlist);
+        console.log(songlist[0].song_num);
+        
+          $.ajax({
+               url : 'goodList',
+               type:'get',
+              dataType:'json',
+               success:function(res){
+                 
+                  console.log(res[0].song_num);
+                  console.log(res);
+                  console.log(songlist);
+                  console.log(res.length);
+                  if(songlist.song_num == res.song_num ){
+                      $('#tbody').html('');
+                      for(var i=0; i<res.length;i++){
+                      console.log(songlist[i].song_title);
+                      console.log(songlist[i].singer);
+                      console.log(songlist[i].img);
+                      console.log(songlist[i].link);
+                      console.log(songlist[i].preview);
+                      
+                      
+                      tr2=`
+                          
+                          <ul class="scroll_list" style="padding-left: 0px;">
+                              <li class="list_item">
+                                  <ul style="padding-left: 0px;">
+                                  <li class="list_track_row">
+                                    <div class="thumb text-center" id="song_number">
+                                  <span>`+songlist[i].song_num+`</span>
+                                  </div>
+                                      <div class="thumb">
+                                          <div class="inner">
+                                        <img src='`+songlist[i].img+`'>
+                                          </div>
+                                      </div>
 
-      // 만약에 실패하면
+                                      
+                                      <div class="song_area col-6">
+                                          <div class="song">
+                                              <a href="#" class="title fs-5" style="margin-top: 0;">
+                                            `+songlist[i].song_title+`
+                                              
+                                              </a>
+                                          </div>
+                                          <div class="artist">
+                                        <span >
+                                      `+songlist[i].singer+`
+                                   </span>
+                                          </div>
+                                      </div>
+                                      
+                           
 
+                                  <div class="song_area col-6">
+                                      <div class="row ">
+                                          <div class="col">
+                                              <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics('`+songlist[i].song_num+`')"
+                                                  data-bs-placement="bottom" title="가사보기!"> <img
+                                                      src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                                     
+                                          </div>
+                                          <div class="col popupModalVideo ratio ratio-16x9">
+                                          <a class="btn video-btn play" data-toggle="modal" onclick="video('`+songlist[i].preview+`')"
+                                              data-bs-toggle="tooltip" data-video="`+songlist[i].preview+`"
+                                              data-bs-placement="bottom" title="미리듣기!"><img
+                                                  src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                      </div>
+                                          <div class="video_modal_popup">
+                                              <div class="video_modal_popup-closer"></div>
+                                            </div>
+                                          <div class="col">
+                                              <a class="btn" id="link" data-bs-toggle="tooltip" href="`+songlist[i].link+`"
+                                                  data-bs-placement="bottom" title="연습하기!"> <img
+                                                      src="resources/img/baseline_mic_black_24dp.png"></a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  </li>
+                                
+                              
+                              </ul>
 
-    }); */
-	// 좋아요 리스트
-	
-	 function song(){
-			$.ajax({
-			url : 'songList',
-			type : 'get',
-			data : {
-				
-			},
-			dataType : 'json',
-			success : function(res) {
-			console.log("들어옴");
+                              
+                              </li>
+                          </ul>
+                          `
+                                      $('#tbody').append(tr2); 
+                      }
+                      
+                  }
+               
+        },
+        error : function(e) {
+            
+        }
+    });
+    }
+
+        }) 
+
+    };
+
+			
 		
-			let songlist = res
-			console.log(songlist);
-			console.log(songlist[0].song_num);
-			
-	     	 $.ajax({
-	      		 url : 'goodList',
-	      		 type:'get',
-	      		dataType:'json',
-	      		 success:function(res){
-	      			alert("성공송");
-	      			console.log(res[0].song_num);
-	      			console.log(res);
-	      			console.log(songlist);
-	      			console.log(res.length);
-	      			if(songlist.song_num == res.song_num ){
-	      				$('#tbody').html('');
-	      				for(var i=0; i<res.length;i++){
-	      				console.log(songlist[i].song_title);
-	      				console.log(songlist[i].singer);
-	      				console.log(songlist[i].img);
-	      				console.log(songlist[i].link);
-	      				console.log(songlist[i].preview);
-	      				
-	      				
-	      				tr2=`
-	          				
-	        				  <ul class="scroll_list" style="padding-left: 0px;">
-	        				      <li class="list_item">
-	        				          <ul style="padding-left: 0px;">
-	        				          <li class="list_track_row">
-	        				            <div class="thumb text-center" id="song_number">
-	        				          <span>`+songlist[i].song_num+`</span>
-	        				          </div>
-	        				              <div class="thumb">
-	        				                  <div class="inner">
-	        				                <img src='`+songlist[i].img+`'>
-	        				                  </div>
-	        				              </div>
-
-	        				              
-	        				              <div class="song_area col-6">
-	        				                  <div class="song">
-	        				                      <a href="#" class="title fs-5" style="margin-top: 0;">
-	        				                    `+songlist[i].song_title+`
-	        				                      
-	        				                      </a>
-	        				                  </div>
-	        				                  <div class="artist">
-	        				                <span >
-	                                      `+songlist[i].singer+`
-	                                   </span>
-	        				                  </div>
-	        				              </div>
-	        				              
-	        				   
-
-	        				          <div class="song_area col-6">
-	        				              <div class="row ">
-	        				                  <div class="col">
-	        				                      <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-	        				                          data-bs-placement="bottom" title="가사보기!"> <img
-	        				                              src="resources/img/baseline_lyrics_black_24dp.png"></button>
-	        				                             
-	        				                  </div>
-	        				                  <div class="col">
-	        				                      <button class="btn" id="play" data-bs-toggle="tooltip"
-	        				                          data-bs-placement="bottom" title="미리듣기!"><img
-	        				                              src="resources/img/baseline_play_circle_black_24dp.png"></button>
-	        				                  </div>
-	        				                  <div class="col">
-	        				                      <button class="btn" id="link" data-bs-toggle="tooltip"
-	        				                          data-bs-placement="bottom" title="연습하기!"> <img
-	        				                              src="resources/img/baseline_mic_black_24dp.png"></button>
-	        				                  </div>
-	        				              </div>
-	        				          </div>
-	        				          </li>
-	        				        
-	        				      
-	        				      </ul>
-
-	        				      
-	        				      </li>
-	        				  </ul>
-	        				  `
-	                                      $('#tbody').append(tr2); 
-	      				}
-	      				
-	      			}
-	      		 
-			},
-			error : function(e) {
-				
-			}
-		});
-	}
-	
-			}) 
-    
-};
-			
-			/* function goodList(){
-   	 	
-    	
- 
-      			
- 			  $('#tbody').html('');
-      		
-      			for(var i = 1; i<5; i++){
-      				tr2=`
-      				
-      				  <ul class="scroll_list" style="padding-left: 0px;">
-      				      <li class="list_item">
-      				          <ul style="padding-left: 0px;">
-      				          <li class="list_track_row">
-      				            <div class="thumb text-center" id="song_number">
-      				          <span>`+res[i].song_num+`</span>
-      				          </div>
-      				              <div class="thumb">
-      				                  <div class="inner">
-      				                <img src='`+res[i].img+`'>
-      				                  </div>
-      				              </div>
-
-      				              
-      				              <div class="song_area col-6">
-      				                  <div class="song">
-      				                      <a href="#" class="title fs-5" style="margin-top: 0;">
-      				                    `+res[i].song_title+`
-      				                      
-      				                      </a>
-      				                  </div>
-      				                  <div class="artist">
-      				                <span >
-                                    `+res[i].singer+`
-                                 </span>
-      				                  </div>
-      				              </div>
-      				              
-      				   
-
-      				          <div class="song_area col-6">
-      				              <div class="row ">
-      				                  <div class="col">
-      				                      <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-      				                          data-bs-placement="bottom" title="가사보기!"> <img
-      				                              src="resources/img/baseline_lyrics_black_24dp.png"></button>
-      				                             
-      				                  </div>
-      				                  <div class="col">
-      				                      <button class="btn" id="play" data-bs-toggle="tooltip"
-      				                          data-bs-placement="bottom" title="미리듣기!"><img
-      				                              src="resources/img/baseline_play_circle_black_24dp.png"></button>
-      				                  </div>
-      				                  <div class="col">
-      				                      <button class="btn" id="link" data-bs-toggle="tooltip"
-      				                          data-bs-placement="bottom" title="연습하기!"> <img
-      				                              src="resources/img/baseline_mic_black_24dp.png"></button>
-      				                  </div>
-      				              </div>
-      				          </div>
-      				          </li>
-      				        
-      				      
-      				      </ul>
-
-      				      
-      				      </li>
-      				  </ul>
-      				`
-      				$('#tbody').append(tr2); 
-      			}
-      		 
-      		 },
- 			 error:function(e){
-      				alert("실패 good");
-      				}
-      		 }
-    }*/
-      
-	
   </script>
 </body>
 

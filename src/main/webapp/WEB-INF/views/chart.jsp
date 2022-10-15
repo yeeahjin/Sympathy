@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="resources/css/font.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+	<script src="resources/js/all.js"></script>
     <style>
 
         form {
@@ -202,19 +203,19 @@
                 <div class="col">
                     <div class="p-3">
                      <div class="ft2 text-center" id="btnss">
-            <button  class="btn btn-link" onclick="page(1)">1</button>
-            <button class="btn btn-link" onclick="page(8)">2</button>
-            <button class="btn btn-link" onclick="page(16)">3</button>
-            <button class="btn btn-link" onclick="page(24)">4</button>
-            <button class="btn btn-link" onclick="page(32)">5</button>
-            <button class="btn btn-link" onclick="page(40)">6</button>
-            <button class="btn btn-link" onclick="page(48)">7</button>
-            <button class="btn btn-link" onclick="page(56)">8</button>
-            <button class="btn btn-link" onclick="page(64)">9</button>
-            <button class="btn btn-link" onclick="page(72)">10</button>
-            <button class="btn btn-link" onclick="page(80)">11</button>
-            <button class="btn btn-link" onclick="page(88)">12</button>
-            <button class="btn btn-link" onclick="page(96); ch();">13</button>
+            <button  class="btn btn-light" onclick="page(1)">1</button>
+            <button class="btn btn-light" onclick="page(8)">2</button>
+            <button class="btn btn-light" onclick="page(16)">3</button>
+            <button class="btn btn-light" onclick="page(24)">4</button>
+            <button class="btn btn-light" onclick="page(32)">5</button>
+            <button class="btn btn-light" onclick="page(40)">6</button>
+            <button class="btn btn-light" onclick="page(48)">7</button>
+            <button class="btn btn-light" onclick="page(56)">8</button>
+            <button class="btn btn-light" onclick="page(64)">9</button>
+            <button class="btn btn-light" onclick="page(72)">10</button>
+            <button class="btn btn-light" onclick="page(80)">11</button>
+            <button class="btn btn-light" onclick="page(88)">12</button>
+            <button class="btn btn-light" onclick="page(96); ch();">13</button>
             </div>
                     </div>
                 </div>
@@ -258,7 +259,7 @@
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src='https://unpkg.com/akar-icons-fonts'></script>
     <script src="resources/js/jquery-3.3.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -300,6 +301,13 @@
         });
         
         
+        function ch(){
+         	console.log('이얏');
+         	var btns = document.getElementById('tbody');
+         	btns.style.height='586px !important';
+         };
+       
+        
         
         function chartList(){
        	 $.ajax({
@@ -315,66 +323,69 @@
        			 for(var i = 0; i < 7; i++){
        				
        				 tr = `
-       						<ul class="scroll_list"  style="padding-left: 0px;" >
-								<li class="list_item">
-									<ul style="padding-left: 0px;" >
-										<li class="list_track_row " >
-											<div class="thumb text-center">
-												<span>`+res[i].song_se+`</span>
-											</div>
-											
-											<div class="thumb">
-                                           <div class="inner">
-                                                <img src='`+res[i].img+`'>
-                                           </div>
-                                       </div>
-											
-									        <div class="song_area col-6">
-                                           <div class="song">
-                                               <a href="#" class="title fs-5" style="margin-top: 0;">
-                                                   `+res[i].song_title+`
-                                               
-                                               </a>
-                                           </div>
-                                           <div class="artist">
-                                               <span >
-                                                  `+res[i].singer+`
-                                               </span>
-                                           </div>
-                                       </div>
-                                       <div class="song_area col-9">
-                                       <div class="row gx-1">
-                                           
-                                              
-                                               
-                                           <div class="col">
-                                               <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                                   data-bs-placement="bottom" title="가사보기!"> <img
-                                                       src="resources/img/baseline_lyrics_black_24dp.png"></button>
-                                                      
-                                           </div>
-                                           <div class="col popupModalVideo ratio ratio-16x9">
-                                               <a class="btn video-btn" id="play"  data-toggle="modal" data-bs-toggle="tooltip"  data-video="Xqk8wgvOgW4"
-                                                   data-bs-placement="bottom" title="미리듣기!" ><img
-                                                       src="resources/img/baseline_play_circle_black_24dp.png"></a>
-                                           </div>
-                                           <div class="video_modal_popup" >
-                                               <div class="video_modal_popup-closer"></div>
-                                             </div>
+       					<ul class="scroll_list" style="padding-left: 0px;">
+                         <li class="list_item">
+                             <ul style="padding-left: 0px;">
+                                 <li class="list_track_row">
+                                     <div class="thumb text-center" >
+                                         <span id="song_number">`+res[i].song_se+`</span>
+                                     </div>
+                                     
+                                     <div class="thumb">
+                                     <div class="inner">
+                                          <img src='`+res[i].img+`'>
+                                     </div>
+                                 </div>
+                                     
+                                     <div class="song_area col-6">
+                                     <div class="song">
+                                         <a href="#" class="title fs-5" style="margin-top: 0;">
+                                             `+res[i].song_title+`
                                          
-                                           
-                                           <div class="col">
-                                               <button class="btn" id="link" data-bs-toggle="tooltip"
-                                                   data-bs-placement="bottom" title="연습하기!"> <img
-                                                       src="resources/img/baseline_mic_black_24dp.png"></button>
-                                           </div>
-                                       </div>
-                                   </div>
+                                         </a>
+                                     </div>
+                                     <div class="artist">
+                                         <span >
+                                            `+res[i].singer+`
+                                         </span>
+                                     </div>
+                                 </div>
+                                 <div class="song_area col-9">
+                                 <div class="row gx-1">
+                                     
                                        
-										</li>
-									</ul>
-								</li>
-							</ul>
+                                     <div class="col" id="lyrs">
+                                         <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics2('`+res[i].song_se+`')"
+                                             data-bs-placement="bottom" title="가사보기!"> <img
+                                                 src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                                
+                                     </div>
+                                     <div class="col popupModalVideo ratio ratio-16x9">
+                                     <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
+                                         data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
+                                         data-bs-placement="bottom" title="미리듣기!"><img
+                                             src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                 </div>
+                                     <div class="video_modal_popup">
+                                         <div class="video_modal_popup-closer"></div>
+                                       </div>
+                                   
+                                     
+                                     <div class="col">
+                                         <a class="btn" id="link" data-bs-toggle="tooltip" data-toggle="modal" 
+                                              href="`+res[i].link+`"
+                                             data-bs-placement="bottom" title="연습하기!"> <img
+                                                 src="resources/img/baseline_mic_black_24dp.png"></a>
+                                     </div>
+                                    
+                                 </div>
+                             </div>
+                                 
+                                 </li>
+                             </ul>
+                         </li>
+                     </ul>
+                     
 							
        				 `
        			 
@@ -403,66 +414,67 @@
        			 for(var i = num; i < num+7; i++){
        				
        				 tr = `
-       						<ul class="scroll_list"  style="padding-left: 0px;" >
-								<li class="list_item">
-									<ul style="padding-left: 0px;" >
-										<li class="list_track_row " >
-											<div class="thumb text-center">
-												<span>`+res[i].song_se+`</span>
-											</div>
-											
-											<div class="thumb">
-                                           <div class="inner">
-                                                <img src='`+res[i].img+`'>
-                                           </div>
-                                       </div>
-											
-									        <div class="song_area col-6">
-                                           <div class="song">
-                                               <a href="#" class="title fs-5" style="margin-top: 0;">
-                                                   `+res[i].song_title+`
-                                               
-                                               </a>
-                                           </div>
-                                           <div class="artist">
-                                               <span >
-                                                  `+res[i].singer+`
-                                               </span>
-                                           </div>
-                                       </div>
-                                       <div class="song_area col-9">
-                                       <div class="row gx-1">
-                                           
-                                              
-                                               
-                                           <div class="col">
-                                               <button  class="btn" id="lyrics" data-bs-toggle="tooltip"
-                                                   data-bs-placement="bottom" title="가사보기!"> <img
-                                                       src="resources/img/baseline_lyrics_black_24dp.png"></button>
-                                                      
-                                           </div>
-                                           <div class="col popupModalVideo ratio ratio-16x9">
-                                               <a class="btn video-btn" id="play"  data-toggle="modal" data-bs-toggle="tooltip"  data-video="Xqk8wgvOgW4"
-                                                   data-bs-placement="bottom" title="미리듣기!" ><img
-                                                       src="resources/img/baseline_play_circle_black_24dp.png"></a>
-                                           </div>
-                                           <div class="video_modal_popup" >
-                                               <div class="video_modal_popup-closer"></div>
-                                             </div>
+       					<ul class="scroll_list" style="padding-left: 0px;">
+                         <li class="list_item">
+                             <ul style="padding-left: 0px;">
+                                 <li class="list_track_row">
+                                     <div class="thumb text-center" >
+                                         <span id="song_number">`+res[i].song_se+`</span>
+                                     </div>
+                                     
+                                     <div class="thumb">
+                                     <div class="inner">
+                                          <img src='`+res[i].img+`'>
+                                     </div>
+                                 </div>
+                                     
+                                     <div class="song_area col-6">
+                                     <div class="song">
+                                         <a href="#" class="title fs-5" style="margin-top: 0;">
+                                             `+res[i].song_title+`
                                          
-                                           
-                                           <div class="col">
-                                               <button class="btn" id="link" data-bs-toggle="tooltip"
-                                                   data-bs-placement="bottom" title="연습하기!"> <img
-                                                       src="resources/img/baseline_mic_black_24dp.png"></button>
-                                           </div>
-                                       </div>
-                                   </div>
+                                         </a>
+                                     </div>
+                                     <div class="artist">
+                                         <span >
+                                            `+res[i].singer+`
+                                         </span>
+                                     </div>
+                                 </div>
+                                 <div class="song_area col-9">
+                                 <div class="row gx-1">
+                                     
                                        
-										</li>
-									</ul>
-								</li>
-							</ul>
+                                     <div class="col" id="lyrs">
+                                         <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics2('`+res[i].song_se+`')" data-bs-placement="bottom" title="가사보기!"> 
+                                         <img src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                     </div>
+                                     <div class="col popupModalVideo ratio ratio-16x9">
+                                     <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
+                                         data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
+                                         data-bs-placement="bottom" title="미리듣기!"><img
+                                             src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                 </div>
+                                     <div class="video_modal_popup">
+                                         <div class="video_modal_popup-closer"></div>
+                                       </div>
+                                   
+                                     
+                                     <div class="col">
+                                         <a class="btn" id="link" data-bs-toggle="tooltip" data-toggle="modal" 
+                                              href="`+res[i].link+`"
+                                             data-bs-placement="bottom" title="연습하기!"> <img
+                                                 src="resources/img/baseline_mic_black_24dp.png"></a>
+                                     </div>
+                                    
+                                 </div>
+                             </div>
+                                 
+                                 </li>
+                             </ul>
+                         </li>
+                     </ul>
+                     
 							
        				 `
                                                   $('#tbody').append(tr);
@@ -477,18 +489,87 @@
 
        	 })
         };
-        
-        function ch(){
-         	console.log('이얏');
-         	var btns = document.getElementById('tbody');
-         	btns.style.height='586px !important';
-         	
-         };
-       
-
+     
+  	  //가사
+		 function lyrics2(songnumber){
+				
+           for (var i=1; i<4; i++){
+                  
+                    if ($('ul.scroll_list:nth-child('+i+') span#song_se').text() == songnumber){
+                      console.log(songnumber)
+                      console.log(i)
+                       break;
+                  }
+                  
+              }
+          
+              console.log("번호")
+              console.log(i)
+              $.ajax({
+                          url : 'lyrics2',
+                          type : 'get',
+                          data : {
+                              num : songnumber
+                          },
+                          dataType : 'text',
+                          success : function(res){
+                              console.log(res) // 가사
+                              console.log(songnumber+ "songnumber") //
+                              
+                              var text = /@/g;
+                              console.log(text);
+                              var lyicss=res.replace(text,'\n')
+                              console.log(lyicss)
+                              var j = 0;
+                              
+                              Swal.fire(lyicss)				
+                              
+                                  if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
+                                  
+                      
+                                          /*  $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
+                                            $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
+                                           $('#tbody').append("<div></>")
+                                      $('tr').last().append(
+                                      "<td>" + res + "</td>")  */
+                                  
+                                  
+                                  
+                                  
+                                          $('ul.scroll_list:nth-child('+i+')  button.ly > span').text('가사닫기')
+                                          j = 1;
+                              }
+                              else if (j == 0
+                                  && $('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사닫기') {
+                                  $('ul.scroll_list:nth-child('+i+')  button.ly > span').text('가사')
+                                  $('tbody > tr:nth-child(' + (i+1) + ')').remove(); // 여기서 활성화된 가사를 제거해야함
+                              }
+                              
+                              
+                              
+                              
+                              
+                          },
+                              error : function(e){
+                                  alert('error');
+                                  }
+                              
+                          
+                              });      
+          } 
 	
+		 function video(aa){
 
+			    $(".video_modal_popup").addClass("reveal"),
+			        $(".video_modal_popup .video-wrapper").remove(),
+			        $(".video_modal_popup").append("<div class='video-wrapper'><iframe src='https://youtube.com/embed/" + aa + "?rel=0&playsinline=1&autoplay=1' allow='autoplay; encrypted-media' allowfullscreen></iframe></div>")
 
+			     $(".video_modal_popup-closer").click(function () {
+			        $(".video_modal_popup .video-wrapper").remove(),
+			            $(".video_modal_popup").removeClass("reveal")
+			     }) 
+
+			}
 
     </script>
   

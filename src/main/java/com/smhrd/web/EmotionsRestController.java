@@ -316,7 +316,13 @@ public class EmotionsRestController {
 	 // 가사
 	
 	
-	
+	@RequestMapping(value="/lyrics2",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String lyrics2(int num) {
+		System.out.println(num);
+		String text = mapper.lyrics2(num);
+		System.out.println(text);
+		return text;
+	}
 	
 	
 	

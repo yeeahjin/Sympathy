@@ -36,6 +36,8 @@ public interface EmotionsMapper {
 
 	public String lyrics(int num);
 	
+	public String lyrics2(int num);
+	
 	public void hateinsert(BadDTO dto);
 	
 	public void hatedelete(BadDTO dto);
