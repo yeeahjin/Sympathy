@@ -134,12 +134,12 @@ function kb_songList(userinput){
                $('#tbody').append(tr);
                } 
                    
-							td = `
-							<div class="text-center">
-					            <button  class="btn btn-link" onclick="mainPage(0)">1</button>
-					            <button class="btn btn-link" onclick="mainPage(4)">2</button>
-					            <button class="btn btn-link" onclick="mainPage(8)">3</button></div>`
-	        			 $('#tbody').append(td);
+               td = `
+               <div class="ft2 text-center">
+               <button   onclick="mainPage(0)">1</button>
+               <button  onclick="mainPage(4)">2</button>
+               <button  onclick="mainPage(8)">3</button></div>`
+	        			 $('#pageNum').after(td);
                   
                   
                   
@@ -156,14 +156,7 @@ function kb_songList(userinput){
    });
 };
 
-// list 닫기
-         
-         
-function hide() {
-            
-    $('#list').fadeOut();
 
-}
 
 // 미리듣기 버튼 클릭시
 function video(aa){

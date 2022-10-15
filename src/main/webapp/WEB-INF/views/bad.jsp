@@ -233,8 +233,8 @@
                                     
                          
 
-                                <div class="song_area col-6">
-                                    <div class="row ">
+                                <div class="song_area col-9">
+                                    <div class="row gx-1">
                                         <div class="col">
                                             <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics('`+res[i].song_num+`')"
                                                 data-bs-placement="bottom" title="가사보기!"> <img
@@ -255,6 +255,12 @@
                                                 data-bs-placement="bottom" title="연습하기!"> <img
                                                     src="resources/img/baseline_mic_black_24dp.png"></a>
                                         </div>
+                                        <div class="col">
+                                        <button class="btn"data-bs-toggle="tooltip" 
+                                            data-bs-placement="bottom" title="취소"> <img
+                                                src="resources/img/baseline_cancel_black_24dp.png"></button>
+                                    </div>
+                                        
                                     </div>
                                 </div>
                                 </li>

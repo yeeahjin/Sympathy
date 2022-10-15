@@ -353,7 +353,16 @@
                                  <div class="song_area col-9">
                                  <div class="row gx-1">
                                      
-                                       
+                                 <div class="col">
+                                 
+                                 <button class="btn like" id = "idlike" 
+                                     data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                                     title="좋아요!"><span style="display:none;">좋아요</span><img
+                                         src="resources/img/baseline_sentiment_satisfied_alt_black_24dp.png" id="img1"></button>
+                                         
+                             </div>      
+                                 
+                                 
                                      <div class="col" id="lyrs">
                                          <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics2('`+res[i].song_se+`')"
                                              data-bs-placement="bottom" title="가사보기!"> <img

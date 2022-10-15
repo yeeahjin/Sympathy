@@ -156,8 +156,8 @@
 		</div>
 
 
-		<div id='wrapper'>
-			<div>
+		
+			<div id="pageNum">
 				<div class="container">
 					<div class="row">
 
@@ -167,23 +167,19 @@
 
 							<div class="list_wrap_track_rank" id="tbody"></div>
 
-							<div class="d-grid">
-								<div class="row">
-									<div class="text-center">
-										<button id="hide" type="button" style="padding: 0;"
-											class="btn btn-default w-25 p-3" onclick="hide()">접기</button>
-									</div>
-								</div>
-							</div>
+					
 
 
 						</div>
+
 
 					</div>
 				</div>
 
 			</div>
-		</div>
+		
+		
+		
 
 		<footer class="menu ft">
 
@@ -360,12 +356,13 @@
 	        			 
 	        			 $('#tbody').append(tr);
 	        			 } 
+							
 							td = `
-								<div class="text-center">
-					            <button  class="btn btn-link text-center" onclick="mainPage(0)">1</button>
-					            <button class="btn btn-link text-center" onclick="mainPage(4)">2</button>
-					            <button class="btn btn-link text-center" onclick="mainPage(8)">3</button></div>`
-	        			 $('#tbody').append(td);
+								<div class="ft2 text-center">
+					            <button  class="btn btn-light" onclick="mainPage(0)">1</button>
+					            <button class="btn btn-light" onclick="mainPage(4)">2</button>
+					            <button class="btn btn-light" onclick="mainPage(8)">3</button></div>`
+	        			 $('#pageNum').after(td);
 							
 							
 							
