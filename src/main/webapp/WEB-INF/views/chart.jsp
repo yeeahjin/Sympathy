@@ -93,6 +93,7 @@
             display: block;
         }
    
+  
     </style>
 </head>
 
@@ -162,40 +163,31 @@
             <div class="container">
                 <div class="row gy-5">
                     <div class="col-6">
-                        <div class="p-3"></div>
+                        <div class="p-3">
+                        
+                        </div>
                     </div>
                 </div>
     
             </div>
-            <div class="input-form col-lg-12 mx-auto">
+            <div class="input-form col-lg-12 mx-auto" id="ch">
             <div class="list_wrap_track_rank"  id="tbody">
       
 
             </div>
             
-            <button onclick="page(1)">1</button>
-            <button onclick="page(8)">2</button>
-            <button onclick="page(16)">3</button>
-            <button onclick="page(24)">4</button>
-            <button onclick="page(32)">5</button>
-            <button onclick="page(40)">6</button>
-            <button onclick="page(48)">7</button>
-            <button onclick="page(56)">8</button>
-            <button onclick="page(64)">9</button>
-            <button onclick="page(72)">10</button>
-            <button onclick="page(80)">11</button>
-            <button onclick="page(88)">12</button>
-            <button onclick="page(96)">13</button>
-            
+           
         </div>
         
-        <div id="pagination"></div>
+       
 
 
             <div class="container">
                 <div class="row gy-5">
                     <div class="col-6">
-                        <div class="p-3"></div>
+                        <div class="p-3">
+                        
+                        </div>
                     </div>
                 </div>
 
@@ -207,8 +199,24 @@
 
         <div class="container">
             <div class="row gy-5">
-                <div class="col-6">
-                    <div class="p-3"></div>
+                <div class="col">
+                    <div class="p-3">
+                     <div class="ft2 text-center" id="btnss">
+            <button  class="btn btn-link" onclick="page(1)">1</button>
+            <button class="btn btn-link" onclick="page(8)">2</button>
+            <button class="btn btn-link" onclick="page(16)">3</button>
+            <button class="btn btn-link" onclick="page(24)">4</button>
+            <button class="btn btn-link" onclick="page(32)">5</button>
+            <button class="btn btn-link" onclick="page(40)">6</button>
+            <button class="btn btn-link" onclick="page(48)">7</button>
+            <button class="btn btn-link" onclick="page(56)">8</button>
+            <button class="btn btn-link" onclick="page(64)">9</button>
+            <button class="btn btn-link" onclick="page(72)">10</button>
+            <button class="btn btn-link" onclick="page(80)">11</button>
+            <button class="btn btn-link" onclick="page(88)">12</button>
+            <button class="btn btn-link" onclick="page(96); ch();">13</button>
+            </div>
+                    </div>
                 </div>
             </div>
 
@@ -222,12 +230,12 @@
 
 
 
-        <div id="wrapper9">
+   <!--      <div id="wrapper9">
             <div>
 
             </div>
 
-        </div>
+        </div> -->
 
         <footer class="menu ft">
 
@@ -250,7 +258,7 @@
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
- 	<script src="resources/js/jquery.twbsPagination2.js"></script> -
+
     <script src='https://unpkg.com/akar-icons-fonts'></script>
     <script src="resources/js/jquery-3.3.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -457,33 +465,29 @@
 							</ul>
 							
        				 `
-       			 
-       			 $('#tbody').append(tr);
+                                                  $('#tbody').append(tr);
        			
-       		
        			 }
        			 
-       			 
+       			
+        		
+        		
        		 }
        	 
+
        	 })
         };
         
-        
-      /*   window.pagObj = $('#pagination').twbsPagination({
-            totalPages: [[${dataListPage.totalPages}]], // 전체 페이지
-            startPage: parseInt([[${dataListPage.number}]] + 1), // 시작(현재) 페이지
-            visiblePages: 10, // 최대로 보여줄 페이지
-            prev: "‹", // Previous Button Label
-            next: "›", // Next Button Label
-            first: '«', // First Button Label
-            last: '»', // Last Button Label
-            onPageClick: function (event, page) { // Page Click event
-                console.info("current page : " + page);
-            }
-        }).on('page', function (event, page) {
-            searchDataList(page);
-        }); */
+        function ch(){
+         	console.log('이얏');
+         	var btns = document.getElementById('tbody');
+         	btns.style.height='586px !important';
+         	
+         };
+       
+
+	
+
 
 
     </script>
