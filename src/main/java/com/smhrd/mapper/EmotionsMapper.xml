@@ -104,21 +104,17 @@
 	    select * from chart
 	</select>
 
-	<select id="goodListt" parameterType="com.smhrd.domain.GoodDTO" resultType="com.smhrd.domain.GoodDTO">
-	    select * from good
-	    where id = #{id}
+	<select id="goodList" resultType="int">
+	    select song_num from good where id = #{id}
 	</select>
 	
-	<select id="badListt" parameterType="com.smhrd.domain.BadDTO" resultType="com.smhrd.domain.BadDTO">
-	    select * from bad
-	    where id = #{id}
+	<select id="badList" resultType="int">
+	    select song_num from bad where id = #{id}
 	</select>
-	
+		
 	<select id="kakaoinfo" resultType="com.smhrd.domain.InfoDTO">
 	    select * from info
 	</select>
-	
-	
 	
 	<!-- 차프 페이징 -->
 	<select id="getListPaging" resultType="com.smhrd.domain.ChartDTO">

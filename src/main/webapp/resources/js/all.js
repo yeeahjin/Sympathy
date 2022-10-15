@@ -133,7 +133,13 @@ function kb_songList(userinput){
                
                $('#tbody').append(tr);
                } 
-                  
+                   
+							td = `
+							<div class="text-center">
+					            <button  class="btn btn-link" onclick="mainPage(0)">1</button>
+					            <button class="btn btn-link" onclick="mainPage(4)">2</button>
+					            <button class="btn btn-link" onclick="mainPage(8)">3</button></div>`
+	        			 $('#tbody').append(td);
                   
                   
                   

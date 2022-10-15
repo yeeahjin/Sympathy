@@ -54,12 +54,11 @@ public interface EmotionsMapper {
 	
 	public List<ChartDTO> chartList();
 	
-	public List<GoodDTO> goodListt(String id);
-	
-	public List<BadDTO> badListt(String id);
-	
 	public List<InfoDTO> kakaoinfo();
+
 	
+	public List<Integer> badList(String id);
 	
+	public List<Integer> goodList(String id);	
 
 }

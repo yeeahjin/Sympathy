@@ -77,23 +77,59 @@ public class EmotionsRestController {
 		return list;
 	}
 	
+	// 좋아요 테이블 정보 가져오기 ajax
 	@RequestMapping("/goodList")
-	public @ResponseBody List<GoodDTO> goodList(HttpSession session){
+	public @ResponseBody List<SongDTO> goodList(HttpSession session){
+		
+		// 로그인한 아이디 가져오기
 		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
 		String id =user_info.getId();
-		List<GoodDTO> list = mapper.goodListt(id);
-		System.out.println("여기 컨트롤러까지는 들어옴");
-		return list;
+		
+		// 아이디 해당되는 좋아요 곡번호 가져오기
+		List<Integer> likelist = mapper.goodList(id);
+		
+		// 곡번호에 해당되는 노래 가져오기
+		List<SongDTO> res = new ArrayList<SongDTO>();
+		
+		for (int i=0; i<likelist.size(); i++) {
+			
+			SongDTO list = mapper.kbsongList(likelist.get(i));
+			
+			System.out.println(list);
+			
+			res.add(list);
+		}
+		
+		return res;
 	}
 	
+	// 좋아요 테이블 정보 가져오기 ajax
 	@RequestMapping("/badList")
-	public @ResponseBody List<BadDTO> badList(HttpSession session){
+	public @ResponseBody List<SongDTO> badList(HttpSession session){
+		
+		// 로그인한 아이디 가져오기
 		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
 		String id =user_info.getId();
-		List<BadDTO> list = mapper.badListt(id);
-		System.out.println("여기 컨트롤러까지는 들어옴");
-		return list;
+		
+		// 아이디 해당되는 좋아요 곡번호 가져오기
+		List<Integer> badlist = mapper.badList(id);
+		
+		// 곡번호에 해당되는 노래 가져오기
+		List<SongDTO> res = new ArrayList<SongDTO>();
+		
+		for (int i=0; i<badlist.size(); i++) {
+			
+			SongDTO list = mapper.kbsongList(badlist.get(i));
+			
+			System.out.println(list);
+			
+			res.add(list);
+		}
+		
+		return res;
 	}
+	
+
 	
 	@RequestMapping("/golocation.do")
 	public String golocation() {
@@ -272,35 +308,76 @@ public class EmotionsRestController {
 			mapper.hateinsert(dto);
 
 		}
-	@RequestMapping("/songList")
-	public @ResponseBody List<SongDTO> songList(){
-		List<SongDTO> list = mapper.songList();
-		System.out.println(list.get(0));
-		return list;
-	}
+		
+		/*
+		 * @RequestMapping("/songList") public @ResponseBody List<SongDTO> songList(){
+		 * List<SongDTO> list = mapper.songList(); System.out.println(list.get(0));
+		 * return list; }
+		 */
 	
 	@RequestMapping("/kbsongList.do")
-	public @ResponseBody List<SongDTO> kbsongList(String result) {
-		
-		System.out.println("도착");
+	public @ResponseBody List<SongDTO> kbsongList(String result, HttpSession session) {
 		
 		System.out.println(result);
 		
+		// 문자 나누기
 		String[] array = result.split(" ");
+		System.out.println("읭");
 		
 		List<SongDTO> res = new ArrayList<SongDTO>();
+		System.out.println("읭2");
+		
+		if (session.getAttribute("user_info") != null) {
+			// 싫어요에 해당되는 노래 제거
+			InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+			System.out.println("읭3");
+			
+			String id = user_info.getId();
+			System.out.println("읭4");
+			
+			List<Integer> badlist = mapper.badList(id);
+			
+			System.out.println("배드리스트 받아옴"+badlist);
+			
+			for (int i=0; i<20; i++) {
+				
+				int yesno = 0;
+				
+				// 모델링 돌린 결과 : 문자를 숫자로
+				int num = Integer.parseInt(array[i]);
+				System.out.println("여기가 문제1");
+				for (int j=0; j<badlist.size(); j++) {
+					if (num == badlist.get(j)) {
+						yesno = 1;
+						break;
+					}
+				}
+				
+				System.out.println(yesno);
+				
+				if (yesno <1) {
+					SongDTO list = mapper.kbsongList(num);
+					
+					System.out.println(list);
+					
+					res.add(list);
+				}
+			}
+		}else {
+			
+			for (int i=0; i<20; i++) {
+				
+				// 모델링 돌린 결과 : 문자를 숫자로
+				int num = Integer.parseInt(array[i]);
+				
+					SongDTO list = mapper.kbsongList(num);
+					
+					System.out.println(list);
+					
+					res.add(list);
+				}
+			}
 
-		for (int i=0; i<20; i++) {			
-			int num = Integer.parseInt(array[i]);
-			
-			System.out.println(num);
-			
-			SongDTO list = mapper.kbsongList(num);
-			
-			System.out.println(list);
-			
-			res.add(list);
-		}
 		
 		return res;
 	}
