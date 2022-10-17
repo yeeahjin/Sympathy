@@ -303,9 +303,9 @@
             var body_width = getComputedStyle(body).width;
 
             body_width = parseInt(body_width.substring(0, body_width.length-2))
-            console.log(body_width);
+            
             if(body_width > 570){
-                console.log('크기변경')
+               
                 $('.eJEMVp').width(576);
             }
         });
@@ -321,92 +321,7 @@
         })
         
         
-        
- /* // 중복된 닉네임 선택했을 때 경고 뜨게
-	// 회원가입이 완료 됐을 때 알림 현재는 빈칸만 채우면 알림이 뜸
-	
-	
-	// 중복된 아이디 
-	function checkId(){
-        var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
-        $.ajax({
-            url:'./idCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{id:id},
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                    $('.id_ok').css("display","inline-block"); 
-                    $('.id_already').css("display", "none");
-                    $('#join').on('click', function(){
-                        Swal.fire({
-                      	  
-                      	  icon: 'success',
-                      	  title: '회원가입 성공!',
-                      	  showConfirmButton: false,
-                      	  timer: 1500
-                      	});
-                    })
-                
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    $('.id_already').css("display","inline-block");
-                    $('.id_ok').css("display", "none");
-                    $('#id').val();
-                    Swal.fire({
-                    	  
-                    	  icon: 'error',
-                    	  title: '회원가입 실패!',
-                    	  titleText : '이미 존재하는 아이디입니다.',
-                    	  showConfirmButton: false,
-                    	  timer: 1500
-                    	});
-                }
-            },
-            error:function(){
-                alert("에러입니다");
-            }
-        });
-        };
-    
-        
-        // 중복된 닉네임
-    	function checknick(){
-            var nick = $('#nick').val(); //id값이 "id"인 입력란의 값을 저장
-            $.ajax({
-                url:'./nickCheck', //Controller에서 요청 받을 주소
-                type:'post', //POST 방식으로 전달
-                data:{nick:nick},
-                success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                    if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                        $('.nick_ok').css("display","inline-block"); 
-                        $('.nick_already').css("display", "none");
-                    } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                        $('.nick_already').css("display","inline-block");
-                        $('.nick_ok').css("display", "none");
-                        $('#nick').val();
-                    }
-                },
-                error:function(){
-                    alert("에러입니다");
-                }
-            });
-            }; 
-    
-        	function formSub(){
-        		if($("input[name=id]").val()!='' && $("input[name=pw]").val() != ''&& $("input[name=nick]").val() != ''
-        			&& $("input[name=gender]").val()  != ''){	 
-        			alert('회원가입이 완료되었습니다.') 	
-        			return true;
-        	}
-        		else{
-        			
-        			alert('빈칸을 채워주세요')
-        		
-        			
-        			
-        			return false;
-        			}
-        		}
-        		  */
+
     </script>
 </body>
 

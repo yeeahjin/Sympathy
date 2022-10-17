@@ -197,7 +197,7 @@
              type:'get',
             dataType:'json',
              success:function(res){
-                console.log(res);
+           
                 
                     $('#tbody').html('');
                     for(var i=0; i<res.length;i++){

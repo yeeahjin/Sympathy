@@ -273,29 +273,14 @@
         var body_width = getComputedStyle(body).width;
 
         body_width = parseInt(body_width.substring(0, body_width.length-2))
-        console.log(body_width);
+       
         if(body_width > 570){
-            console.log('크기변경')
+           
             $('.eJEMVp').width(576);
         }
     });
 
 
-/* //   로그인 성공
-$('#login_s').click(function(){
-    //  만약에 성공하면
-    Swal.fire({
-  
-  icon: 'success',
-  title: '로그인 성공!',
-  showConfirmButton: false,
-  timer: 1500
-});
-
-// 만약에 실패하면
-
-
- }); */
 
 
  
@@ -361,26 +346,7 @@ function returnn(){
 
 
     
- /* function checksubmit(){
-    var id = $('#id').val();//id값이 "id"인 입력란의 값을 저장
-    $.ajax({
-        url:'./idCheck', //Controller에서 요청 받을 주소
-        type:'post', //POST 방식으로 전달
-        data:{id:id},
-        success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-            if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-            	alert("로그인에 실패하였습니다.");
-            }else{
-            	
-            }
-            
-        },
-        error:function(){
-        	
-        }
-    });
-    };   
-  */
+
 
 
 </script>

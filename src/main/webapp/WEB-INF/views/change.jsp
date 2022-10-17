@@ -260,9 +260,9 @@
         var body_width = getComputedStyle(body).width;
 
         body_width = parseInt(body_width.substring(0, body_width.length-2))
-        console.log(body_width);
+        
         if(body_width > 570){
-            console.log('크기변경')
+            
             $('.eJEMVp').width(576);
         }
     });
@@ -277,14 +277,7 @@
   timer: 1500
 });
 
-// 만약에 실패하면
-/* Swal.fire({
-  
-  icon: 'error',
-  title: '회원정보수정 실패',
-  showConfirmButton: false,
-  timer: 1500
-}); */
+
 
  });
 

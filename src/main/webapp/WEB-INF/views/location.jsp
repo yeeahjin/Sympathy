@@ -481,25 +481,20 @@ html, body {
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
 	<script>
-		/* 	$(document).ready(
+		 	$(document).ready(
 					function() {
 						var body = document.getElementById('back');
 						var body_width = getComputedStyle(body).width;
 
 						body_width = parseInt(body_width.substring(0,
 								body_width.length - 2))
-						console.log(body_width);
+			
 						if (body_width > 570) {
-							console.log('크기변경')
+							
 							$('.eJEMVp').width(576);
 						}
-					}); */
+					}); 
 
-		/* 		$(document).ready(function() {
-		 $('#list').css({
-		 display : 'none'
-		 });
-		 }) */
 
 		function List() {
 			$('#song').on('click', function() {

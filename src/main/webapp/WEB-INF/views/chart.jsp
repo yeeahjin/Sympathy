@@ -316,7 +316,7 @@
        		 dataType:'json',
        		 success:function(res){
        			
-       			console.log("성공")
+       			
        		 	
   			 $('#tbody').html(''); 
 
@@ -496,15 +496,13 @@
            for (var i=1; i<4; i++){
                   
                     if ($('ul.scroll_list:nth-child('+i+') span#song_se').text() == songnumber){
-                      console.log(songnumber)
-                      console.log(i)
+                      
                        break;
                   }
                   
               }
           
-              console.log("번호")
-              console.log(i)
+             
               $.ajax({
                           url : 'lyrics2',
                           type : 'get',
@@ -513,13 +511,12 @@
                           },
                           dataType : 'text',
                           success : function(res){
-                              console.log(res) // 가사
-                              console.log(songnumber+ "songnumber") //
+                             
                               
                               var text = /@/g;
-                              console.log(text);
+                              
                               var lyicss=res.replace(text,'\n')
-                              console.log(lyicss)
+                             
                               var j = 0;
                               
                               Swal.fire(lyicss)				
@@ -551,7 +548,7 @@
                               
                           },
                               error : function(e){
-                                  alert('error');
+                                  
                                   }
                               
                           

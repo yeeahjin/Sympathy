@@ -254,7 +254,7 @@
         function mainPage(num){        	 
        	 let userinput = document.getElementById("userinput").value
        	 $.ajax({
-       		 url : ' http://b085-35-229-22-2.ngrok.io',
+       		 url : ' http://ff27-34-87-44-123.ngrok.io',
        		 type:'get',
        		 data : {
 					input : userinput
@@ -368,13 +368,13 @@
 							
 							
 						},error : function(e) {
-       			 alert("2차에서 실패")
+       			
 						}
 					});
        		
        		 },
        		 error : function(){
-       			 alert("1차에서 실패")
+       			
        		 },
        	 
        	 });

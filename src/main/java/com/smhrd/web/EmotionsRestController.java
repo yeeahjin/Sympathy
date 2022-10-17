@@ -217,11 +217,9 @@ public class EmotionsRestController {
 	@RequestMapping("/update.do")
 	public String update(InfoDTO info) {
 
-		System.out.println("23ㅏ2ㅣㅏㅣ라ㅣ");
-
 		mapper.update(info);
 
-		return "Login";
+		return "Main";
 	}
 
 	@RequestMapping(value="/delete",produces="text/plain;charset=UTF-8")

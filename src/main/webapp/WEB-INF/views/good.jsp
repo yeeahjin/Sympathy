@@ -202,9 +202,9 @@
       var body_width = getComputedStyle(body).width;
 
       body_width = parseInt(body_width.substring(0, body_width.length - 2))
-      console.log(body_width);
+      
       if (body_width > 570) {
-        console.log('크기변경')
+        
         $('.eJEMVp').width(576);
       }
       
@@ -219,7 +219,7 @@
                type:'get',
               dataType:'json',
                success:function(res){
-                  console.log(res);
+                 
                   
                       $('#tbody').html('');
                       for(var i=0; i<res.length;i++){

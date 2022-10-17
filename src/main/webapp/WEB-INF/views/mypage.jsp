@@ -262,22 +262,7 @@
             })
         }
 
-        $('#change').click(function () {
-            //  만약에 성공하면
-            Swal.fire({
-
-                icon: 'success',
-                title: '회원정보수정 성공!',
-                showConfirmButton: false,
-                timer: 1500
-            });
-
-
-
-            // 만약에 실패하면
-
-
-        });
+        
 
 
 

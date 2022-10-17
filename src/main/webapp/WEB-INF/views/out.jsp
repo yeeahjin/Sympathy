@@ -213,6 +213,7 @@
 
 </footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   <script>
   // 패스워드 세션 값 불러와서 일치 확인
@@ -283,7 +284,7 @@
       });
     }, false);
   </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 <script src='https://unpkg.com/akar-icons-fonts'></script>
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script>
@@ -300,34 +301,6 @@
     });
     
  
-     /* $('#out').click(function(){
-        Swal.fire({
-  title: '정말 탈퇴하시겠습니까?',
-  
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: '네',
-  cancelButtonText:'아니오'
-}).then((result)=> {
-  if (result.isConfirmed) {
-    Swal.fire({
-        icon:'success',
-        title:'완료되었습니다!',
-        confirmButtonText:'확인'
-        // 확인 누르면 메인으로 이동
-        	
-        
-    } 
-     
-    
-      
-    )
-  }
-})
-    });   */
-
     
 
 </script>

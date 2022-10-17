@@ -20,8 +20,7 @@ function enterkey() {
 // 모델
 	
 function kb_songList(userinput){
-    /* alert(userinput);  */
-   
+ 
    $.ajax({
        url : 'http://b085-35-229-22-2.ngrok.io',
        type:'get',
@@ -33,7 +32,7 @@ function kb_songList(userinput){
       },
        dataType:'text',
        success:function(res){
-          /* alert(res) */
+        
 
           $.ajax({
               url : 'kbsongList.do',
@@ -179,8 +178,7 @@ function like(songnumber) {
     for (var i=1; i<4; i++){
            
              if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){ 
-               console.log(songnumber)
-               console.log(i)
+               
                 break; 
                
            } 
@@ -216,7 +214,7 @@ function like(songnumber) {
                            showConfirmButton : false,
                            timer : 1500
                        });
-                       console.log(songnumber);
+                     
                    }
                });
            } 
