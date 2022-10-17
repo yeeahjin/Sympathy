@@ -207,8 +207,7 @@ function like(songnumber) {
                    
                }
            
-               console.log("번호")
-               console.log(i)
+           
                $.ajax({
                            url : 'lyrics',
                            type : 'get',
@@ -225,7 +224,7 @@ function like(songnumber) {
                          
                                var j = 0;
                                
-                               Swal.fire(lyicss)				
+                               window.open("lyrics.do", "ly", "width=400px, height=300px, left=750px, top=300px");
                                
                                    if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
  

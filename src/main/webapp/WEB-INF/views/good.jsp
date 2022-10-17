@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font.css">
 <script src="resources/js/all.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
 <style>
 .input-form {
 	max-width: 680px;
@@ -91,6 +95,17 @@
  .go2{
 text-decoration: none;
 color:black;}
+
+.dropdown-toggle::after {
+    display: none !important;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
 </style>
 </head>
 
@@ -101,35 +116,35 @@ color:black;}
 	<div class="container eJEMVp fixed-top">
 		<header class="header">
 			<div class="header-logo">
-				<div>
-					<span></span> <span></span> <span></span> <span></span>
-				</div>
+				
 			</div>
 			<div class="header-title"> <a href="go" class="go2">공감</a></div>
 			<div class="header-buttons">
 
-				<div class="dropdown_2">
-					<button class="avatar dropbtn">
+			<div class="dropdown text-end">
+					<button type="button" class="avatar dropbtn dropdown-toggle" data-bs-toggle="dropdown" >
 						<img src="resources/img/baseline_menu_black_24dp.png" />
 					</button>
-					<div class="dropdown_con">
+					  <ul class="dropdown-menu">
 						<!-- 로그인했을때 -->
 						<%
 							if (session.getAttribute("user_info") != null) {
 							InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
 						%>
-						<a><%=user_info.getNick()%>님</a> <a href="mypage.do">마이페이지</a> <a
-							href="logout.do">로그아웃</a>
+						 <li><a class="dropdown-item" href="#"><%=user_info.getNick()%>님</a></li>
+						<li><a class="dropdown-item" href="mypage.do">마이페이지</a></li> 
+						<li><a class="dropdown-item"href="logout.do">로그아웃</a></li>
 						<%
 							} else {
 						%>
-						<a href="goJoin.do">회원가입</a><br> <a href="log.do">로그인</a>
+						<li><a class="dropdown-item"  href="goJoin.do">회원가입</a></li>
+						<li> <a class="dropdown-item"  href="log.do">로그인</a></li>
 						<%
 							}
 						%>
-					</div>
-				</div>
-
+					    </ul>
+				
+ </div>
 
 
 				<span></span>
@@ -166,13 +181,16 @@ color:black;}
 
 		</div>
 
-		<footer class="menu ft">
+				<footer class="menu ft">
 
 			<div class="menu-inner">
-				<a href="go" class="menu-item active"> <i class="ai-home"></i>
-				</a> <a href="golocation.do" class="menu-item"> <img
+				<a href="go" class="menu-item active" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="홈"> <i class="ai-home"></i>
+				</a> <a href="golocation.do" class="menu-item" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="내 주변 노래방 !"> <img
 					src="resources/img/free-icon-location-535239.png" />
-				</a> <a href="chart.do" class="menu-item"> <img
+				</a> <a href="chart.do" class="menu-item" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="이달의 인기차트!"> <img
 					src="resources/img/free-icon-trending-8344976.png" />
 				</a>
 
@@ -334,7 +352,10 @@ color:black;}
     	})
     }
 
-
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 			
 		
   </script>

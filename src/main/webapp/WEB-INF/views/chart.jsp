@@ -16,6 +16,12 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 	<script src="resources/js/all.js"></script>
+	<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <style>
 
         form {
@@ -102,6 +108,18 @@ color:black;}
 text-decoration: none;
 color:#0a58ca;
 }
+
+.dropdown-toggle::after {
+    display: none !important;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
   #0d6efd
     </style>
 </head>
@@ -118,42 +136,37 @@ color:#0a58ca;
 
         <header class="header">
             <div class="header-logo">
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+               
             </div>
             <div class="header-title">
                  <a href="go" class="go2">공감</a>
             </div>
             <div class="header-buttons">
 
-                <div class="dropdown_2">
-				<button class="avatar dropbtn" >
-					<img src="resources/img/baseline_menu_black_24dp.png"/>
-				</button>
-				<div class="dropdown_con">
-					<!-- 로그인했을때 -->
-					<%
-						if (session.getAttribute("user_info") != null) {
-						InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
-					%>
-					<a><%=user_info.getNick()%>님</a>
-					
-					<a href="mypage.do">마이페이지</a>
-					<a href="logout.do">로그아웃</a>
-					<%
-						} else {
-					%>
-					<a href="goJoin.do">회원가입</a><br> 
-					<a href="log.do">로그인</a>
-					<%
-						}
-					%>
-</div>
-				</div>
+               <div class="dropdown text-end">
+					<button type="button" class="avatar dropbtn dropdown-toggle" data-bs-toggle="dropdown" >
+						<img src="resources/img/baseline_menu_black_24dp.png" />
+					</button>
+					  <ul class="dropdown-menu">
+						<!-- 로그인했을때 -->
+						<%
+							if (session.getAttribute("user_info") != null) {
+							InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
+						%>
+						 <li><a class="dropdown-item" href="#"><%=user_info.getNick()%>님</a></li>
+						<li><a class="dropdown-item" href="mypage.do">마이페이지</a></li> 
+						<li><a class="dropdown-item"href="logout.do">로그아웃</a></li>
+						<%
+							} else {
+						%>
+						<li><a class="dropdown-item"  href="goJoin.do">회원가입</a></li>
+						<li> <a class="dropdown-item"  href="log.do">로그인</a></li>
+						<%
+							}
+						%>
+					    </ul>
+				
+ </div>
             </div>
         </header>
 
@@ -168,7 +181,7 @@ color:#0a58ca;
 
         
 
-            <h3 class=" text-center"> 🎤 9월 인기차트 🎶 </h3>
+            <h3 class=" text-center"> 🎤 이달의 인기차트 🎶 </h3>
             <div class="container">
                 <div class="row gy-5">
                     <div class="col-6">
@@ -246,22 +259,22 @@ color:#0a58ca;
 
         </div> -->
 
-        <footer class="menu ft">
+      		<footer class="menu ft">
 
-            <div class="menu-inner">
-                <a href="go" class="menu-item active">
-                    <i class="ai-home"></i>
-                </a>
-                <a href="golocation.do" class="menu-item">
-                    <img src="resources/img/free-icon-location-535239.png" />
-                </a>
-                <a href="chart.do" class="menu-item">
-                    <img src="resources/img/free-icon-trending-8344976.png" />
-                </a>
+			<div class="menu-inner">
+				<a href="go" class="menu-item active" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="홈"> <i class="ai-home"></i>
+				</a> <a href="golocation.do" class="menu-item" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="내 주변 노래방 !"> <img
+					src="resources/img/free-icon-location-535239.png" />
+				</a> <a href="chart.do" class="menu-item" data-bs-toggle="tooltip"
+					data-bs-placement="top" title="이달의 인기차트!"> <img
+					src="resources/img/free-icon-trending-8344976.png" />
+				</a>
 
-            </div>
+			</div>
 
-        </footer>
+		</footer>
 
     </div>
 </div>
@@ -367,7 +380,7 @@ color:#0a58ca;
                                                  src="resources/img/baseline_lyrics_black_24dp.png"></button>
                                      </div>
                                      
-                                     <div class="col popupModalVideo ratio ratio-16x9">
+                                     <div class="col popupModalVideo ratio ratio-16x9" >
                                      <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
                                          data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
                                          data-bs-placement="bottom" title="미리듣기!"><img
@@ -482,8 +495,6 @@ color:#0a58ca;
                              </ul>
                          </li>
                      </ul>
-                     
-							
        				 `
                                                   $('#tbody').append(tr);
        			
@@ -527,17 +538,14 @@ color:#0a58ca;
                              
                               var j = 0;
                               
-                              Swal.fire(lyicss)				
+                              
+                              
+                              window.open("lyrics.do", "ly", "width=400, height=300, left=750, top=300");
+                              	
                               
                                   if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
                                   
-                      
-                                          /*  $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
-                                            $('div#lyrs').append("<ul class='scroll_list' style='padding-left: 0px;'><div ='col'>" + res + "</div></ul>") 
-                                           $('#tbody').append("<div></>")
-                                      $('tr').last().append(
-                                      "<td>" + res + "</td>")  */
-                                  
+                 
                                   
                                   
                                   
@@ -576,6 +584,10 @@ color:#0a58ca;
 
 			}
 
+		 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		   return new bootstrap.Tooltip(tooltipTriggerEl)
+		 })
     </script>
   
 </body>

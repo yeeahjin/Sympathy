@@ -398,8 +398,8 @@ button {
   align-items: center;
   width: 48px;
   height: 48px;
-  background-color: var(--c-blue-300);
-  border: 2px solid var(--c-gray-900);
+ /*  background-color: var(--c-blue-300);
+  border: 2px solid var(--c-gray-900); */
   border-radius: 15px;
 }
 .header-logo div {

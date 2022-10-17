@@ -42,7 +42,6 @@ public class EmotionsRestController {
 		return "Main";
 	}	
 	
-	
 	@RequestMapping("/goodpage.do")
 	public String goodpage() {
 		return "good";
@@ -57,7 +56,11 @@ public class EmotionsRestController {
 	public String outpage() {
 		return "out";
 	}	
-		
+	
+	@RequestMapping("/lyrics.do")
+	public String lyricss() {
+		return "lyrics";
+	}	
 	
 	@RequestMapping("/mypage.do")
 	public String mypage() {
