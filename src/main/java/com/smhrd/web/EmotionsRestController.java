@@ -176,7 +176,7 @@ public class EmotionsRestController {
 	}
 
 	@RequestMapping("/login.do")
-	public String login(InfoDTO info, HttpSession session, Model model) {
+	public String login(InfoDTO info, HttpSession session) {
 		
 		InfoDTO user_info = mapper.login(info);
 		
@@ -208,8 +208,6 @@ public class EmotionsRestController {
 
 		model.addAttribute("result", result);
 		
-		
-
 		return "change";
 	}
 
@@ -393,11 +391,15 @@ public class EmotionsRestController {
 	}
 	
 	@RequestMapping("/lyrics.do")
-	public String lyricss(String ly, HttpSession session) {
+	public String lyrics(String ly, Model model) {
+		
+		
+		ly = ly.replace("@","<br>");
 		
 		System.out.println(ly);
 		
-		session.setAttribute("lyrics", ly);
+		model.addAttribute("lyrics", ly);
+		
 		
 		return "lyrics";
 	}	

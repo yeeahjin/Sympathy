@@ -100,7 +100,44 @@ color:black;}
 
 <body id="back">
 
+
+
 	<div class="container eJEMVp " style="width: 606px;">
+	
+	
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" id="car" style="display:none;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="resources/img/001.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="resources/img/002.jpg"" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="resources/img/003.jpg"" class="d-block w-100" alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="resources/img/004.jpg"" class="d-block w-100" alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="resources/img/005.jpg"" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 		<header class="header">
 			<div class="header-logo">
 
@@ -110,8 +147,10 @@ color:black;}
 
 			<div class="header-buttons">
 			
+			<div id="cal">
 			
-    
+			</div>
+    	
  
 
 				
@@ -267,12 +306,17 @@ color:black;}
 					$('#list').css({ display: 'none' });
 					  Swal.fire({
 			                // 설명서 넣기
-			                //   imageUrl: 'https://placeholder.pics/slvg/300x1500',
-			                imageHeight: 1500,
+			              //  imageUrl: 'resources/img/001.jpg', 
+			                //imageUrl2: 'resources/img/002.jpg',
+			                imageHeight: 400,
 			                imageAlt: 'A tall image'
 			            });
 					  
 				}
+				
+			$('#car').css({display:''})
+				
+				
 				
 		);
 	</script>
@@ -288,7 +332,7 @@ color:black;}
 		function kb_songList(userinput){
 		 
 		   $.ajax({
-		       url : 'http://7fc0-34-87-44-123.ngrok.io',
+		       url : 'http://f32d-34-91-168-29.ngrok.io',
 		       type:'get',
 		       data : {
 		           input : userinput
@@ -554,6 +598,8 @@ color:black;}
        	 
        	 });
         };
+        
+   
 	</script>
 
 
