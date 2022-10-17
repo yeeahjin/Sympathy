@@ -57,10 +57,6 @@ public class EmotionsRestController {
 		return "out";
 	}	
 	
-	@RequestMapping("/lyrics.do")
-	public String lyricss() {
-		return "lyrics";
-	}	
 	
 	@RequestMapping("/mypage.do")
 	public String mypage() {
@@ -328,22 +324,16 @@ public class EmotionsRestController {
 		
 		// 문자 나누기
 		String[] array = result.split(" ");
-		System.out.println("읭");
 		
 		List<SongDTO> res = new ArrayList<SongDTO>();
-		System.out.println("읭2");
 		
 		if (session.getAttribute("user_info") != null) {
 			// 싫어요에 해당되는 노래 제거
 			InfoDTO user_info = (InfoDTO) session.getAttribute("user_info");
-			System.out.println("읭3");
 			
 			String id = user_info.getId();
-			System.out.println("읭4");
 			
 			List<Integer> badlist = mapper.badList(id);
-			
-			System.out.println("배드리스트 받아옴"+badlist);
 			
 			for (int i=0; i<20; i++) {
 				
@@ -390,22 +380,27 @@ public class EmotionsRestController {
 	
 	@RequestMapping(value="/lyrics",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String lyrics(int num) {
-		System.out.println(num);
 		String text = mapper.lyrics(num);
-		System.out.println(text);
 		return text;
 	}
 	
 	 // 가사
 	
-	
 	@RequestMapping(value="/lyrics2",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String lyrics2(int num) {
-		System.out.println(num);
 		String text = mapper.lyrics2(num);
-		System.out.println(text);
 		return text;
 	}
+	
+	@RequestMapping("/lyrics.do")
+	public String lyricss(String ly, HttpSession session) {
+		
+		System.out.println(ly);
+		
+		session.setAttribute("lyrics", ly);
+		
+		return "lyrics";
+	}	
 	
 	
 	

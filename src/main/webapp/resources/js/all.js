@@ -38,11 +38,10 @@ function video(aa){
 // 좋아요 버튼 클릭
 	 
 function like(songnumber) {
-				
-    for (var i=1; i<4; i++){
-           
+
+	var i = 1;
+    for (i=1; i<9; i=i+2){
              if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){ 
-               
                 break; 
                
            } 
@@ -95,7 +94,13 @@ function like(songnumber) {
                    },
                    dataType : 'text',
                    success : function(res) {
-                       alert("좋아요성공22222");
+                       Swal.fire({
+                           icon : 'success',
+                           title : '좋아요가 취소되었습니다!',
+                           text : '마이페이지에서 확인가능해용',
+                           showConfirmButton : false,
+                           timer : 1500
+                       });
                    },
                    error : function(e) {
                        Swal.fire({
@@ -113,11 +118,10 @@ function like(songnumber) {
 
        	// 싫어요
 			 function hate(songnumber) {
-				
-                for (var i=1; i<4; i++){
+				var i =1;
+                for (i=1; i<9; i=i+2){
                        
                          if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){ 
-                           
                             break; 
                         
                        } 
@@ -197,8 +201,8 @@ function like(songnumber) {
 		
 		  //가사
 		 function lyrics(songnumber){
-				
-            for (var i=1; i<4; i++){
+				var i =1;
+            for (i=1; i<6; i++){
                    
                      if ($('ul.scroll_list:nth-child('+i+') span#song_number').text() == songnumber){
                      
@@ -224,7 +228,7 @@ function like(songnumber) {
                          
                                var j = 0;
                                
-                               window.open("lyrics.do", "ly", "width=400px, height=300px, left=750px, top=300px");
+                               window.open("lyrics.do?ly="+res, "ly", "width=400, height=300, left=750, top=300");
                                
                                    if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
  

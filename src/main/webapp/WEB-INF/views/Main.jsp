@@ -391,19 +391,13 @@ color:black;}
 		                              </ul>
 		                          </li>
 		                      </ul>
-		          			<div class="container">
-				            <div class="row gy-5">
-				                <div class="col">
-				                    <div class="p-3">
+		          			
 				                     <div class="ft3 text-center" >
 				            <button  class="btn btn-light" onclick="mainPage(0)">1</button>
 				            <button class="btn btn-light" onclick="mainPage(4)">2</button>
 				            <button class="btn btn-light"onclick="mainPage(8)">3</button>
 				          
-				            </div>
-				                    </div>
-				                </div>
-				            </div>
+				           
 
 				        </div>
 		                   `
@@ -531,20 +525,12 @@ color:black;}
 									</li>
 								</ul>
 								
-								<div class="container">
-					            <div class="row gy-5">
-					                <div class="col">
-					                    <div class="p-3">
+							
 					                     <div class="ft3 text-center" >
 					            <button  class="btn btn-light" onclick="mainPage(0)">1</button>
 					            <button class="btn btn-light" onclick="mainPage(4)">2</button>
 					            <button class="btn btn-light"onclick="mainPage(8)">3</button>
 					          
-					            </div>
-					                    </div>
-					                </div>
-					            </div>
-
 					        </div>
 	        				 `
 	        			 

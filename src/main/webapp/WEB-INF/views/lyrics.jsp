@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-가사
+<%=session.getAttribute("lyrics") %>
 </body>
 </html>

@@ -540,7 +540,7 @@ color:#0a58ca;
                               
                               
                               
-                              window.open("lyrics.do", "ly", "width=400, height=300, left=750, top=300");
+                              window.open("lyrics.do?ly="+res, "ly", "width=400, height=300, left=750, top=300");
                               	
                               
                                   if ($('ul.scroll_list:nth-child('+i+')  button.ly > span').text() == '가사') {
