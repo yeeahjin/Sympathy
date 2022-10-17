@@ -314,7 +314,7 @@ color:black;}
 					  
 				}
 				
-			$('#car').css({display:''})
+			
 				
 				
 				
