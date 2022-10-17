@@ -105,7 +105,7 @@ color:black;}
 	<div class="container eJEMVp " style="width: 606px;">
 	
 	
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" id="car" style="display:none;">
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" id="car" >
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -137,6 +137,9 @@ color:black;}
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<div class="video_modal_popup">
+		                                          <div class="video_modal_popup-closer"></div>
+		                                        </div>
 
 		<header class="header">
 			<div class="header-logo">
@@ -319,6 +322,9 @@ color:black;}
 				
 				
 		);
+		
+		var car2 = document.getElementById('car');
+		car2.classList.add('className');
 	</script>
 	<script>
 		var tooltipTriggerList = [].slice.call(document
@@ -332,7 +338,7 @@ color:black;}
 		function kb_songList(userinput){
 		 
 		   $.ajax({
-		       url : 'http://f32d-34-91-168-29.ngrok.io',
+		       url : 'http://4ccc-34-91-168-29.ngrok.io',
 		       type:'get',
 		       data : {
 		           input : userinput
