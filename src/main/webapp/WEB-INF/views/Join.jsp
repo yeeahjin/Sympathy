@@ -90,6 +90,11 @@
         .dropdown_2:hover .dropdown_con {
             display: block;
         }
+        
+        
+ .go2{
+text-decoration: none;
+color:black;}
     </style>
 </head>
 
@@ -108,7 +113,7 @@
                 </div>
             </div>
             <div class="header-title">
-                공감
+             <a href="go" class="go2">공감</a>
             </div>
            <div class="header-buttons">
 

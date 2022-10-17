@@ -85,6 +85,10 @@
         .dropdown_2:hover .dropdown_con {
             display: block;
         }
+        
+         .go2{
+text-decoration: none;
+color:black;}
   </style>
 </head>
 
@@ -104,7 +108,7 @@
           </div>
       </div>
       <div class="header-title">
-          공감
+          <a href="go" class="go2">공감</a>
       </div>
       <div class="header-buttons">
 
@@ -223,29 +227,16 @@
 	alert($('#password').val());
 	var uid = '<%=(InfoDTO)session.getAttribute("user_info")%>';
 	var pw = '<%=user_info.getPw()%>';
-	alert(uid);
-	alert(pw)
+
  	  if(($('#password').val())==(pw)){
-		  alert("일단 여기")
+		
 		  
 	  $.ajax({
 			url : 'delete',
 			type : 'get',
 			dataType : 'text',
 			success : function(res){
-				
-			
-				console.log("탈퇴성공")
-				Swal.fire({
-  title: '정말 탈퇴하시겠습니까?',
-  
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: '네',
-  cancelButtonText:'아니오'
-})
+
 			location.href="logout.do"
 		  
 		  

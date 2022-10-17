@@ -14,6 +14,6 @@ select * from song where song_seq < 5
 
 select * from song where song_num=62910
 
-delete from good
+delete from good where id = 123
 
 delete from info where nick ='.'

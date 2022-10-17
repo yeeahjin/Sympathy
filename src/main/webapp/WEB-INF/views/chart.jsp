@@ -93,8 +93,16 @@
         .dropdown_2:hover .dropdown_con {
             display: block;
         }
-   
-  
+        
+    .go2{
+text-decoration: none;
+color:black;}
+
+.go2:hover{
+text-decoration: none;
+color:#0a58ca;
+}
+  #0d6efd
     </style>
 </head>
 
@@ -118,7 +126,7 @@
                 </div>
             </div>
             <div class="header-title">
-                공감
+                 <a href="go" class="go2">공감</a>
             </div>
             <div class="header-buttons">
 

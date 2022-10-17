@@ -31,6 +31,14 @@
 		delete from info where 
 		id = #{id} and pw = #{pw}
 	</delete>
+	
+	<delete id="gooddelete" parameterType="String">
+		delete from good where  id = #{id}
+	</delete>
+	
+	<delete id="baddelete" parameterType="String">
+		delete from bad where id = #{id}
+	</delete>
 
 	<select id="songList" resultType="com.smhrd.domain.SongDTO">
 		select * from song

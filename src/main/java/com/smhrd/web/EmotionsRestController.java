@@ -228,8 +228,13 @@ public class EmotionsRestController {
 		InfoDTO user_info = (InfoDTO)session.getAttribute("user_info");
 		
 		System.out.println(user_info);
+		String id = user_info.getId();
+		
+		mapper.gooddelete(id);
+		mapper.baddelete(id);
 		
 		mapper.delete(user_info);
+		
 		
 		session.removeAttribute("info");
 		

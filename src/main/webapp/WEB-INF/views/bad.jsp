@@ -60,6 +60,10 @@
 
     width: 100%;
         }
+        
+        .go2{
+text-decoration: none;
+color:black;}
 </style>
 </head>
 
@@ -74,7 +78,7 @@
 					<span></span> <span></span> <span></span> <span></span>
 				</div>
 			</div>
-			<div class="header-title">공감</div>
+			<div class="header-title"> <a href="go" class="go2">공감</a></div>
 			<div class="header-buttons">
 
 				<div class="dropdown_2">

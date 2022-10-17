@@ -97,7 +97,9 @@
           .size{
             font-size: smaller;
         }
-        
+         .go2{
+text-decoration: none;
+color:black;}
   </style>
 </head>
 
@@ -116,7 +118,7 @@
         </div>
       </div>
       <div class="header-title">
-        공감
+        <a href="go" class="go2">공감</a>
       </div>
      <div class="header-buttons">
 
@@ -286,13 +288,7 @@
  
 function returnn(){
 	if($("input[name=id]").val()!='' && $("input[name=pw]").val() != '')
-	{ Swal.fire({
-		  
-		  icon: 'success',
-		  title: '로그인 성공!',
-		  showConfirmButton: false,
-		  
-		}); 
+	{ 
 	
 	setTimeout(function(){
 		var link = "Main.jsp";

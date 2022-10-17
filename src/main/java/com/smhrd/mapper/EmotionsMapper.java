@@ -26,6 +26,10 @@ public interface EmotionsMapper {
 	
 	public void delete(InfoDTO info);
 	
+	public void gooddelete(String id);
+	
+	public void baddelete(String id);
+	
 	public List<SongDTO> songList();
 	
 	public SongDTO kbsongList(int num);

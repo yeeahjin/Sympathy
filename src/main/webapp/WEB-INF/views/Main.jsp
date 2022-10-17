@@ -71,6 +71,10 @@
 	bottom: 5px;
 	width: 100%;
 }
+
+.go2{
+text-decoration: none;
+color:black;}
 </style>
 
 </head>
@@ -85,7 +89,7 @@
 					<span></span> <span></span> <span></span> <span></span>
 				</div>
 			</div>
-			<div class="header-title">공감</div>
+			<div class="header-title"><a href="go" class="go2">  공감</a></div>
 
 			<div class="header-buttons">
 
@@ -249,12 +253,148 @@
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		});
 		
+		// 모델
+		
+		function kb_songList(userinput){
+		 
+		   $.ajax({
+		       url : 'http://7fc0-34-87-44-123.ngrok.io',
+		       type:'get',
+		       data : {
+		           input : userinput
+		       },
+		       headers : {
+		          "ngrok-skip-browser-warning" : "12345",
+		      },
+		       dataType:'text',
+		       success:function(res){
+		        
+
+		          $.ajax({
+		              url : 'kbsongList.do',
+		              type : 'get', 
+		              dataType:"json",
+		              data: {
+		                  result : res
+		              },
+		              success : function(res) {
+		                   
+		                   
+		                   $('#tbody').html('');  
+		                    
+		                  for(var i = 0; i < 4; i++){
+		                  
+		                   tr = `
+		                          <ul class="scroll_list" style="padding-left: 0px;">
+		                          <li class="list_item">
+		                              <ul style="padding-left: 0px;">
+		                                  <li class="list_track_row">
+		                                      <div class="thumb text-center" >
+		                                          <span id="song_number">`+res[i].song_num+`</span>
+		                                      </div>
+		                                      
+		                                      <div class="thumb">
+		                                      <div class="inner">
+		                                           <img src='`+res[i].img+`'>
+		                                      </div>
+		                                  </div>
+		                                      
+		                                      <div class="song_area col-6">
+		                                      <div class="song">
+		                                          <a href="#" class="title fs-5" style="margin-top: 0;">
+		                                              `+res[i].song_title+`
+		                                          
+		                                          </a>
+		                                      </div>
+		                                      <div class="artist">
+		                                          <span >
+		                                             `+res[i].singer+`
+		                                          </span>
+		                                      </div>
+		                                  </div>
+		                                  <div class="song_area col-9">
+		                                  <div class="row gx-1">
+		                                      
+		                                          <div class="col">
+		                                          
+		                                              <button class="btn like" id = "idlike" onclick="like('`+ res[i].song_num +`')" 
+		                                                  data-bs-toggle="tooltip" data-bs-placement="bottom" 
+		                                                  title="좋아요!"><span style="display:none;">좋아요</span><img
+		                                                      src="resources/img/baseline_sentiment_satisfied_alt_black_24dp.png" id="img1"></button>
+		                                                      
+		                                          </div>
+		                                          <div class="col">
+		                                              <button class="btn bad"  onclick="hate('`+ res[i].song_num +`')"
+		                                                  data-bs-toggle="tooltip" data-bs-placement="bottom" 
+		                                                  title="싫어요!"><span style="display:none;">싫어요</span><img
+		                                                      src="resources/img/baseline_sentiment_very_dissatisfied_black_24dp.png"></button>
+		                                                      
+		                                          </div>
+		                                      <div class="col" id="lyrs">
+		                                          <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics('`+res[i].song_num+`')"
+		                                              data-bs-placement="bottom" title="가사보기!"> <img
+		                                                  src="resources/img/baseline_lyrics_black_24dp.png"></button>
+		                                                 
+		                                      </div>
+		                                      <div class="col popupModalVideo ratio ratio-16x9">
+		                                      <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
+		                                          data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
+		                                          data-bs-placement="bottom" title="미리듣기!"><img
+		                                              src="resources/img/baseline_play_circle_black_24dp.png"></a>
+		                                  </div>
+		                                      <div class="video_modal_popup">
+		                                          <div class="video_modal_popup-closer"></div>
+		                                        </div>
+		                                    
+		                                      
+		                                      <div class="col">
+		                                          <a class="btn" id="link" data-bs-toggle="tooltip" data-toggle="modal" 
+		                                               href="`+res[i].link+`"
+		                                              data-bs-placement="bottom" title="연습하기!"> <img
+		                                                  src="resources/img/baseline_mic_black_24dp.png"></a>
+		                                      </div>
+		                                     
+		                                  </div>
+		                              </div>
+		                                  
+		                                  </li>
+		                              </ul>
+		                          </li>
+		                      </ul>
+		                      
+		                   `
+		               
+		               $('#tbody').append(tr);
+		               } 
+		                   
+		               td = `
+		               <div class="ft2 text-center">
+		               <button   onclick="mainPage(0)">1</button>
+		               <button  onclick="mainPage(4)">2</button>
+		               <button  onclick="mainPage(8)">3</button></div>`
+			        			 $('#pageNum').after(td);
+		                  
+		                  
+		                  
+		              },error : function(e) {
+		           alert("2차에서 실패")
+		              }
+		          });
+		      
+		       },
+		       error : function(){
+		           alert("1차에서 실패")
+		       },
+		   
+		   });
+		};
+		
 		
 		// mainPage 페이지 바꾸면 노래 나오게 하기
         function mainPage(num){        	 
        	 let userinput = document.getElementById("userinput").value
        	 $.ajax({
-       		 url : ' http://ff27-34-87-44-123.ngrok.io',
+       		 url : ' http://7fc0-34-87-44-123.ngrok.io',
        		 type:'get',
        		 data : {
 					input : userinput
