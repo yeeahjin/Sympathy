@@ -17,6 +17,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>main</title>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/css/slider-pro.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/js/jquery.sliderPro.min.js"></script> -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -33,6 +36,11 @@
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/all.js"></script>
+
+
+ 
+  </head>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <style type="text/css">
 /* .dropdown_2 {
@@ -104,42 +112,6 @@ color:black;}
 
 	<div class="container eJEMVp " style="width: 606px;">
 	
-	
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" id="car"  style="display:none;">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="resources/img/001.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="resources/img/002.jpg"" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="resources/img/003.jpg"" class="d-block w-100" alt="...">
-    </div>
-      <div class="carousel-item">
-      <img src="resources/img/004.jpg"" class="d-block w-100" alt="...">
-    </div>
-      <div class="carousel-item">
-      <img src="resources/img/005.jpg"" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<div class="video_modal_popup">
-		                                          <div class="video_modal_popup-closer"></div>
-		                                        </div>
 
 		<header class="header">
 			<div class="header-logo">
@@ -278,7 +250,12 @@ color:black;}
 
 
 	</div>
-
+<script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src='https://unpkg.com/akar-icons-fonts'></script>
@@ -290,7 +267,11 @@ color:black;}
 	<script src="resources/js/bootstrap.bundle.js"></script> -->
 	<script src="//code.jquery.com/jquery-1.12.4.min.js"
 		crossorigin="anonymous"></script>
+		<script type="text/javascript">
+      $.noConflict();
+</script>
 	<script>
+	
 		$(document).ready(
 				function() {
 					var body = document.getElementById('back');
@@ -307,14 +288,10 @@ color:black;}
 						$('.eJEMVp').width(576);
 					}
 					$('#list').css({ display: 'none' });
-					  Swal.fire({
-			                // 설명서 넣기
-			              //  imageUrl: 'resources/img/001.jpg', 
-			                //imageUrl2: 'resources/img/002.jpg',
-			                imageHeight: 400,
-			                imageAlt: 'A tall image'
-			            });
+				
 					  
+					  
+					  window.open("card.do", "card", "width=400, height=400, left=750, top=250");
 				}
 				
 			
@@ -604,7 +581,7 @@ color:black;}
        	 });
         };
         
-   
+
 	</script>
 
 

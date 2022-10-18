@@ -404,7 +404,12 @@ public class EmotionsRestController {
 		return "lyrics";
 	}	
 	
+	@RequestMapping("/card.do")
+	public String cardnews() {
 	
+		
+		return "cardnews";
+	}	
 	
 	
 	
