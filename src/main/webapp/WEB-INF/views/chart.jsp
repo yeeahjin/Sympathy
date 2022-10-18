@@ -362,7 +362,7 @@ display:inline-block !important;
                                      
                                      <div class="song_area col-6">
                                      <div class="song">
-                                         <a href="#" class="title fs-5" style="margin-top: 0;">
+                                         <a href="#" class="title fs-5 " style="margin-top: 0;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="`+res[i].song_title+`">
                                              `+res[i].song_title+`
                                          
                                          </a>
@@ -453,11 +453,11 @@ display:inline-block !important;
                                      
                                      <div class="song_area col-6">
                                      <div class="song">
-                                         <a href="#" class="title fs-5" style="margin-top: 0;">
-                                             `+res[i].song_title+`
-                                         
-                                         </a>
-                                     </div>
+                                     <a href="#" class="title fs-5 " style="margin-top: 0;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="`+res[i].song_title+`">
+                                         `+res[i].song_title+`
+                                     
+                                     </a>
+                                 </div>
                                      <div class="artist">
                                          <span >
                                             `+res[i].singer+`
