@@ -233,7 +233,7 @@ color:black;}
 <%--    var infopw = <%=user_info.getPw()%> --%>
   
   function papa(){
-	alert($('#password').val());
+	
 	var uid = '<%=(InfoDTO)session.getAttribute("user_info")%>';
 	var pw = '<%=user_info.getPw()%>';
 
@@ -245,11 +245,12 @@ color:black;}
 			type : 'get',
 			dataType : 'text',
 			success : function(res){
-
+			
 			location.href="logout.do"
-		  
-		  
-  } 
+			
+  }, error: function(){
+	  
+  }
 	  
   }) 
   
