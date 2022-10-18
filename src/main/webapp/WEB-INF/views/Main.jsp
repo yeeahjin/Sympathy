@@ -314,7 +314,7 @@ color:black;}
 		function kb_songList(userinput){
 		 
 		   $.ajax({
-		       url : 'http://4ccc-34-91-168-29.ngrok.io',
+		       url : 'http://ce98-34-90-73-217.ngrok.io',
 		       type:'get',
 		       data : {
 		           input : userinput
@@ -452,7 +452,7 @@ color:black;}
         function mainPage(num){        	 
        	 let userinput = document.getElementById("userinput").value
        	 $.ajax({
-       		 url : ' http://ce98-34-90-73-217.ngrok.io',
+       		 url : 'http://ce98-34-90-73-217.ngrok.io',
        		 type:'get',
        		 data : {
 					input : userinput
