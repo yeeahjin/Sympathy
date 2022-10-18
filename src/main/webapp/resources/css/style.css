@@ -362,7 +362,7 @@ z-index: 9
 } */
 
 img {
-  display: block;
+  display: inline-block;
   max-width: 100%;
 }
 

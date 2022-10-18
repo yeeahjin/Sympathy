@@ -120,7 +120,9 @@ color:#0a58ca;
     border-left: 0.3em solid transparent;
 }
 
-  #0d6efd
+.preview{
+display:inline-block !important;
+}
     </style>
 </head>
 
@@ -468,13 +470,13 @@ color:#0a58ca;
                                        
                                      <div class="col" id="lyrs">
                                          <button  class="btn ly" id="lyrics" data-bs-toggle="tooltip" onclick="lyrics2('`+res[i].song_se+`')" data-bs-placement="bottom" title="가사보기!"> 
-                                         <img src="resources/img/baseline_lyrics_black_24dp.png"></button>
+                                         <img src="resources/img/baseline_lyrics_black_24dp.png" ></button>
                                      </div>
                                      <div class="col popupModalVideo ratio ratio-16x9">
                                      <a class="btn video-btn play" data-toggle="modal" onclick="video('`+res[i].preview+`')"
                                          data-bs-toggle="tooltip" data-video="`+res[i].preview+`"
                                          data-bs-placement="bottom" title="미리듣기!"><img
-                                             src="resources/img/baseline_play_circle_black_24dp.png"></a>
+                                             src="resources/img/baseline_play_circle_black_24dp.png" class="preview"style="display: inline-block !important;"></a>
                                  </div>
                                      <div class="video_modal_popup">
                                          <div class="video_modal_popup-closer"></div>

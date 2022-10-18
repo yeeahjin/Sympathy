@@ -291,7 +291,7 @@ color:black;}
 				
 					  
 					  
-					  window.open("card.do", "card", "width=400, height=400, left=750, top=250");
+					  window.open("card.do", "card", "width=400, height=402, left=750, top=250");
 				}
 				
 			
