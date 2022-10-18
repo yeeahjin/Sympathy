@@ -147,7 +147,7 @@ color:black;}
 		</div>
 <div class="input-form-background row">
 <div class="input-form col-lg-12 mx-auto shadow-none" id="list" style="
-    padding-top: 20px;">
+    padding-top: 0px; margin-top:0px">
 		<div class="list_wrap_track_rank" id="tbody">
 		</div>
 </div>
@@ -239,12 +239,12 @@ color:black;}
 
                                     
                                     <div class="song_area col-6">
-                                        <div class="song">
-                                            <a href="#" class="title fs-5" style="margin-top: 0;">
-                                          `+res[i].song_title+`
-                                            
-                                            </a>
-                                        </div>
+                                    <div class="song">
+                                    <a href="#" class="title fs-5 " style="margin-top: 0;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="`+res[i].song_title+`">
+                                        `+res[i].song_title+`
+                                    
+                                    </a>
+                                </div>
                                         <div class="artist">
                                       <span >
                                     `+res[i].singer+`
