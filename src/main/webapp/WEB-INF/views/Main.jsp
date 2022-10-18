@@ -357,11 +357,11 @@ color:black;}
 		                                      
 		                                      <div class="song_area col-6">
 		                                      <div class="song">
-		                                          <a href="#" class="title fs-5" style="margin-top: 0;">
-		                                              `+res[i].song_title+`
-		                                          
-		                                          </a>
-		                                      </div>
+		                                         <a href="#" class="title fs-5 " style="margin-top: 0;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="`+res[i].song_title+`">
+		                                             `+res[i].song_title+`
+		                                         
+		                                         </a>
+		                                     </div>
 		                                      <div class="artist">
 		                                          <span >
 		                                             `+res[i].singer+`
@@ -452,7 +452,7 @@ color:black;}
         function mainPage(num){        	 
        	 let userinput = document.getElementById("userinput").value
        	 $.ajax({
-       		 url : ' http://7fc0-34-87-44-123.ngrok.io',
+       		 url : ' http://ce98-34-90-73-217.ngrok.io',
        		 type:'get',
        		 data : {
 					input : userinput
@@ -489,12 +489,12 @@ color:black;}
 	                                        </div>
 												
 										        <div class="song_area col-6">
-	                                            <div class="song">
-	                                                <a href="#" class="title fs-5" style="margin-top: 0;">
-	                                                    `+res[i].song_title+`
-	                                                
-	                                                </a>
-	                                            </div>
+										        <div class="song">
+		                                         <a href="#" class="title fs-5 " style="margin-top: 0;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="`+res[i].song_title+`">
+		                                             `+res[i].song_title+`
+		                                         
+		                                         </a>
+		                                     </div>
 	                                            <div class="artist">
 	                                                <span >
 	                                                   `+res[i].singer+`
